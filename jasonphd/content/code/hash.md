@@ -3,6 +3,8 @@ date = '2018-03-20T04:40:22+08:00'
 draft = false
 title = 'hash的一些记录'
 tags = ["code"]
+[params]
+  cover = "/images/eb20681b7a24e34a8856bfa8b034cb0d.xray.webp"
 +++
 
 ![](/images/eb20681b7a24e34a8856bfa8b034cb0d.xray.webp)
