@@ -1,24 +1,4 @@
-<!doctype html>
-<html
-  lang="en-us"
-  dir="ltr"
-  class="scroll-smooth"
->
-  <head>
-    
-
-
-
-
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="robots" content="index, follow" />
-<meta
-  name="googlebot"
-  content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
-/>
-
-<meta name="description" content="
+<!doctype html><html lang=en-us dir=ltr class=scroll-smooth><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="index, follow"><meta name=googlebot content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"><meta name=description content="
 名称来自战争术语 抢滩登陆 (beach head)
 目的是更快的将iOS的application启动提速. 让用户更快的打开app !推广一波🤣 开源库
 进程访问内存的原理
@@ -53,11 +33,7 @@ Page Fault
 1.虚拟内存允许操作系统摆脱物理 RAM 的限制。虚拟内存管理器创建一个逻辑地址空间（或“每个进程的“虚拟”地址空间）并将其划分为大小统一的内存块，称为页面。处理器及其内存管理单元（MMU）维护一个页表将程序逻辑地址空间中的页面映射到计算机 RAM 中的硬件地址。当程序代码访问内存中的地址时，MMU 使用页表将指定的逻辑地址转换为实际的硬件内存地址。这种转换是自动发生的，并且对于正在运行的应用程序是透明的。
 2.对于程序而言，其逻辑地址空间中的地址始终可用。但是，如果应用程序访问当前不在物理 RAM 中的内存页上的地址，发生页面错误。当这种情况发生时，虚拟内存系统会调用一个特殊的页面错误处理程序来立即响应该错误。页面错误处理程序停止当前正在执行的代码，找到物理内存的空闲页面，从磁盘加载包含所需数据的页面，更新页表，然后将控制权返回给程序代码，程序代码可以访问内存地址通常情况下。这个过程被称为寻呼。
 3.如果物理内存中没有可用的空闲页面，则处理程序必须首先释放现有页面以为新页面腾出空间。系统如何发布页面取决于平台。在 OS X 中，虚拟内存系统经常将页面写入后备存储。这后备存储是基于磁盘的存储库，其中包含给定进程使用的内存页的副本。将数据从物理内存移动到后备存储称为调出（或“交换出”）；将数据从后备存储移回物理内存称为分页（或“交换”）。在 iOS 中，没有后备存储，因此页面永远不会调出到磁盘，但只读页面仍会根据需要从磁盘调入。
-4.在 OS X 和早期版本的 iOS 中，页面的大小是 4 KB。在更高版本的 iOS 中，基于 A7 和 A8 的系统向由 4 KB 物理页支持的 64 位用户空间公开 16 KB 页面，而 A9 系统公开由 16 KB 物理页支持的 16 KB 页面。这些大小决定了发生页面错误时系统从磁盘读取多少KB。当系统花费过多的时间处理页面错误以及读写页面而不是执行程序代码时，就会发生磁盘抖动。" />
-
-
-<meta property="og:title" content="二进制文件重排" />
-<meta property="og:description" content="
+4.在 OS X 和早期版本的 iOS 中，页面的大小是 4 KB。在更高版本的 iOS 中，基于 A7 和 A8 的系统向由 4 KB 物理页支持的 64 位用户空间公开 16 KB 页面，而 A9 系统公开由 16 KB 物理页支持的 16 KB 页面。这些大小决定了发生页面错误时系统从磁盘读取多少KB。当系统花费过多的时间处理页面错误以及读写页面而不是执行程序代码时，就会发生磁盘抖动。"><meta property="og:title" content="二进制文件重排"><meta property="og:description" content="
 名称来自战争术语 抢滩登陆 (beach head)
 目的是更快的将iOS的application启动提速. 让用户更快的打开app !推广一波🤣 开源库
 进程访问内存的原理
@@ -92,16 +68,7 @@ Page Fault
 1.虚拟内存允许操作系统摆脱物理 RAM 的限制。虚拟内存管理器创建一个逻辑地址空间（或“每个进程的“虚拟”地址空间）并将其划分为大小统一的内存块，称为页面。处理器及其内存管理单元（MMU）维护一个页表将程序逻辑地址空间中的页面映射到计算机 RAM 中的硬件地址。当程序代码访问内存中的地址时，MMU 使用页表将指定的逻辑地址转换为实际的硬件内存地址。这种转换是自动发生的，并且对于正在运行的应用程序是透明的。
 2.对于程序而言，其逻辑地址空间中的地址始终可用。但是，如果应用程序访问当前不在物理 RAM 中的内存页上的地址，发生页面错误。当这种情况发生时，虚拟内存系统会调用一个特殊的页面错误处理程序来立即响应该错误。页面错误处理程序停止当前正在执行的代码，找到物理内存的空闲页面，从磁盘加载包含所需数据的页面，更新页表，然后将控制权返回给程序代码，程序代码可以访问内存地址通常情况下。这个过程被称为寻呼。
 3.如果物理内存中没有可用的空闲页面，则处理程序必须首先释放现有页面以为新页面腾出空间。系统如何发布页面取决于平台。在 OS X 中，虚拟内存系统经常将页面写入后备存储。这后备存储是基于磁盘的存储库，其中包含给定进程使用的内存页的副本。将数据从物理内存移动到后备存储称为调出（或“交换出”）；将数据从后备存储移回物理内存称为分页（或“交换”）。在 iOS 中，没有后备存储，因此页面永远不会调出到磁盘，但只读页面仍会根据需要从磁盘调入。
-4.在 OS X 和早期版本的 iOS 中，页面的大小是 4 KB。在更高版本的 iOS 中，基于 A7 和 A8 的系统向由 4 KB 物理页支持的 64 位用户空间公开 16 KB 页面，而 A9 系统公开由 16 KB 物理页支持的 16 KB 页面。这些大小决定了发生页面错误时系统从磁盘读取多少KB。当系统花费过多的时间处理页面错误以及读写页面而不是执行程序代码时，就会发生磁盘抖动。" />
-<meta property="og:url" content="https://blogs.jasonphd.com/ios/ios0/" />
-<meta property="og:site_name" content="Jasonphd Blogs" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://blogs.jasonphd.com/images/og-image.png" />
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="二进制文件重排" />
-<meta name="twitter:description" content="
+4.在 OS X 和早期版本的 iOS 中，页面的大小是 4 KB。在更高版本的 iOS 中，基于 A7 和 A8 的系统向由 4 KB 物理页支持的 64 位用户空间公开 16 KB 页面，而 A9 系统公开由 16 KB 物理页支持的 16 KB 页面。这些大小决定了发生页面错误时系统从磁盘读取多少KB。当系统花费过多的时间处理页面错误以及读写页面而不是执行程序代码时，就会发生磁盘抖动。"><meta property="og:url" content="https://blogs.jasonphd.com/ios/ios0/"><meta property="og:site_name" content="Jasonphd Blogs"><meta property="og:type" content="website"><meta property="og:image" content="https://blogs.jasonphd.com/images/og-image.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="二进制文件重排"><meta name=twitter:description content="
 名称来自战争术语 抢滩登陆 (beach head)
 目的是更快的将iOS的application启动提速. 让用户更快的打开app !推广一波🤣 开源库
 进程访问内存的原理
@@ -136,347 +103,56 @@ Page Fault
 1.虚拟内存允许操作系统摆脱物理 RAM 的限制。虚拟内存管理器创建一个逻辑地址空间（或“每个进程的“虚拟”地址空间）并将其划分为大小统一的内存块，称为页面。处理器及其内存管理单元（MMU）维护一个页表将程序逻辑地址空间中的页面映射到计算机 RAM 中的硬件地址。当程序代码访问内存中的地址时，MMU 使用页表将指定的逻辑地址转换为实际的硬件内存地址。这种转换是自动发生的，并且对于正在运行的应用程序是透明的。
 2.对于程序而言，其逻辑地址空间中的地址始终可用。但是，如果应用程序访问当前不在物理 RAM 中的内存页上的地址，发生页面错误。当这种情况发生时，虚拟内存系统会调用一个特殊的页面错误处理程序来立即响应该错误。页面错误处理程序停止当前正在执行的代码，找到物理内存的空闲页面，从磁盘加载包含所需数据的页面，更新页表，然后将控制权返回给程序代码，程序代码可以访问内存地址通常情况下。这个过程被称为寻呼。
 3.如果物理内存中没有可用的空闲页面，则处理程序必须首先释放现有页面以为新页面腾出空间。系统如何发布页面取决于平台。在 OS X 中，虚拟内存系统经常将页面写入后备存储。这后备存储是基于磁盘的存储库，其中包含给定进程使用的内存页的副本。将数据从物理内存移动到后备存储称为调出（或“交换出”）；将数据从后备存储移回物理内存称为分页（或“交换”）。在 iOS 中，没有后备存储，因此页面永远不会调出到磁盘，但只读页面仍会根据需要从磁盘调入。
-4.在 OS X 和早期版本的 iOS 中，页面的大小是 4 KB。在更高版本的 iOS 中，基于 A7 和 A8 的系统向由 4 KB 物理页支持的 64 位用户空间公开 16 KB 页面，而 A9 系统公开由 16 KB 物理页支持的 16 KB 页面。这些大小决定了发生页面错误时系统从磁盘读取多少KB。当系统花费过多的时间处理页面错误以及读写页面而不是执行程序代码时，就会发生磁盘抖动。" />
-<meta name="twitter:image" content="https://blogs.jasonphd.com/images/og-image.png" />
-
-<title>二进制文件重排</title>
-
-      <link
-        rel="stylesheet"
-        href="/css/output.min.97260c8f0033d223ec20178386e59725207060eda9376a3fe20db19533c0e1e7.css"
-        integrity="sha256-lyYMjwAz0iPsIBeDhuWXJSBwYO2pN2o/4g2xlTPA4ec="
-        crossorigin="anonymous"
-      />
-
-
-  </head>
-  <body class="bg-white text-black antialiased">
-    <section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
-      <div class="flex h-screen flex-col justify-between font-sans">
-        <header
-          class="flex items-center w-full bg-white justify-between py-10 sticky top-0 z-50"
-        >
-          <a class="group break-words" aria-label="Jasonphd Blogs" href="/">
-  <div class="flex items-center justify-between">
-    <div class="sm:mr-3">
-      <img src="/images/logo.svg" width="32" height="32" alt="Logo Image" />
-    </div>
-
-    <div class="hidden text-2xl font-semibold sm:block group-hover:underline">
-      <span>Jasonphd Blogs</span>
-    </div>
-  </div>
-</a>
-
-<div class="flex items-center space-x-4 leading-5 sm:space-x-6">
-  <div class="items-center space-x-4 overflow-x-auto flex sm:space-x-6">
-    
-      <a
-        href="mailto:developerluhao@gmail.com"
-        class="font-medium text-gray-900 hover:text-indigo-500"
-        
-        >ContactMe</a
-      >
-    
-      <a
-        href="/tags"
-        class="font-medium text-gray-900 hover:text-indigo-500"
-        
-        >Tags</a
-      >
-    
-      <a
-        href="/about"
-        class="font-medium text-gray-900 hover:text-indigo-500"
-        
-        >About</a
-      >
-    
-    <a href="https://github.com/forwyt" target="_blank">
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        class="fill-[#24292F] hover:fill-indigo-500 h-6 w-6"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M12.0099 0C5.36875 0 0 5.5 0 12.3042C0 17.7432 3.43994 22.3472 8.21205 23.9767C8.80869 24.0992 9.02724 23.712 9.02724 23.3862C9.02724 23.101 9.00757 22.1232 9.00757 21.1045C5.6667 21.838 4.97099 19.6378 4.97099 19.6378C4.43409 18.2118 3.63858 17.8452 3.63858 17.8452C2.54511 17.0915 3.71823 17.0915 3.71823 17.0915C4.93117 17.173 5.56763 18.3545 5.56763 18.3545C6.64118 20.2285 8.37111 19.699 9.06706 19.373C9.16638 18.5785 9.48473 18.0285 9.82275 17.723C7.15817 17.4377 4.35469 16.3785 4.35469 11.6523C4.35469 10.3078 4.8316 9.20775 5.58729 8.35225C5.46807 8.04675 5.0504 6.7835 5.70677 5.09275C5.70677 5.09275 6.72083 4.76675 9.00732 6.35575C9.98625 6.08642 10.9958 5.9494 12.0099 5.94825C13.024 5.94825 14.0577 6.091 15.0123 6.35575C17.299 4.76675 18.3131 5.09275 18.3131 5.09275C18.9695 6.7835 18.5515 8.04675 18.4323 8.35225C19.2079 9.20775 19.6652 10.3078 19.6652 11.6523C19.6652 16.3785 16.8617 17.4172 14.1772 17.723C14.6148 18.11 14.9924 18.8433 14.9924 20.0045C14.9924 21.6545 14.9727 22.9788 14.9727 23.386C14.9727 23.712 15.1915 24.0992 15.7879 23.977C20.56 22.347 23.9999 17.7432 23.9999 12.3042C24.0196 5.5 18.6312 0 12.0099 0Z"
-        />
-      </svg>
-    </a>
-  </div>
-</div>
-
-        </header>
-        <main class="mb-auto">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": "二进制文件重排",
-      "datePublished": "2018-03-17T14:54:44\u002b08:00",
-      "dateModified": "2018-03-17T14:54:44\u002b08:00",
-      "description": "\u003cp\u003e\u003cimg src=\u0022\/images\/ww2.webp\u0022 alt=\u0022lancher\u0022 title=\u0022start\u0022\u003e\u003c\/p\u003e\n\u003cp\u003e名称来自战争术语 抢滩登陆 (beach head)\n目的是更快的将iOS的application启动提速. 让用户更快的打开app !推广一波🤣 \u003ca href=\u0022https:\/\/github.com\/forwyt\/beachhead\u0022\u003e开源库\u003c\/a\u003e\u003c\/p\u003e\n\u003ch2 id=\u0022进程访问内存的原理\u0022\u003e进程访问内存的原理\u003c\/h2\u003e\n\u003cblockquote\u003e\n\u003cp\u003e在计算机中，\u003cstrong\u003e进程\u003c\/strong\u003e 是操作系统分配给正在运行的程序的一种资源。它可以看作是程序的执行实例，包括程序计数器、寄存器、堆栈和打开的文件等。每个进程都在自己的\u003cstrong\u003e虚拟地址\u003c\/strong\u003e空间中运行，这使得每个进程都有自己独立的内存空间。\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003ch3 id=\u0022虚拟地址\u0022\u003e虚拟地址\u003c\/h3\u003e\n\u003col\u003e\n\u003cli\u003e\n\u003cp\u003e地址空间划分：操作系统将每个进程的地址空间划分为多个固定大小的页。通常，每个页的大小为4KB\u003c\/p\u003e\n\u003c\/li\u003e\n\u003cli\u003e\n\u003cp\u003e页表创建：操作系统为每个进程创建一个页表，用于将虚拟地址映射到物理地址。页表是一个数据结构，它记录了每个虚拟页对应的物理页的地址。\u003c\/p\u003e\n\u003c\/li\u003e\n\u003cli\u003e\n\u003cp\u003e虚拟地址转换：当进程访问内存时，它使用虚拟地址。操作系统通过查找页表中的映射关系，将虚拟地址转换为物理地址。这个转换过程通常包括两个步骤。\u003c\/p\u003e\n\u003c\/li\u003e\n\u003c\/ol\u003e\n\u003cul\u003e\n\u003cli\u003e页目录查找：进程的虚拟地址通常被划分为三个部分：页目录索引、页表索引和页内偏移。首先，操作系统使用页目录索引在页目录中查找对应的页表。\u003c\/li\u003e\n\u003cli\u003e页表查找：操作系统使用页表索引在找到的页表中查找对应的物理页的地址\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003col start=\u00224\u0022\u003e\n\u003cli\u003e内存访问：当虚拟地址被转换为物理地址后，进程可以使用物理地址来访问内存。这样，进程就可以在自己的虚拟地址空间中进行内存操作，而不需要关心物理内存的实际分布。\u003c\/li\u003e\n\u003c\/ol\u003e\n\u003cp\u003e为了提高效率和方便管理，又对虚拟内存和物理内存又进行分页（Page）。当进程访问一个虚拟内存 Page 而对应的物理内存却不存在时，会触发一次缺页中断（Page Fault），分配物理内存，有需要的话会从磁盘 \u003cstrong\u003emmap\u003c\/strong\u003e 读人数据。\nmmap\u003c\/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003emmap是一种内存映射技术，它允许应用程序将文件或其他设备映射到自己的虚拟地址空间中，从而可以像访问内存一样访问这些数据。mmap可以提供高效的读写文件的方式，并且还可以用于共享内存和匿名内存映射等场景\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003ch3 id=\u0022page-fault\u0022\u003ePage Fault\u003c\/h3\u003e\n\u003cblockquote\u003e\n\u003cp\u003e当进程访问一个虚拟内存 Page 而对应的物理内存却不存在时，会触发一次缺页中断（Page Fault），分配物理内存，有需要的话会从磁盘 mmap 读人数据。通过 App Store 渠道分发的 App，Page Fault 还会进行签名验证，所以一次 Page Fault 的耗时比想象的多\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cp\u003e1.虚拟内存允许操作系统摆脱物理 RAM 的限制。虚拟内存管理器创建一个逻辑地址空间（或“每个进程的“虚拟”地址空间）并将其划分为大小统一的内存块，称为页面。处理器及其内存管理单元（MMU）维护一个页表将程序逻辑地址空间中的页面映射到计算机 RAM 中的硬件地址。当程序代码访问内存中的地址时，MMU 使用页表将指定的逻辑地址转换为实际的硬件内存地址。这种转换是自动发生的，并且对于正在运行的应用程序是透明的。\u003c\/p\u003e\n\u003cp\u003e2.对于程序而言，其逻辑地址空间中的地址始终可用。但是，如果应用程序访问当前不在物理 RAM 中的内存页上的地址，发生页面错误。当这种情况发生时，虚拟内存系统会调用一个特殊的页面错误处理程序来立即响应该错误。页面错误处理程序停止当前正在执行的代码，找到物理内存的空闲页面，从磁盘加载包含所需数据的页面，更新页表，然后将控制权返回给程序代码，程序代码可以访问内存地址通常情况下。这个过程被称为寻呼。\u003c\/p\u003e\n\u003cp\u003e3.如果物理内存中没有可用的空闲页面，则处理程序必须首先释放现有页面以为新页面腾出空间。系统如何发布页面取决于平台。在 OS X 中，虚拟内存系统经常将页面写入后备存储。这后备存储是基于磁盘的存储库，其中包含给定进程使用的内存页的副本。将数据从物理内存移动到后备存储称为调出（或“交换出”）；将数据从后备存储移回物理内存称为分页（或“交换”）。在 iOS 中，没有后备存储，因此页面永远不会调出到磁盘，但只读页面仍会根据需要从磁盘调入。\u003c\/p\u003e\n\u003cp\u003e4.在 OS X 和早期版本的 iOS 中，页面的大小是 4 KB。在更高版本的 iOS 中，基于 A7 和 A8 的系统向由 4 KB 物理页支持的 64 位用户空间公开 16 KB 页面，而 A9 系统公开由 16 KB 物理页支持的 16 KB 页面。这些大小决定了发生页面错误时系统从磁盘读取多少KB。当系统花费过多的时间处理页面错误以及读写页面而不是执行程序代码时，就会发生磁盘抖动。\u003c\/p\u003e",
-      "image": "/images/og-image.png",
-      "url": "https:\/\/blogs.jasonphd.com\/ios\/ios0\/",
-      "author": [{ "@type": "Person", "name": "jamesitachi" }]
-    }
-  </script>
-  <section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
-    <article>
-      <div class="xl:divide-y xl:divide-gray-200">
-        <header class="pt-6 xl:pb-6">
-          <div class="space-y-1 text-center">
-            <dl class="space-y-10">
-              <div>
-                <dt class="sr-only">Published on</dt>
-                <dd class="text-base font-medium leading-6 text-gray-500">
-                  
-                  
-                  <time datetime="2018-03-17T14:54:44&#43;08:00">Saturday, March 17, 2018</time>
-                </dd>
-              </div>
-            </dl>
-            <div>
-              <h1
-                class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"
-              >
-                <div>二进制文件重排</div>
-              </h1>
-            </div>
-          </div>
-        </header>
-
-        <div
-          class="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0"
-        >
-          <dl class="pb-10 pt-6 xl:border-b xl:border-gray-200 xl:pt-11">
-            <dt class="sr-only">Authors</dt>
-            <dd>
-              <ul
-                class="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8"
-              >
-                <li class="flex items-center space-x-2">
-                  <img
-                    src="https://github.com/forwyt.png"
-                    class="rounded-full"
-                    width="38"
-                    height="38"
-                    alt="Profile Image"
-                    loading="lazy"
-                  />
-                  <dl class="whitespace-nowrap text-sm font-medium leading-5">
-                    <dt class="sr-only">Name</dt>
-                    <dd class="text-gray-900">jamesitachi</dd>
-                  </dl>
-                </li>
-              </ul>
-            </dd>
-          </dl>
-
-          <div
-            class="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0"
-          >
-            <div class="prose max-w-none pb-8 pt-10">
-              <details open>
-                <summary class="ml-6 pb-2 pt-2 text-xl font-bold">
-                  <span>Table of Contents</span>
-                </summary>
-
-                <nav class="ml-6">
-                    <ul>
-                        <li><a href="#%e8%bf%9b%e7%a8%8b%e8%ae%bf%e9%97%ae%e5%86%85%e5%ad%98%e7%9a%84%e5%8e%9f%e7%90%86">进程访问内存的原理</a></li>
-                          <ul>
-                              <li>
-                                <a href="#%e8%99%9a%e6%8b%9f%e5%9c%b0%e5%9d%80">虚拟地址</a>
-                              </li>
-                              <li>
-                                <a href="#page-fault">Page Fault</a>
-                              </li>
-                              <li>
-                                <a href="#%e9%87%8d%e6%8e%92">重排</a>
-                              </li>
-                              <li>
-                                <a href="#tips">Tips</a>
-                              </li>
-                              <li>
-                                <a href="#%e7%81%b5%e6%84%9f%e6%9d%a5%e6%ba%90">灵感来源</a>
-                              </li>
-                          </ul>
-                    </ul>
-                </nav>
-              </details>
-
-              <p><img src="/images/ww2.webp" alt="lancher" title="start"></p>
-<p>名称来自战争术语 抢滩登陆 (beach head)
-目的是更快的将iOS的application启动提速. 让用户更快的打开app !推广一波🤣 <a href="https://github.com/forwyt/beachhead">开源库</a></p>
-<h2 id="进程访问内存的原理">进程访问内存的原理</h2>
-<blockquote>
-<p>在计算机中，<strong>进程</strong> 是操作系统分配给正在运行的程序的一种资源。它可以看作是程序的执行实例，包括程序计数器、寄存器、堆栈和打开的文件等。每个进程都在自己的<strong>虚拟地址</strong>空间中运行，这使得每个进程都有自己独立的内存空间。</p></blockquote>
-<h3 id="虚拟地址">虚拟地址</h3>
-<ol>
-<li>
-<p>地址空间划分：操作系统将每个进程的地址空间划分为多个固定大小的页。通常，每个页的大小为4KB</p>
-</li>
-<li>
-<p>页表创建：操作系统为每个进程创建一个页表，用于将虚拟地址映射到物理地址。页表是一个数据结构，它记录了每个虚拟页对应的物理页的地址。</p>
-</li>
-<li>
-<p>虚拟地址转换：当进程访问内存时，它使用虚拟地址。操作系统通过查找页表中的映射关系，将虚拟地址转换为物理地址。这个转换过程通常包括两个步骤。</p>
-</li>
-</ol>
-<ul>
-<li>页目录查找：进程的虚拟地址通常被划分为三个部分：页目录索引、页表索引和页内偏移。首先，操作系统使用页目录索引在页目录中查找对应的页表。</li>
-<li>页表查找：操作系统使用页表索引在找到的页表中查找对应的物理页的地址</li>
-</ul>
-<ol start="4">
-<li>内存访问：当虚拟地址被转换为物理地址后，进程可以使用物理地址来访问内存。这样，进程就可以在自己的虚拟地址空间中进行内存操作，而不需要关心物理内存的实际分布。</li>
-</ol>
-<p>为了提高效率和方便管理，又对虚拟内存和物理内存又进行分页（Page）。当进程访问一个虚拟内存 Page 而对应的物理内存却不存在时，会触发一次缺页中断（Page Fault），分配物理内存，有需要的话会从磁盘 <strong>mmap</strong> 读人数据。
-mmap</p>
-<blockquote>
-<p>mmap是一种内存映射技术，它允许应用程序将文件或其他设备映射到自己的虚拟地址空间中，从而可以像访问内存一样访问这些数据。mmap可以提供高效的读写文件的方式，并且还可以用于共享内存和匿名内存映射等场景</p></blockquote>
-<h3 id="page-fault">Page Fault</h3>
-<blockquote>
-<p>当进程访问一个虚拟内存 Page 而对应的物理内存却不存在时，会触发一次缺页中断（Page Fault），分配物理内存，有需要的话会从磁盘 mmap 读人数据。通过 App Store 渠道分发的 App，Page Fault 还会进行签名验证，所以一次 Page Fault 的耗时比想象的多</p></blockquote>
-<p>1.虚拟内存允许操作系统摆脱物理 RAM 的限制。虚拟内存管理器创建一个逻辑地址空间（或“每个进程的“虚拟”地址空间）并将其划分为大小统一的内存块，称为页面。处理器及其内存管理单元（MMU）维护一个页表将程序逻辑地址空间中的页面映射到计算机 RAM 中的硬件地址。当程序代码访问内存中的地址时，MMU 使用页表将指定的逻辑地址转换为实际的硬件内存地址。这种转换是自动发生的，并且对于正在运行的应用程序是透明的。</p>
-<p>2.对于程序而言，其逻辑地址空间中的地址始终可用。但是，如果应用程序访问当前不在物理 RAM 中的内存页上的地址，发生页面错误。当这种情况发生时，虚拟内存系统会调用一个特殊的页面错误处理程序来立即响应该错误。页面错误处理程序停止当前正在执行的代码，找到物理内存的空闲页面，从磁盘加载包含所需数据的页面，更新页表，然后将控制权返回给程序代码，程序代码可以访问内存地址通常情况下。这个过程被称为寻呼。</p>
-<p>3.如果物理内存中没有可用的空闲页面，则处理程序必须首先释放现有页面以为新页面腾出空间。系统如何发布页面取决于平台。在 OS X 中，虚拟内存系统经常将页面写入后备存储。这后备存储是基于磁盘的存储库，其中包含给定进程使用的内存页的副本。将数据从物理内存移动到后备存储称为调出（或“交换出”）；将数据从后备存储移回物理内存称为分页（或“交换”）。在 iOS 中，没有后备存储，因此页面永远不会调出到磁盘，但只读页面仍会根据需要从磁盘调入。</p>
-<p>4.在 OS X 和早期版本的 iOS 中，页面的大小是 4 KB。在更高版本的 iOS 中，基于 A7 和 A8 的系统向由 4 KB 物理页支持的 64 位用户空间公开 16 KB 页面，而 A9 系统公开由 16 KB 物理页支持的 16 KB 页面。这些大小决定了发生页面错误时系统从磁盘读取多少KB。当系统花费过多的时间处理页面错误以及读写页面而不是执行程序代码时，就会发生磁盘抖动。</p>
-<p>任何类型的分页，尤其是磁盘抖动，都会对性能产生负面影响，因为它迫使系统花费大量时间读取和写入磁盘。从后备存储读取页面需要花费大量时间，并且比直接从 RAM 读取要慢得多。如果系统必须先将一页写入磁盘，然后才能从磁盘读取另一页，则性能影响会更严重。</p>
-<h3 id="重排">重排</h3>
-<p>编译器在生成二进制代码的时候，默认按照链接的 Object File(.o)顺序写文件，按照 Object File 内部的函数顺序写函数。</p>
-<p>page1 与 page2 都需要从初始化状态到加载到物理内存中，这样如上图会触发两次 Page Fault。 二进制重排 的做法就是将 function1 与 function2 放到一个内存页中， 那么启动时则只需要加载一次 page 即可</p>
-<p><img src="/images/6cb8617b4f56968e9b8fe2576ded439f.image.webp" alt="image.png"></p>
-<p>以Demo为例:<code>(路径在$(TARGET_TEMP_DIR)/$(PRODUCT_NAME)-LinkMap-$(CURRENT_VARIANT)-$(CURRENT_ARCH).txt)</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span><span style="color:#f92672">**</span><span style="color:#ae81ff">0x1000020F0</span>    <span style="color:#ae81ff">0x000000A0</span>    [  <span style="color:#ae81ff">2</span>] <span style="color:#f92672">-</span>[BHAppDelegate application:didFinishLaunchingWithOptions:]
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x100002190</span>    <span style="color:#ae81ff">0x00000070</span>    [  <span style="color:#ae81ff">2</span>] <span style="color:#f92672">-</span>[BHAppDelegate applicationWillResignActive:]
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x100002200</span>    <span style="color:#ae81ff">0x00000070</span>    [  <span style="color:#ae81ff">2</span>] <span style="color:#f92672">-</span>[BHAppDelegate applicationDidEnterBackground:]
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x100002270</span>    <span style="color:#ae81ff">0x00000070</span>    [  <span style="color:#ae81ff">2</span>] <span style="color:#f92672">-</span>[BHAppDelegate applicationWillEnterForeground:]
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x1000022E0</span>    <span style="color:#ae81ff">0x00000070</span>    [  <span style="color:#ae81ff">2</span>] <span style="color:#f92672">-</span>[BHAppDelegate applicationDidBecomeActive:]
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x100002350</span>    <span style="color:#ae81ff">0x00000070</span>    [  <span style="color:#ae81ff">2</span>] <span style="color:#f92672">-</span>[BHAppDelegate applicationWillTerminate:]
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x1000023C0</span>    <span style="color:#ae81ff">0x00000050</span>    [  <span style="color:#ae81ff">2</span>] <span style="color:#f92672">-</span>[BHAppDelegate window]
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x100002410</span>    <span style="color:#ae81ff">0x00000060</span>    [  <span style="color:#ae81ff">2</span>] <span style="color:#f92672">-</span>[BHAppDelegate setWindow:]
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x100002470</span>    <span style="color:#ae81ff">0x00000050</span>    [  <span style="color:#ae81ff">2</span>] <span style="color:#f92672">-</span>[BHAppDelegate .cxx_destruct]
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x1000024C0</span>    <span style="color:#ae81ff">0x0000001C</span>    [  <span style="color:#ae81ff">2</span>] _sancov.module_ctor_trace_pc_guard
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x1000024E0</span>    <span style="color:#ae81ff">0x00000060</span>    [  <span style="color:#ae81ff">3</span>] <span style="color:#f92672">-</span>[BHViewController viewDidLoad]
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x100002540</span>    <span style="color:#ae81ff">0x00000060</span>    [  <span style="color:#ae81ff">3</span>] <span style="color:#f92672">-</span>[BHViewController didReceiveMemoryWarning]
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x1000025A0</span>    <span style="color:#ae81ff">0x00000050</span>    [  <span style="color:#ae81ff">3</span>] <span style="color:#f92672">-</span>[BHViewController otherFucntionBeforTargetFuction1]
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x1000025F0</span>    <span style="color:#ae81ff">0x00000050</span>    [  <span style="color:#ae81ff">3</span>] <span style="color:#f92672">-</span>[BHViewController otherFucntionBeforTargetFuction2]
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x100002640</span>    <span style="color:#ae81ff">0x000000D0</span>    [  <span style="color:#ae81ff">3</span>] <span style="color:#f92672">-</span>[BHViewController createOrderClick:]
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x100002710</span>    <span style="color:#ae81ff">0x0000001C</span>    [  <span style="color:#ae81ff">3</span>] _sancov.module_ctor_trace_pc_guard
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x100002730</span>    <span style="color:#ae81ff">0x000000B0</span>    [  <span style="color:#ae81ff">4</span>] _main
-</span></span><span style="display:flex;"><span><span style="color:#f92672">**</span>
-</span></span></code></pre></div><p>可以关注此处代码 即使在执行时优先级 function2 &gt; funtion1 但是在ld时 是按照定义的顺序来插入即 funtion 1 &gt; function2. 明白这个原理之后我们可以通过clang-插装的原理理清楚程序执行的真实循序来给二进制文件做排序. 尽可能多的将函数调用顺序相近的function排列在同一张Page里面.减少page faut 触发的页断次数.从而达到减少 启动时间.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span>-(<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">otherFucntionBeforTargetFuction1</span>{
-</span></span><span style="display:flex;"><span>    NSLog(<span style="color:#e6db74">@&#34;just for test&#34;</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>-(<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">otherFucntionBeforTargetFuction2</span>{
-</span></span><span style="display:flex;"><span>    NSLog(<span style="color:#e6db74">@&#34;just for test&#34;</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>- (<span style="color:#66d9ef">IBAction</span>)<span style="color:#a6e22e">createOrderClick:</span>(<span style="color:#66d9ef">id</span>)sender {
-</span></span><span style="display:flex;"><span>    NSLog(<span style="color:#e6db74">@&#34;create order click&#34;</span>);
-</span></span><span style="display:flex;"><span>    [BeachAnalyze version];
-</span></span><span style="display:flex;"><span>    [self otherFucntionBeforTargetFuction2];
-</span></span><span style="display:flex;"><span>    [self otherFucntionBeforTargetFuction1];
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>修改之后的顺序如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span>_main
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>[BHAppDelegate setWindow:]
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>[BHAppDelegate application:didFinishLaunchingWithOptions:]
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>[BHViewController viewDidLoad]
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>[BHAppDelegate applicationDidBecomeActive:]
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>[BHAppDelegate window]
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>[BHViewController createOrderClick:]
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>[BHViewController otherFucntionBeforTargetFuction2]
-</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>[BHViewController otherFucntionBeforTargetFuction1]
+4.在 OS X 和早期版本的 iOS 中，页面的大小是 4 KB。在更高版本的 iOS 中，基于 A7 和 A8 的系统向由 4 KB 物理页支持的 64 位用户空间公开 16 KB 页面，而 A9 系统公开由 16 KB 物理页支持的 16 KB 页面。这些大小决定了发生页面错误时系统从磁盘读取多少KB。当系统花费过多的时间处理页面错误以及读写页面而不是执行程序代码时，就会发生磁盘抖动。"><meta name=twitter:image content="https://blogs.jasonphd.com/images/og-image.png"><title>二进制文件重排</title>
+<link rel=stylesheet href=/css/output.min.97260c8f0033d223ec20178386e59725207060eda9376a3fe20db19533c0e1e7.css integrity="sha256-lyYMjwAz0iPsIBeDhuWXJSBwYO2pN2o/4g2xlTPA4ec=" crossorigin=anonymous></head><body class="bg-white text-black antialiased"><section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0"><div class="flex h-screen flex-col justify-between font-sans"><header class="flex items-center w-full bg-white justify-between py-10 sticky top-0 z-50"><a class="group break-words" aria-label="Jasonphd Blogs" href=/><div class="flex items-center justify-between"><div class=sm:mr-3><img src=/images/logo.svg width=32 height=32 alt="Logo Image"></div><div class="hidden text-2xl font-semibold sm:block group-hover:underline"><span>Jasonphd Blogs</span></div></div></a><div class="flex items-center space-x-4 leading-5 sm:space-x-6"><div class="items-center space-x-4 overflow-x-auto flex sm:space-x-6"><a href=mailto:developerluhao@gmail.com class="font-medium text-gray-900 hover:text-indigo-500">ContactMe</a>
+<a href=/tags class="font-medium text-gray-900 hover:text-indigo-500">Tags</a>
+<a href=/about class="font-medium text-gray-900 hover:text-indigo-500">About</a>
+<a href=https://github.com/forwyt target=_blank><svg width="24" height="24" viewBox="0 0 24 24" fill="currentcolor" class="fill-[#24292F] hover:fill-indigo-500 h-6 w-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.0099.0C5.36875.0.0 5.5.0 12.3042c0 5.439 3.43994 10.043 8.21205 11.6725C8.80869 24.0992 9.02724 23.712 9.02724 23.3862 9.02724 23.101 9.00757 22.1232 9.00757 21.1045 5.6667 21.838 4.97099 19.6378 4.97099 19.6378 4.43409 18.2118 3.63858 17.8452 3.63858 17.8452 2.54511 17.0915 3.71823 17.0915 3.71823 17.0915 4.93117 17.173 5.56763 18.3545 5.56763 18.3545c1.07355 1.874 2.80348 1.3445 3.49943 1.0185C9.16638 18.5785 9.48473 18.0285 9.82275 17.723 7.15817 17.4377 4.35469 16.3785 4.35469 11.6523c0-1.3445.47691-2.44455 1.2326-3.30005C5.46807 8.04675 5.0504 6.7835 5.70677 5.09275c0 0 1.01406-.326 3.30055 1.263C9.98625 6.08642 10.9958 5.9494 12.0099 5.94825c1.0141.0 2.0478.14275 3.0024.4075 2.2867-1.589 3.3008-1.263 3.3008-1.263C18.9695 6.7835 18.5515 8.04675 18.4323 8.35225 19.2079 9.20775 19.6652 10.3078 19.6652 11.6523c0 4.7262-2.8035 5.7649-5.488 6.0707C14.6148 18.11 14.9924 18.8433 14.9924 20.0045 14.9924 21.6545 14.9727 22.9788 14.9727 23.386 14.9727 23.712 15.1915 24.0992 15.7879 23.977c4.7721-1.63 8.212-6.2338 8.212-11.6728C24.0196 5.5 18.6312.0 12.0099.0z"/></svg></a></div></div></header><main class=mb-auto><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"二进制文件重排","datePublished":"2018-03-17T14:54:44\u002b08:00","dateModified":"2018-03-17T14:54:44\u002b08:00","description":"\u003cp\u003e\u003cimg src=\u0022\/images\/ww2.webp\u0022 alt=\u0022lancher\u0022 title=\u0022start\u0022\u003e\u003c\/p\u003e\n\u003cp\u003e名称来自战争术语 抢滩登陆 (beach head)\n目的是更快的将iOS的application启动提速. 让用户更快的打开app !推广一波🤣 \u003ca href=\u0022https:\/\/github.com\/forwyt\/beachhead\u0022\u003e开源库\u003c\/a\u003e\u003c\/p\u003e\n\u003ch2 id=\u0022进程访问内存的原理\u0022\u003e进程访问内存的原理\u003c\/h2\u003e\n\u003cblockquote\u003e\n\u003cp\u003e在计算机中，\u003cstrong\u003e进程\u003c\/strong\u003e 是操作系统分配给正在运行的程序的一种资源。它可以看作是程序的执行实例，包括程序计数器、寄存器、堆栈和打开的文件等。每个进程都在自己的\u003cstrong\u003e虚拟地址\u003c\/strong\u003e空间中运行，这使得每个进程都有自己独立的内存空间。\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003ch3 id=\u0022虚拟地址\u0022\u003e虚拟地址\u003c\/h3\u003e\n\u003col\u003e\n\u003cli\u003e\n\u003cp\u003e地址空间划分：操作系统将每个进程的地址空间划分为多个固定大小的页。通常，每个页的大小为4KB\u003c\/p\u003e\n\u003c\/li\u003e\n\u003cli\u003e\n\u003cp\u003e页表创建：操作系统为每个进程创建一个页表，用于将虚拟地址映射到物理地址。页表是一个数据结构，它记录了每个虚拟页对应的物理页的地址。\u003c\/p\u003e\n\u003c\/li\u003e\n\u003cli\u003e\n\u003cp\u003e虚拟地址转换：当进程访问内存时，它使用虚拟地址。操作系统通过查找页表中的映射关系，将虚拟地址转换为物理地址。这个转换过程通常包括两个步骤。\u003c\/p\u003e\n\u003c\/li\u003e\n\u003c\/ol\u003e\n\u003cul\u003e\n\u003cli\u003e页目录查找：进程的虚拟地址通常被划分为三个部分：页目录索引、页表索引和页内偏移。首先，操作系统使用页目录索引在页目录中查找对应的页表。\u003c\/li\u003e\n\u003cli\u003e页表查找：操作系统使用页表索引在找到的页表中查找对应的物理页的地址\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003col start=\u00224\u0022\u003e\n\u003cli\u003e内存访问：当虚拟地址被转换为物理地址后，进程可以使用物理地址来访问内存。这样，进程就可以在自己的虚拟地址空间中进行内存操作，而不需要关心物理内存的实际分布。\u003c\/li\u003e\n\u003c\/ol\u003e\n\u003cp\u003e为了提高效率和方便管理，又对虚拟内存和物理内存又进行分页（Page）。当进程访问一个虚拟内存 Page 而对应的物理内存却不存在时，会触发一次缺页中断（Page Fault），分配物理内存，有需要的话会从磁盘 \u003cstrong\u003emmap\u003c\/strong\u003e 读人数据。\nmmap\u003c\/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003emmap是一种内存映射技术，它允许应用程序将文件或其他设备映射到自己的虚拟地址空间中，从而可以像访问内存一样访问这些数据。mmap可以提供高效的读写文件的方式，并且还可以用于共享内存和匿名内存映射等场景\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003ch3 id=\u0022page-fault\u0022\u003ePage Fault\u003c\/h3\u003e\n\u003cblockquote\u003e\n\u003cp\u003e当进程访问一个虚拟内存 Page 而对应的物理内存却不存在时，会触发一次缺页中断（Page Fault），分配物理内存，有需要的话会从磁盘 mmap 读人数据。通过 App Store 渠道分发的 App，Page Fault 还会进行签名验证，所以一次 Page Fault 的耗时比想象的多\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cp\u003e1.虚拟内存允许操作系统摆脱物理 RAM 的限制。虚拟内存管理器创建一个逻辑地址空间（或“每个进程的“虚拟”地址空间）并将其划分为大小统一的内存块，称为页面。处理器及其内存管理单元（MMU）维护一个页表将程序逻辑地址空间中的页面映射到计算机 RAM 中的硬件地址。当程序代码访问内存中的地址时，MMU 使用页表将指定的逻辑地址转换为实际的硬件内存地址。这种转换是自动发生的，并且对于正在运行的应用程序是透明的。\u003c\/p\u003e\n\u003cp\u003e2.对于程序而言，其逻辑地址空间中的地址始终可用。但是，如果应用程序访问当前不在物理 RAM 中的内存页上的地址，发生页面错误。当这种情况发生时，虚拟内存系统会调用一个特殊的页面错误处理程序来立即响应该错误。页面错误处理程序停止当前正在执行的代码，找到物理内存的空闲页面，从磁盘加载包含所需数据的页面，更新页表，然后将控制权返回给程序代码，程序代码可以访问内存地址通常情况下。这个过程被称为寻呼。\u003c\/p\u003e\n\u003cp\u003e3.如果物理内存中没有可用的空闲页面，则处理程序必须首先释放现有页面以为新页面腾出空间。系统如何发布页面取决于平台。在 OS X 中，虚拟内存系统经常将页面写入后备存储。这后备存储是基于磁盘的存储库，其中包含给定进程使用的内存页的副本。将数据从物理内存移动到后备存储称为调出（或“交换出”）；将数据从后备存储移回物理内存称为分页（或“交换”）。在 iOS 中，没有后备存储，因此页面永远不会调出到磁盘，但只读页面仍会根据需要从磁盘调入。\u003c\/p\u003e\n\u003cp\u003e4.在 OS X 和早期版本的 iOS 中，页面的大小是 4 KB。在更高版本的 iOS 中，基于 A7 和 A8 的系统向由 4 KB 物理页支持的 64 位用户空间公开 16 KB 页面，而 A9 系统公开由 16 KB 物理页支持的 16 KB 页面。这些大小决定了发生页面错误时系统从磁盘读取多少KB。当系统花费过多的时间处理页面错误以及读写页面而不是执行程序代码时，就会发生磁盘抖动。\u003c\/p\u003e","image":"/images/og-image.png","url":"https:\/\/blogs.jasonphd.com\/ios\/ios0\/","author":[{"@type":"Person","name":"jamesitachi"}]}</script><section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0"><article><div class="xl:divide-y xl:divide-gray-200"><header class="pt-6 xl:pb-6"><div class="space-y-1 text-center"><dl class=space-y-10><div><dt class=sr-only>Published on</dt><dd class="text-base font-medium leading-6 text-gray-500"><time datetime=2018-03-17T14:54:44+08:00>Saturday, March 17, 2018</time></dd></div></dl><div><h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"><div>二进制文件重排</div></h1></div></div></header><div class="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0"><dl class="pb-10 pt-6 xl:border-b xl:border-gray-200 xl:pt-11"><dt class=sr-only>Authors</dt><dd><ul class="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8"><li class="flex items-center space-x-2"><img src=https://github.com/forwyt.png class=rounded-full width=38 height=38 alt="Profile Image" loading=lazy><dl class="whitespace-nowrap text-sm font-medium leading-5"><dt class=sr-only>Name</dt><dd class=text-gray-900>jamesitachi</dd></dl></li></ul></dd></dl><div class="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0"><div class="prose max-w-none pb-8 pt-10"><details open><summary class="ml-6 pb-2 pt-2 text-xl font-bold"><span>Table of Contents</span></summary><nav class=ml-6><ul><li><a href=#%e8%bf%9b%e7%a8%8b%e8%ae%bf%e9%97%ae%e5%86%85%e5%ad%98%e7%9a%84%e5%8e%9f%e7%90%86>进程访问内存的原理</a></li><ul><li><a href=#%e8%99%9a%e6%8b%9f%e5%9c%b0%e5%9d%80>虚拟地址</a></li><li><a href=#page-fault>Page Fault</a></li><li><a href=#%e9%87%8d%e6%8e%92>重排</a></li><li><a href=#tips>Tips</a></li><li><a href=#%e7%81%b5%e6%84%9f%e6%9d%a5%e6%ba%90>灵感来源</a></li></ul></ul></nav></details><p><img src=/images/ww2.webp alt=lancher title=start></p><p>名称来自战争术语 抢滩登陆 (beach head)
+目的是更快的将iOS的application启动提速. 让用户更快的打开app !推广一波🤣 <a href=https://github.com/forwyt/beachhead>开源库</a></p><h2 id=进程访问内存的原理>进程访问内存的原理</h2><blockquote><p>在计算机中，<strong>进程</strong> 是操作系统分配给正在运行的程序的一种资源。它可以看作是程序的执行实例，包括程序计数器、寄存器、堆栈和打开的文件等。每个进程都在自己的<strong>虚拟地址</strong>空间中运行，这使得每个进程都有自己独立的内存空间。</p></blockquote><h3 id=虚拟地址>虚拟地址</h3><ol><li><p>地址空间划分：操作系统将每个进程的地址空间划分为多个固定大小的页。通常，每个页的大小为4KB</p></li><li><p>页表创建：操作系统为每个进程创建一个页表，用于将虚拟地址映射到物理地址。页表是一个数据结构，它记录了每个虚拟页对应的物理页的地址。</p></li><li><p>虚拟地址转换：当进程访问内存时，它使用虚拟地址。操作系统通过查找页表中的映射关系，将虚拟地址转换为物理地址。这个转换过程通常包括两个步骤。</p></li></ol><ul><li>页目录查找：进程的虚拟地址通常被划分为三个部分：页目录索引、页表索引和页内偏移。首先，操作系统使用页目录索引在页目录中查找对应的页表。</li><li>页表查找：操作系统使用页表索引在找到的页表中查找对应的物理页的地址</li></ul><ol start=4><li>内存访问：当虚拟地址被转换为物理地址后，进程可以使用物理地址来访问内存。这样，进程就可以在自己的虚拟地址空间中进行内存操作，而不需要关心物理内存的实际分布。</li></ol><p>为了提高效率和方便管理，又对虚拟内存和物理内存又进行分页（Page）。当进程访问一个虚拟内存 Page 而对应的物理内存却不存在时，会触发一次缺页中断（Page Fault），分配物理内存，有需要的话会从磁盘 <strong>mmap</strong> 读人数据。
+mmap</p><blockquote><p>mmap是一种内存映射技术，它允许应用程序将文件或其他设备映射到自己的虚拟地址空间中，从而可以像访问内存一样访问这些数据。mmap可以提供高效的读写文件的方式，并且还可以用于共享内存和匿名内存映射等场景</p></blockquote><h3 id=page-fault>Page Fault</h3><blockquote><p>当进程访问一个虚拟内存 Page 而对应的物理内存却不存在时，会触发一次缺页中断（Page Fault），分配物理内存，有需要的话会从磁盘 mmap 读人数据。通过 App Store 渠道分发的 App，Page Fault 还会进行签名验证，所以一次 Page Fault 的耗时比想象的多</p></blockquote><p>1.虚拟内存允许操作系统摆脱物理 RAM 的限制。虚拟内存管理器创建一个逻辑地址空间（或“每个进程的“虚拟”地址空间）并将其划分为大小统一的内存块，称为页面。处理器及其内存管理单元（MMU）维护一个页表将程序逻辑地址空间中的页面映射到计算机 RAM 中的硬件地址。当程序代码访问内存中的地址时，MMU 使用页表将指定的逻辑地址转换为实际的硬件内存地址。这种转换是自动发生的，并且对于正在运行的应用程序是透明的。</p><p>2.对于程序而言，其逻辑地址空间中的地址始终可用。但是，如果应用程序访问当前不在物理 RAM 中的内存页上的地址，发生页面错误。当这种情况发生时，虚拟内存系统会调用一个特殊的页面错误处理程序来立即响应该错误。页面错误处理程序停止当前正在执行的代码，找到物理内存的空闲页面，从磁盘加载包含所需数据的页面，更新页表，然后将控制权返回给程序代码，程序代码可以访问内存地址通常情况下。这个过程被称为寻呼。</p><p>3.如果物理内存中没有可用的空闲页面，则处理程序必须首先释放现有页面以为新页面腾出空间。系统如何发布页面取决于平台。在 OS X 中，虚拟内存系统经常将页面写入后备存储。这后备存储是基于磁盘的存储库，其中包含给定进程使用的内存页的副本。将数据从物理内存移动到后备存储称为调出（或“交换出”）；将数据从后备存储移回物理内存称为分页（或“交换”）。在 iOS 中，没有后备存储，因此页面永远不会调出到磁盘，但只读页面仍会根据需要从磁盘调入。</p><p>4.在 OS X 和早期版本的 iOS 中，页面的大小是 4 KB。在更高版本的 iOS 中，基于 A7 和 A8 的系统向由 4 KB 物理页支持的 64 位用户空间公开 16 KB 页面，而 A9 系统公开由 16 KB 物理页支持的 16 KB 页面。这些大小决定了发生页面错误时系统从磁盘读取多少KB。当系统花费过多的时间处理页面错误以及读写页面而不是执行程序代码时，就会发生磁盘抖动。</p><p>任何类型的分页，尤其是磁盘抖动，都会对性能产生负面影响，因为它迫使系统花费大量时间读取和写入磁盘。从后备存储读取页面需要花费大量时间，并且比直接从 RAM 读取要慢得多。如果系统必须先将一页写入磁盘，然后才能从磁盘读取另一页，则性能影响会更严重。</p><h3 id=重排>重排</h3><p>编译器在生成二进制代码的时候，默认按照链接的 Object File(.o)顺序写文件，按照 Object File 内部的函数顺序写函数。</p><p>page1 与 page2 都需要从初始化状态到加载到物理内存中，这样如上图会触发两次 Page Fault。 二进制重排 的做法就是将 function1 与 function2 放到一个内存页中， 那么启动时则只需要加载一次 page 即可</p><p><img src=/images/6cb8617b4f56968e9b8fe2576ded439f.image.webp alt=image.png></p><p>以Demo为例:<code>(路径在$(TARGET_TEMP_DIR)/$(PRODUCT_NAME)-LinkMap-$(CURRENT_VARIANT)-$(CURRENT_ARCH).txt)</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-objc data-lang=objc><span style=display:flex><span><span style=color:#f92672>**</span><span style=color:#ae81ff>0x1000020F0</span>    <span style=color:#ae81ff>0x000000A0</span>    [  <span style=color:#ae81ff>2</span>] <span style=color:#f92672>-</span>[BHAppDelegate application:didFinishLaunchingWithOptions:]
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0x100002190</span>    <span style=color:#ae81ff>0x00000070</span>    [  <span style=color:#ae81ff>2</span>] <span style=color:#f92672>-</span>[BHAppDelegate applicationWillResignActive:]
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0x100002200</span>    <span style=color:#ae81ff>0x00000070</span>    [  <span style=color:#ae81ff>2</span>] <span style=color:#f92672>-</span>[BHAppDelegate applicationDidEnterBackground:]
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0x100002270</span>    <span style=color:#ae81ff>0x00000070</span>    [  <span style=color:#ae81ff>2</span>] <span style=color:#f92672>-</span>[BHAppDelegate applicationWillEnterForeground:]
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0x1000022E0</span>    <span style=color:#ae81ff>0x00000070</span>    [  <span style=color:#ae81ff>2</span>] <span style=color:#f92672>-</span>[BHAppDelegate applicationDidBecomeActive:]
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0x100002350</span>    <span style=color:#ae81ff>0x00000070</span>    [  <span style=color:#ae81ff>2</span>] <span style=color:#f92672>-</span>[BHAppDelegate applicationWillTerminate:]
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0x1000023C0</span>    <span style=color:#ae81ff>0x00000050</span>    [  <span style=color:#ae81ff>2</span>] <span style=color:#f92672>-</span>[BHAppDelegate window]
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0x100002410</span>    <span style=color:#ae81ff>0x00000060</span>    [  <span style=color:#ae81ff>2</span>] <span style=color:#f92672>-</span>[BHAppDelegate setWindow:]
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0x100002470</span>    <span style=color:#ae81ff>0x00000050</span>    [  <span style=color:#ae81ff>2</span>] <span style=color:#f92672>-</span>[BHAppDelegate .cxx_destruct]
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0x1000024C0</span>    <span style=color:#ae81ff>0x0000001C</span>    [  <span style=color:#ae81ff>2</span>] _sancov.module_ctor_trace_pc_guard
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0x1000024E0</span>    <span style=color:#ae81ff>0x00000060</span>    [  <span style=color:#ae81ff>3</span>] <span style=color:#f92672>-</span>[BHViewController viewDidLoad]
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0x100002540</span>    <span style=color:#ae81ff>0x00000060</span>    [  <span style=color:#ae81ff>3</span>] <span style=color:#f92672>-</span>[BHViewController didReceiveMemoryWarning]
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0x1000025A0</span>    <span style=color:#ae81ff>0x00000050</span>    [  <span style=color:#ae81ff>3</span>] <span style=color:#f92672>-</span>[BHViewController otherFucntionBeforTargetFuction1]
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0x1000025F0</span>    <span style=color:#ae81ff>0x00000050</span>    [  <span style=color:#ae81ff>3</span>] <span style=color:#f92672>-</span>[BHViewController otherFucntionBeforTargetFuction2]
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0x100002640</span>    <span style=color:#ae81ff>0x000000D0</span>    [  <span style=color:#ae81ff>3</span>] <span style=color:#f92672>-</span>[BHViewController createOrderClick:]
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0x100002710</span>    <span style=color:#ae81ff>0x0000001C</span>    [  <span style=color:#ae81ff>3</span>] _sancov.module_ctor_trace_pc_guard
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0x100002730</span>    <span style=color:#ae81ff>0x000000B0</span>    [  <span style=color:#ae81ff>4</span>] _main
+</span></span><span style=display:flex><span><span style=color:#f92672>**</span>
+</span></span></code></pre></div><p>可以关注此处代码 即使在执行时优先级 function2 > funtion1 但是在ld时 是按照定义的顺序来插入即 funtion 1 > function2. 明白这个原理之后我们可以通过clang-插装的原理理清楚程序执行的真实循序来给二进制文件做排序. 尽可能多的将函数调用顺序相近的function排列在同一张Page里面.减少page faut 触发的页断次数.从而达到减少 启动时间.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-objc data-lang=objc><span style=display:flex><span>-(<span style=color:#66d9ef>void</span>)<span style=color:#a6e22e>otherFucntionBeforTargetFuction1</span>{
+</span></span><span style=display:flex><span>    NSLog(<span style=color:#e6db74>@&#34;just for test&#34;</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>-(<span style=color:#66d9ef>void</span>)<span style=color:#a6e22e>otherFucntionBeforTargetFuction2</span>{
+</span></span><span style=display:flex><span>    NSLog(<span style=color:#e6db74>@&#34;just for test&#34;</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>- (<span style=color:#66d9ef>IBAction</span>)<span style=color:#a6e22e>createOrderClick:</span>(<span style=color:#66d9ef>id</span>)sender {
+</span></span><span style=display:flex><span>    NSLog(<span style=color:#e6db74>@&#34;create order click&#34;</span>);
+</span></span><span style=display:flex><span>    [BeachAnalyze version];
+</span></span><span style=display:flex><span>    [self otherFucntionBeforTargetFuction2];
+</span></span><span style=display:flex><span>    [self otherFucntionBeforTargetFuction1];
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>修改之后的顺序如下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-objc data-lang=objc><span style=display:flex><span>_main
+</span></span><span style=display:flex><span><span style=color:#f92672>-</span>[BHAppDelegate setWindow:]
+</span></span><span style=display:flex><span><span style=color:#f92672>-</span>[BHAppDelegate application:didFinishLaunchingWithOptions:]
+</span></span><span style=display:flex><span><span style=color:#f92672>-</span>[BHViewController viewDidLoad]
+</span></span><span style=display:flex><span><span style=color:#f92672>-</span>[BHAppDelegate applicationDidBecomeActive:]
+</span></span><span style=display:flex><span><span style=color:#f92672>-</span>[BHAppDelegate window]
+</span></span><span style=display:flex><span><span style=color:#f92672>-</span>[BHViewController createOrderClick:]
+</span></span><span style=display:flex><span><span style=color:#f92672>-</span>[BHViewController otherFucntionBeforTargetFuction2]
+</span></span><span style=display:flex><span><span style=color:#f92672>-</span>[BHViewController otherFucntionBeforTargetFuction1]
 </span></span></code></pre></div><p>操作流程
-集成SDK pod &lsquo;beachhead&rsquo;, :git =&gt; &lsquo;<a href="https://github.com/forwyt/beachhead.git',:tag">https://github.com/forwyt/beachhead.git',:tag</a> =&gt; &lsquo;0.1.0&rsquo;</p>
-<p>修改other c flag 在 工程的 taget -&gt; build setting -&gt; other c flag 插人下列参数-fsanitize-coverage=func,trace-pc-guard</p>
-<p>调用api 仅需一行代码 在您想结束启动时间统计的业务中插入, 类似在MainViewController 中 viewDidAppear 为结束时间点.  [BeachAnalyze getOrderFile];</p>
-<p>观察打印的日志  重排之后的执行顺序 🚀 : /xx/xx/xx/data/Containers/Data/Application/93BDE7B1-28AF-4203-A43C-DA5D71709D38/tmp/BeachHead.order</p>
-<p>将重新排列之后的order利用 将路径对应的文件copy到项目根目录 然后将 工程的 taget -&gt; build setting -&gt; linking -&gt; order file 写入刚才的路径 即可以完成二进制重排</p>
-<h3 id="tips">Tips</h3>
-<ul>
-<li>Page Fault，开销在 0.6 ~ 0.8ms。 当进程在进行一些计算时，CPU 会请求内存中存储的数据。在这个请求过程中，CPU 发出的地址是逻辑地址（虚拟地址），然后交由 CPU 当中的 MMU 单元进行内存寻址，找到实际物理内存上的内容。若是目标虚存空间中的内存页（因为某种原因），在物理内存中没有对应的页帧，那么 CPU 就无法获取数据。这种情况下，CPU 是无法进行计算的，于是它就会报告一个缺页错误（Page Fault）。因为 CPU 无法继续进行进程请求的计算，并报告了缺页错误，用户进程必然就中断了。这样的中断称之为缺页中断。在报告 Page Fault 之后，进程会从用户态切换到系统态，交由操作系统内核的 Page Fault Handler 处理缺页错误。</li>
-<li>如果操作有疑问请 参照Demo文件夹 包含了引入SDK到缠住order配置.</li>
-</ul>
-<h3 id="灵感来源">灵感来源</h3>
-<p>基于抖音二进制重排优化一文
-clang 插桩</p>
-
-            </div>
-          </div>
-
-          <footer>
-            <div
-              class="divide-gray-200 text-sm font-medium leading-5 xl:col-start-1 xl:row-start-2 xl:divide-y"
-            >
-              <div class="py-4 xl:py-8">
-                <h2 class="text-xs uppercase tracking-wide text-gray-500">
-                  Tags
-                </h2>
-                <div class="flex flex-wrap">
-                  
-                    <a
-                      href="/tags/binary"
-                      class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600"
-                      >binary</a
-                    >
-                  
-                    <a
-                      href="/tags/code"
-                      class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600"
-                      >code</a
-                    >
-                  
-                    <a
-                      href="/tags/ios"
-                      class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600"
-                      >ios</a
-                    >
-                  
-                </div>
-              </div>
-            </div>
-
-            <div class="pt-4 xl:pt-8">
-              <a
-                class="text-indigo-500 hover:text-indigo-600"
-                aria-label="Back to the list"
-                href="/"
-                >← Back to the list</a
-              >
-            </div>
-          </footer>
-        </div>
-      </div>
-    </article>
-  </section>
-</main>
-        <footer><div class="mt-16 flex flex-col items-center">
-  <div class="mb-2 text-sm text-gray-500">
-    <span>(C) 2025. Jasonphd Blogs all rights reserved.</span>
-  </div>
-
-  <div class="mb-8 text-sm text-gray-500">
-    <span class="mr-1">Built with</span>
-    <a
-      class="font-semibold underline"
-      href="https://github.com/discaptive/hugo-discaptive"
-      target="_blank"
-      >hugo-discaptive</a
-    >
-  </div>
-</div>
-</footer>
-      </div>
-    </section>
-  </body>
-</html>
+集成SDK pod &lsquo;beachhead&rsquo;, :git => &lsquo;<a href="https://github.com/forwyt/beachhead.git',:tag">https://github.com/forwyt/beachhead.git',:tag</a> => &lsquo;0.1.0&rsquo;</p><p>修改other c flag 在 工程的 taget -> build setting -> other c flag 插人下列参数-fsanitize-coverage=func,trace-pc-guard</p><p>调用api 仅需一行代码 在您想结束启动时间统计的业务中插入, 类似在MainViewController 中 viewDidAppear 为结束时间点. [BeachAnalyze getOrderFile];</p><p>观察打印的日志 重排之后的执行顺序 🚀 : /xx/xx/xx/data/Containers/Data/Application/93BDE7B1-28AF-4203-A43C-DA5D71709D38/tmp/BeachHead.order</p><p>将重新排列之后的order利用 将路径对应的文件copy到项目根目录 然后将 工程的 taget -> build setting -> linking -> order file 写入刚才的路径 即可以完成二进制重排</p><h3 id=tips>Tips</h3><ul><li>Page Fault，开销在 0.6 ~ 0.8ms。 当进程在进行一些计算时，CPU 会请求内存中存储的数据。在这个请求过程中，CPU 发出的地址是逻辑地址（虚拟地址），然后交由 CPU 当中的 MMU 单元进行内存寻址，找到实际物理内存上的内容。若是目标虚存空间中的内存页（因为某种原因），在物理内存中没有对应的页帧，那么 CPU 就无法获取数据。这种情况下，CPU 是无法进行计算的，于是它就会报告一个缺页错误（Page Fault）。因为 CPU 无法继续进行进程请求的计算，并报告了缺页错误，用户进程必然就中断了。这样的中断称之为缺页中断。在报告 Page Fault 之后，进程会从用户态切换到系统态，交由操作系统内核的 Page Fault Handler 处理缺页错误。</li><li>如果操作有疑问请 参照Demo文件夹 包含了引入SDK到缠住order配置.</li></ul><h3 id=灵感来源>灵感来源</h3><p>基于抖音二进制重排优化一文
+clang 插桩</p></div></div><footer><div class="divide-gray-200 text-sm font-medium leading-5 xl:col-start-1 xl:row-start-2 xl:divide-y"><div class="py-4 xl:py-8"><h2 class="text-xs uppercase tracking-wide text-gray-500">Tags</h2><div class="flex flex-wrap"><a href=/tags/binary class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600">binary</a>
+<a href=/tags/code class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600">code</a>
+<a href=/tags/ios class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600">ios</a></div></div></div><div class="pt-4 xl:pt-8"><a class="text-indigo-500 hover:text-indigo-600" aria-label="Back to the list" href=/>← Back to the list</a></div></footer></div></div></article></section></main><footer><div class="mt-16 flex flex-col items-center"><div class="mb-2 text-sm text-gray-500"><span>(C) 2025. Jasonphd Blogs all rights reserved.</span></div><div class="mb-8 text-sm text-gray-500"><span class=mr-1>Built with</span>
+<a class="font-semibold underline" href=https://github.com/discaptive/hugo-discaptive target=_blank>hugo-discaptive</a></div></div></footer></div></section></body></html>

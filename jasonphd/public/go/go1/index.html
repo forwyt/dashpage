@@ -1,24 +1,4 @@
-<!doctype html>
-<html
-  lang="en-us"
-  dir="ltr"
-  class="scroll-smooth"
->
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    
-
-
-
-
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="robots" content="index, follow" />
-<meta
-  name="googlebot"
-  content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
-/>
-
-<meta name="description" content="
+<!doctype html><html lang=en-us dir=ltr class=scroll-smooth><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="index, follow"><meta name=googlebot content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"><meta name=description content="
 go的一些入门
 Go Advantages
 
@@ -35,7 +15,7 @@ machine language
 assembly language
 high-level language
 
-Compiled 编译型语言 类似C C&#43;&#43; JAVA
+Compiled 编译型语言 类似C C++ JAVA
 Interpretation 解释型语言 类似 Python JAVA,当执行的时候回将源代码翻译为机器执行的代码 所以会消耗时间
 
 Object
@@ -70,11 +50,7 @@ int 是类型
 可以多行命名变量 var x,y,z int
 
 
-类型" />
-
-
-<meta property="og:title" content="Go1" />
-<meta property="og:description" content="
+类型"><meta property="og:title" content="Go1"><meta property="og:description" content="
 go的一些入门
 Go Advantages
 
@@ -91,7 +67,7 @@ machine language
 assembly language
 high-level language
 
-Compiled 编译型语言 类似C C&#43;&#43; JAVA
+Compiled 编译型语言 类似C C++ JAVA
 Interpretation 解释型语言 类似 Python JAVA,当执行的时候回将源代码翻译为机器执行的代码 所以会消耗时间
 
 Object
@@ -126,16 +102,7 @@ int 是类型
 可以多行命名变量 var x,y,z int
 
 
-类型" />
-<meta property="og:url" content="http://localhost:1313/go/go1/" />
-<meta property="og:site_name" content="Jasonphd Blogs" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="http://localhost:1313/images/og-image.png" />
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Go1" />
-<meta name="twitter:description" content="
+类型"><meta property="og:url" content="https://blogs.jasonphd.com/go/go1/"><meta property="og:site_name" content="Jasonphd Blogs"><meta property="og:type" content="website"><meta property="og:image" content="https://blogs.jasonphd.com/images/og-image.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="Go1"><meta name=twitter:description content="
 go的一些入门
 Go Advantages
 
@@ -152,7 +119,7 @@ machine language
 assembly language
 high-level language
 
-Compiled 编译型语言 类似C C&#43;&#43; JAVA
+Compiled 编译型语言 类似C C++ JAVA
 Interpretation 解释型语言 类似 Python JAVA,当执行的时候回将源代码翻译为机器执行的代码 所以会消耗时间
 
 Object
@@ -187,552 +154,73 @@ int 是类型
 可以多行命名变量 var x,y,z int
 
 
-类型" />
-<meta name="twitter:image" content="http://localhost:1313/images/og-image.png" />
-
-<title>Go1</title>
-
-    <link rel="stylesheet" href="/css/output.css" />
-
-
-  </head>
-  <body class="bg-white text-black antialiased">
-    <section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
-      <div class="flex h-screen flex-col justify-between font-sans">
-        <header
-          class="flex items-center w-full bg-white justify-between py-10 sticky top-0 z-50"
-        >
-          <a class="group break-words" aria-label="Jasonphd Blogs" href="/">
-  <div class="flex items-center justify-between">
-    <div class="sm:mr-3">
-      <img src="/images/logo.svg" width="32" height="32" alt="Logo Image" />
-    </div>
-
-    <div class="hidden text-2xl font-semibold sm:block group-hover:underline">
-      <span>Jasonphd Blogs</span>
-    </div>
-  </div>
-</a>
-
-<div class="flex items-center space-x-4 leading-5 sm:space-x-6">
-  <div class="items-center space-x-4 overflow-x-auto flex sm:space-x-6">
-    
-      <a
-        href="mailto:developerluhao@gmail.com"
-        class="font-medium text-gray-900 hover:text-indigo-500"
-        
-        >ContactMe</a
-      >
-    
-      <a
-        href="/tags"
-        class="font-medium text-gray-900 hover:text-indigo-500"
-        
-        >Tags</a
-      >
-    
-      <a
-        href="/about"
-        class="font-medium text-gray-900 hover:text-indigo-500"
-        
-        >About</a
-      >
-    
-    <a href="https://github.com/forwyt" target="_blank">
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        class="fill-[#24292F] hover:fill-indigo-500 h-6 w-6"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M12.0099 0C5.36875 0 0 5.5 0 12.3042C0 17.7432 3.43994 22.3472 8.21205 23.9767C8.80869 24.0992 9.02724 23.712 9.02724 23.3862C9.02724 23.101 9.00757 22.1232 9.00757 21.1045C5.6667 21.838 4.97099 19.6378 4.97099 19.6378C4.43409 18.2118 3.63858 17.8452 3.63858 17.8452C2.54511 17.0915 3.71823 17.0915 3.71823 17.0915C4.93117 17.173 5.56763 18.3545 5.56763 18.3545C6.64118 20.2285 8.37111 19.699 9.06706 19.373C9.16638 18.5785 9.48473 18.0285 9.82275 17.723C7.15817 17.4377 4.35469 16.3785 4.35469 11.6523C4.35469 10.3078 4.8316 9.20775 5.58729 8.35225C5.46807 8.04675 5.0504 6.7835 5.70677 5.09275C5.70677 5.09275 6.72083 4.76675 9.00732 6.35575C9.98625 6.08642 10.9958 5.9494 12.0099 5.94825C13.024 5.94825 14.0577 6.091 15.0123 6.35575C17.299 4.76675 18.3131 5.09275 18.3131 5.09275C18.9695 6.7835 18.5515 8.04675 18.4323 8.35225C19.2079 9.20775 19.6652 10.3078 19.6652 11.6523C19.6652 16.3785 16.8617 17.4172 14.1772 17.723C14.6148 18.11 14.9924 18.8433 14.9924 20.0045C14.9924 21.6545 14.9727 22.9788 14.9727 23.386C14.9727 23.712 15.1915 24.0992 15.7879 23.977C20.56 22.347 23.9999 17.7432 23.9999 12.3042C24.0196 5.5 18.6312 0 12.0099 0Z"
-        />
-      </svg>
-    </a>
-  </div>
-</div>
-
-        </header>
-        <main class="mb-auto">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": "Go1",
-      "datePublished": "2017-01-20T09:50:48\u002b08:00",
-      "dateModified": "2017-01-20T09:50:48\u002b08:00",
-      "description": "\u003cp\u003e\u003cimg src=\u0022\/images\/c4673178de45c376576bb1748eff5017.go.webp\u0022 alt=\u0022\u0022\u003e\ngo的一些入门\u003c\/p\u003e\n\u003ch1 id=\u0022go-advantages\u0022\u003eGo Advantages\u003c\/h1\u003e\n\u003cblockquote\u003e\n\u003cp\u003eGo advantages\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cul\u003e\n\u003cli\u003ecode run fast\u003c\/li\u003e\n\u003cli\u003egarbage collection\u003c\/li\u003e\n\u003cli\u003esimpler objects\u003c\/li\u003e\n\u003cli\u003econcurrency is efficient (并发性好)\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cp\u003elanguage\u003c\/p\u003e\n\u003cul\u003e\n\u003cli\u003emachine language\u003c\/li\u003e\n\u003cli\u003eassembly language\u003c\/li\u003e\n\u003cli\u003ehigh-level language\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cp\u003eCompiled 编译型语言 类似C C\u002b\u002b JAVA\u003c\/p\u003e\n\u003cp\u003eInterpretation 解释型语言 类似 Python JAVA,当执行的时候回将源代码翻译为机器执行的代码 所以会消耗时间\u003c\/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003eObject\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cp\u003e虽然在go语言中 没有意义上的对象.但是struck 充当了类似的角色\u003c\/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003eConcurrency并发\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cul\u003e\n\u003cli\u003e如果在没有高并发会遇到\n\u003cul\u003e\n\u003cli\u003eMoore law 18个月的晶体管会翻倍 硬件性能增长收到限制\u003c\/li\u003e\n\u003cli\u003e功耗会增加\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003c\/li\u003e\n\u003cli\u003eparallelism并行\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cblockquote\u003e\n\u003cp\u003evariables\n命名规则\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cul\u003e\n\u003cli\u003e\n\u003cp\u003ekeyword避免掉\u003c\/p\u003e\n\u003c\/li\u003e\n\u003cli\u003e\n\u003cp\u003edeclarations 申明变量 var x int\u003c\/p\u003e\n\u003cul\u003e\n\u003cli\u003evar 是keyword\u003c\/li\u003e\n\u003cli\u003ex 是变量的名称\u003c\/li\u003e\n\u003cli\u003eint 是类型\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003c\/li\u003e\n\u003cli\u003e\n\u003cp\u003e可以多行命名变量 var x,y,z int\u003c\/p\u003e\n\u003c\/li\u003e\n\u003cli\u003e\n\u003cp\u003e类型\u003c\/p\u003e",
-      "image": "/images/og-image.png",
-      "url": "http:\/\/localhost:1313\/go\/go1\/",
-      "author": [{ "@type": "Person", "name": "jamesitachi" }]
-    }
-  </script>
-  <section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
-    <article>
-      <div class="xl:divide-y xl:divide-gray-200">
-        <header class="pt-6 xl:pb-6">
-          <div class="space-y-1 text-center">
-            <dl class="space-y-10">
-              <div>
-                <dt class="sr-only">Published on</dt>
-                <dd class="text-base font-medium leading-6 text-gray-500">
-                  
-                  
-                  <time datetime="2017-01-20T09:50:48&#43;08:00">Friday, January 20, 2017</time>
-                </dd>
-              </div>
-            </dl>
-            <div>
-              <h1
-                class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"
-              >
-                <div>Go1</div>
-              </h1>
-            </div>
-          </div>
-        </header>
-
-        <div
-          class="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0"
-        >
-          <dl class="pb-10 pt-6 xl:border-b xl:border-gray-200 xl:pt-11">
-            <dt class="sr-only">Authors</dt>
-            <dd>
-              <ul
-                class="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8"
-              >
-                <li class="flex items-center space-x-2">
-                  <img
-                    src="https://github.com/forwyt.png"
-                    class="rounded-full"
-                    width="38"
-                    height="38"
-                    alt="Profile Image"
-                    loading="lazy"
-                  />
-                  <dl class="whitespace-nowrap text-sm font-medium leading-5">
-                    <dt class="sr-only">Name</dt>
-                    <dd class="text-gray-900">jamesitachi</dd>
-                  </dl>
-                </li>
-              </ul>
-            </dd>
-          </dl>
-
-          <div
-            class="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0"
-          >
-            <div class="prose max-w-none pb-8 pt-10">
-              <details open>
-                <summary class="ml-6 pb-2 pt-2 text-xl font-bold">
-                  <span>Table of Contents</span>
-                </summary>
-
-                <nav class="ml-6">
-                    <ul>
-                    </ul>
-                    <ul>
-                    </ul>
-                    <ul>
-                    </ul>
-                    <ul>
-                        <li><a href="#"></a></li>
-                          <ul>
-                              <li>
-                                <a href="#hash-table">Hash Table</a>
-                              </li>
-                              <li>
-                                <a href="#map">Map</a>
-                              </li>
-                              <li>
-                                <a href="#struct--%e7%bb%93%e6%9e%84%e4%bd%93">Struct / 结构体</a>
-                              </li>
-                          </ul>
-                    </ul>
-                </nav>
-              </details>
-
-              <p><img src="/images/c4673178de45c376576bb1748eff5017.go.webp" alt="">
-go的一些入门</p>
-<h1 id="go-advantages">Go Advantages</h1>
-<blockquote>
-<p>Go advantages</p></blockquote>
-<ul>
-<li>code run fast</li>
-<li>garbage collection</li>
-<li>simpler objects</li>
-<li>concurrency is efficient (并发性好)</li>
-</ul>
-<p>language</p>
-<ul>
-<li>machine language</li>
-<li>assembly language</li>
-<li>high-level language</li>
-</ul>
-<p>Compiled 编译型语言 类似C C++ JAVA</p>
-<p>Interpretation 解释型语言 类似 Python JAVA,当执行的时候回将源代码翻译为机器执行的代码 所以会消耗时间</p>
-<blockquote>
-<p>Object</p></blockquote>
-<p>虽然在go语言中 没有意义上的对象.但是struck 充当了类似的角色</p>
-<blockquote>
-<p>Concurrency并发</p></blockquote>
-<ul>
-<li>如果在没有高并发会遇到
-<ul>
-<li>Moore law 18个月的晶体管会翻倍 硬件性能增长收到限制</li>
-<li>功耗会增加</li>
-</ul>
-</li>
-<li>parallelism并行</li>
-</ul>
-<blockquote>
-<p>variables
-命名规则</p></blockquote>
-<ul>
-<li>
-<p>keyword避免掉</p>
-</li>
-<li>
-<p>declarations 申明变量 var x int</p>
-<ul>
-<li>var 是keyword</li>
-<li>x 是变量的名称</li>
-<li>int 是类型</li>
-</ul>
-</li>
-<li>
-<p>可以多行命名变量 var x,y,z int</p>
-</li>
-<li>
-<p>类型</p>
-<ul>
-<li>Integer (only integer value )</li>
-<li>Floating Point (Fractional decimal value, may use different with hardware)</li>
-<li>String (seqyebces characters)</li>
-</ul>
-</li>
-<li>
-<p>Init初始化变量</p>
-<ul>
-<li>type IDNumber int
-var x int = 100 / var x = 100都是可以 有自动推断类型</li>
-<li><strong>当为赋值的初始化时候 会有zero valu (类似 0 &quot;&quot; )</strong></li>
-<li>简化赋值 x := 100 这种声明和操作一起进行分配只能在函数内部使用, 不可以在函数外进行简短的变量声明</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>  <span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">import</span> (
-</span></span><span style="display:flex;"><span>  	<span style="color:#e6db74">&#34;fmt&#34;</span>
-</span></span><span style="display:flex;"><span>  )
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">y</span> = <span style="color:#ae81ff">1000</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>()  {
-</span></span><span style="display:flex;"><span>  	<span style="color:#a6e22e">x</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">100</span>
-</span></span><span style="display:flex;"><span>  	print(<span style="color:#a6e22e">x</span> )
-</span></span><span style="display:flex;"><span>  	print(<span style="color:#a6e22e">y</span>)
-</span></span><span style="display:flex;"><span>  	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Print</span>(<span style="color:#e6db74">&#34;hello go course\n1&#34;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  }
-</span></span></code></pre></div></li>
-</ul>
-<blockquote>
-<p>pointers</p></blockquote>
-<p>详细的定义</p>
-<ul>
-<li>a ponter is an address to data in memory</li>
-<li><strong>&amp;</strong> oprrator returns the address of a variable / function
-讲该变量或者函数的的内存地址返回</li>
-<li><!-- raw HTML omitted -->*<!-- raw HTML omitted -->  operator return data at an address
-讲的是在返回值</li>
-<li>new()也是一种初始化</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>	<span style="color:#75715e">//定义一个初始变量x并赋值</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">x</span> <span style="color:#66d9ef">int</span> = <span style="color:#ae81ff">100</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Print</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">x</span>);
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//定义一个ip变量 为int指针类型</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ip</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">int</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//将ip指向x 也就是ip = 一个内存地址(类似0xc000016080)</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ip</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">x</span>;
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//那么在ip签名加上*</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">*</span><span style="color:#a6e22e">ip</span> = <span style="color:#f92672">*</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">x</span> (<span style="color:#a6e22e">所以就是一个指向内存地址的指针</span> <span style="color:#a6e22e">所以</span><span style="color:#f92672">*</span><span style="color:#a6e22e">p</span> = <span style="color:#a6e22e">x</span>)
-</span></span></code></pre></div><blockquote>
-<p>variable scope / 变量的域</p></blockquote>
-<ul>
-<li>Block
-<ul>
-<li>a sequence of declarations and statements within matching brackets { }</li>
-<li>Universe block : all Go Source</li>
-<li>Package block - all source in a package</li>
-<li>File block - all source in a file</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://jasonphd.com/pic/go_learning01.png" alt=""></p>
-<blockquote>
-<p>Deallocating Space / 内存释放</p></blockquote>
-<p>当一个变量不在被需要的时候那么它应该被销毁</p>
-<ul>
-<li>例如在一个func 里面 有一个变量X 每次使用结束后x会被释放 它不会被引用着</li>
-</ul>
-<blockquote>
-<h1 id="stack--heap">Stack &amp; Heap</h1></blockquote>
-<p>STACK:</p>
-<ul>
-<li>stack is dedicated to fuction call</li>
-<li>lcoal variables are stored here</li>
-<li>deallocated after function completes</li>
-</ul>
-<p>HEAP</p>
-<ul>
-<li>heap is persistent</li>
-</ul>
-<p>MANUAL Deallocation</p>
-<blockquote>
-<p>Go Garbage Collection / Go的垃圾回收 ♻</p></blockquote>
-<p>in interpreted languages, this is done by the interpreter</p>
-<ul>
-<li>compiler determines stack / heap</li>
-<li>garbage collection is the background</li>
-</ul>
-<h1 id="code">code</h1>
-<blockquote>
-<p>comment</p></blockquote>
-<ul>
-<li>// singl-linecomments</li>
-<li>block comment /* xxxx */</li>
-</ul>
-<p>###<strong>占位符</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th>占位符</th>
-          <th>值</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>%v</td>
-          <td>默认的格式</td>
-      </tr>
-      <tr>
-          <td>%T</td>
-          <td>值类型</td>
-      </tr>
-      <tr>
-          <td>%t</td>
-          <td>布尔值</td>
-      </tr>
-      <tr>
-          <td>%b</td>
-          <td>二进制</td>
-      </tr>
-      <tr>
-          <td>%c</td>
-          <td>Unicode</td>
-      </tr>
-      <tr>
-          <td>%d</td>
-          <td>十进制</td>
-      </tr>
-      <tr>
-          <td>%o</td>
-          <td>八进制</td>
-      </tr>
-      <tr>
-          <td>%f</td>
-          <td>浮点值</td>
-      </tr>
-      <tr>
-          <td>%s</td>
-          <td>string或者是[ ]byte</td>
-      </tr>
-      <tr>
-          <td>%p</td>
-          <td>指针</td>
-      </tr>
-  </tbody>
-</table>
-<blockquote>
-<p>整数 浮点数 字符串
-隐式转换</p></blockquote>
-<ul>
-<li>convert type with T()
-Float</li>
-<li>float32 ~6 digits of precision(精度)</li>
-<li>float64 ~15 digits of precision
-ASCII &amp; Unicode</li>
-</ul>
-<blockquote>
-<p>一、ASCII 码
+类型"><meta name=twitter:image content="https://blogs.jasonphd.com/images/og-image.png"><title>Go1</title>
+<link rel=stylesheet href=/css/output.min.97260c8f0033d223ec20178386e59725207060eda9376a3fe20db19533c0e1e7.css integrity="sha256-lyYMjwAz0iPsIBeDhuWXJSBwYO2pN2o/4g2xlTPA4ec=" crossorigin=anonymous></head><body class="bg-white text-black antialiased"><section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0"><div class="flex h-screen flex-col justify-between font-sans"><header class="flex items-center w-full bg-white justify-between py-10 sticky top-0 z-50"><a class="group break-words" aria-label="Jasonphd Blogs" href=/><div class="flex items-center justify-between"><div class=sm:mr-3><img src=/images/logo.svg width=32 height=32 alt="Logo Image"></div><div class="hidden text-2xl font-semibold sm:block group-hover:underline"><span>Jasonphd Blogs</span></div></div></a><div class="flex items-center space-x-4 leading-5 sm:space-x-6"><div class="items-center space-x-4 overflow-x-auto flex sm:space-x-6"><a href=mailto:developerluhao@gmail.com class="font-medium text-gray-900 hover:text-indigo-500">ContactMe</a>
+<a href=/tags class="font-medium text-gray-900 hover:text-indigo-500">Tags</a>
+<a href=/about class="font-medium text-gray-900 hover:text-indigo-500">About</a>
+<a href=https://github.com/forwyt target=_blank><svg width="24" height="24" viewBox="0 0 24 24" fill="currentcolor" class="fill-[#24292F] hover:fill-indigo-500 h-6 w-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.0099.0C5.36875.0.0 5.5.0 12.3042c0 5.439 3.43994 10.043 8.21205 11.6725C8.80869 24.0992 9.02724 23.712 9.02724 23.3862 9.02724 23.101 9.00757 22.1232 9.00757 21.1045 5.6667 21.838 4.97099 19.6378 4.97099 19.6378 4.43409 18.2118 3.63858 17.8452 3.63858 17.8452 2.54511 17.0915 3.71823 17.0915 3.71823 17.0915 4.93117 17.173 5.56763 18.3545 5.56763 18.3545c1.07355 1.874 2.80348 1.3445 3.49943 1.0185C9.16638 18.5785 9.48473 18.0285 9.82275 17.723 7.15817 17.4377 4.35469 16.3785 4.35469 11.6523c0-1.3445.47691-2.44455 1.2326-3.30005C5.46807 8.04675 5.0504 6.7835 5.70677 5.09275c0 0 1.01406-.326 3.30055 1.263C9.98625 6.08642 10.9958 5.9494 12.0099 5.94825c1.0141.0 2.0478.14275 3.0024.4075 2.2867-1.589 3.3008-1.263 3.3008-1.263C18.9695 6.7835 18.5515 8.04675 18.4323 8.35225 19.2079 9.20775 19.6652 10.3078 19.6652 11.6523c0 4.7262-2.8035 5.7649-5.488 6.0707C14.6148 18.11 14.9924 18.8433 14.9924 20.0045 14.9924 21.6545 14.9727 22.9788 14.9727 23.386 14.9727 23.712 15.1915 24.0992 15.7879 23.977c4.7721-1.63 8.212-6.2338 8.212-11.6728C24.0196 5.5 18.6312.0 12.0099.0z"/></svg></a></div></div></header><main class=mb-auto><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Go1","datePublished":"2017-01-20T09:50:48\u002b08:00","dateModified":"2017-01-20T09:50:48\u002b08:00","description":"\u003cp\u003e\u003cimg src=\u0022\/images\/c4673178de45c376576bb1748eff5017.go.webp\u0022 alt=\u0022\u0022\u003e\ngo的一些入门\u003c\/p\u003e\n\u003ch1 id=\u0022go-advantages\u0022\u003eGo Advantages\u003c\/h1\u003e\n\u003cblockquote\u003e\n\u003cp\u003eGo advantages\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cul\u003e\n\u003cli\u003ecode run fast\u003c\/li\u003e\n\u003cli\u003egarbage collection\u003c\/li\u003e\n\u003cli\u003esimpler objects\u003c\/li\u003e\n\u003cli\u003econcurrency is efficient (并发性好)\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cp\u003elanguage\u003c\/p\u003e\n\u003cul\u003e\n\u003cli\u003emachine language\u003c\/li\u003e\n\u003cli\u003eassembly language\u003c\/li\u003e\n\u003cli\u003ehigh-level language\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cp\u003eCompiled 编译型语言 类似C C\u002b\u002b JAVA\u003c\/p\u003e\n\u003cp\u003eInterpretation 解释型语言 类似 Python JAVA,当执行的时候回将源代码翻译为机器执行的代码 所以会消耗时间\u003c\/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003eObject\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cp\u003e虽然在go语言中 没有意义上的对象.但是struck 充当了类似的角色\u003c\/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003eConcurrency并发\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cul\u003e\n\u003cli\u003e如果在没有高并发会遇到\n\u003cul\u003e\n\u003cli\u003eMoore law 18个月的晶体管会翻倍 硬件性能增长收到限制\u003c\/li\u003e\n\u003cli\u003e功耗会增加\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003c\/li\u003e\n\u003cli\u003eparallelism并行\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cblockquote\u003e\n\u003cp\u003evariables\n命名规则\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cul\u003e\n\u003cli\u003e\n\u003cp\u003ekeyword避免掉\u003c\/p\u003e\n\u003c\/li\u003e\n\u003cli\u003e\n\u003cp\u003edeclarations 申明变量 var x int\u003c\/p\u003e\n\u003cul\u003e\n\u003cli\u003evar 是keyword\u003c\/li\u003e\n\u003cli\u003ex 是变量的名称\u003c\/li\u003e\n\u003cli\u003eint 是类型\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003c\/li\u003e\n\u003cli\u003e\n\u003cp\u003e可以多行命名变量 var x,y,z int\u003c\/p\u003e\n\u003c\/li\u003e\n\u003cli\u003e\n\u003cp\u003e类型\u003c\/p\u003e","image":"/images/og-image.png","url":"https:\/\/blogs.jasonphd.com\/go\/go1\/","author":[{"@type":"Person","name":"jamesitachi"}]}</script><section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0"><article><div class="xl:divide-y xl:divide-gray-200"><header class="pt-6 xl:pb-6"><div class="space-y-1 text-center"><dl class=space-y-10><div><dt class=sr-only>Published on</dt><dd class="text-base font-medium leading-6 text-gray-500"><time datetime=2017-01-20T09:50:48+08:00>Friday, January 20, 2017</time></dd></div></dl><div><h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"><div>Go1</div></h1></div></div></header><div class="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0"><dl class="pb-10 pt-6 xl:border-b xl:border-gray-200 xl:pt-11"><dt class=sr-only>Authors</dt><dd><ul class="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8"><li class="flex items-center space-x-2"><img src=https://github.com/forwyt.png class=rounded-full width=38 height=38 alt="Profile Image" loading=lazy><dl class="whitespace-nowrap text-sm font-medium leading-5"><dt class=sr-only>Name</dt><dd class=text-gray-900>jamesitachi</dd></dl></li></ul></dd></dl><div class="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0"><div class="prose max-w-none pb-8 pt-10"><details open><summary class="ml-6 pb-2 pt-2 text-xl font-bold"><span>Table of Contents</span></summary><nav class=ml-6><ul></ul><ul></ul><ul></ul><ul><li><a href=#></a></li><ul><li><a href=#hash-table>Hash Table</a></li><li><a href=#map>Map</a></li><li><a href=#struct--%e7%bb%93%e6%9e%84%e4%bd%93>Struct / 结构体</a></li></ul></ul></nav></details><p><img src=/images/c4673178de45c376576bb1748eff5017.go.webp alt>
+go的一些入门</p><h1 id=go-advantages>Go Advantages</h1><blockquote><p>Go advantages</p></blockquote><ul><li>code run fast</li><li>garbage collection</li><li>simpler objects</li><li>concurrency is efficient (并发性好)</li></ul><p>language</p><ul><li>machine language</li><li>assembly language</li><li>high-level language</li></ul><p>Compiled 编译型语言 类似C C++ JAVA</p><p>Interpretation 解释型语言 类似 Python JAVA,当执行的时候回将源代码翻译为机器执行的代码 所以会消耗时间</p><blockquote><p>Object</p></blockquote><p>虽然在go语言中 没有意义上的对象.但是struck 充当了类似的角色</p><blockquote><p>Concurrency并发</p></blockquote><ul><li>如果在没有高并发会遇到<ul><li>Moore law 18个月的晶体管会翻倍 硬件性能增长收到限制</li><li>功耗会增加</li></ul></li><li>parallelism并行</li></ul><blockquote><p>variables
+命名规则</p></blockquote><ul><li><p>keyword避免掉</p></li><li><p>declarations 申明变量 var x int</p><ul><li>var 是keyword</li><li>x 是变量的名称</li><li>int 是类型</li></ul></li><li><p>可以多行命名变量 var x,y,z int</p></li><li><p>类型</p><ul><li>Integer (only integer value )</li><li>Floating Point (Fractional decimal value, may use different with hardware)</li><li>String (seqyebces characters)</li></ul></li><li><p>Init初始化变量</p><ul><li>type IDNumber int
+var x int = 100 / var x = 100都是可以 有自动推断类型</li><li><strong>当为赋值的初始化时候 会有zero valu (类似 0 "" )</strong></li><li>简化赋值 x := 100 这种声明和操作一起进行分配只能在函数内部使用, 不可以在函数外进行简短的变量声明</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>  <span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>  	<span style=color:#e6db74>&#34;fmt&#34;</span>
+</span></span><span style=display:flex><span>  )
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>y</span> = <span style=color:#ae81ff>1000</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>func</span> <span style=color:#a6e22e>main</span>()  {
+</span></span><span style=display:flex><span>  	<span style=color:#a6e22e>x</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>100</span>
+</span></span><span style=display:flex><span>  	print(<span style=color:#a6e22e>x</span> )
+</span></span><span style=display:flex><span>  	print(<span style=color:#a6e22e>y</span>)
+</span></span><span style=display:flex><span>  	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Print</span>(<span style=color:#e6db74>&#34;hello go course\n1&#34;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div></li></ul><blockquote><p>pointers</p></blockquote><p>详细的定义</p><ul><li>a ponter is an address to data in memory</li><li><strong>&</strong> oprrator returns the address of a variable / function
+讲该变量或者函数的的内存地址返回</li><li>* operator return data at an address
+讲的是在返回值</li><li>new()也是一种初始化</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#75715e>//定义一个初始变量x并赋值</span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>x</span> <span style=color:#66d9ef>int</span> = <span style=color:#ae81ff>100</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Print</span>(<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>x</span>);
+</span></span><span style=display:flex><span>	<span style=color:#75715e>//定义一个ip变量 为int指针类型</span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>ip</span> <span style=color:#f92672>*</span><span style=color:#66d9ef>int</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>//将ip指向x 也就是ip = 一个内存地址(类似0xc000016080)</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ip</span> = <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>x</span>;
+</span></span><span style=display:flex><span>	<span style=color:#75715e>//那么在ip签名加上*</span>
+</span></span><span style=display:flex><span>	<span style=color:#f92672>*</span><span style=color:#a6e22e>ip</span> = <span style=color:#f92672>*</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>x</span> (<span style=color:#a6e22e>所以就是一个指向内存地址的指针</span> <span style=color:#a6e22e>所以</span><span style=color:#f92672>*</span><span style=color:#a6e22e>p</span> = <span style=color:#a6e22e>x</span>)
+</span></span></code></pre></div><blockquote><p>variable scope / 变量的域</p></blockquote><ul><li>Block<ul><li>a sequence of declarations and statements within matching brackets { }</li><li>Universe block : all Go Source</li><li>Package block - all source in a package</li><li>File block - all source in a file</li></ul></li></ul><p><img src=https://jasonphd.com/pic/go_learning01.png alt></p><blockquote><p>Deallocating Space / 内存释放</p></blockquote><p>当一个变量不在被需要的时候那么它应该被销毁</p><ul><li>例如在一个func 里面 有一个变量X 每次使用结束后x会被释放 它不会被引用着</li></ul><blockquote><h1 id=stack--heap>Stack & Heap</h1></blockquote><p>STACK:</p><ul><li>stack is dedicated to fuction call</li><li>lcoal variables are stored here</li><li>deallocated after function completes</li></ul><p>HEAP</p><ul><li>heap is persistent</li></ul><p>MANUAL Deallocation</p><blockquote><p>Go Garbage Collection / Go的垃圾回收 ♻</p></blockquote><p>in interpreted languages, this is done by the interpreter</p><ul><li>compiler determines stack / heap</li><li>garbage collection is the background</li></ul><h1 id=code>code</h1><blockquote><p>comment</p></blockquote><ul><li>// singl-linecomments</li><li>block comment /* xxxx */</li></ul><p>###<strong>占位符</strong></p><table><thead><tr><th>占位符</th><th>值</th></tr></thead><tbody><tr><td>%v</td><td>默认的格式</td></tr><tr><td>%T</td><td>值类型</td></tr><tr><td>%t</td><td>布尔值</td></tr><tr><td>%b</td><td>二进制</td></tr><tr><td>%c</td><td>Unicode</td></tr><tr><td>%d</td><td>十进制</td></tr><tr><td>%o</td><td>八进制</td></tr><tr><td>%f</td><td>浮点值</td></tr><tr><td>%s</td><td>string或者是[ ]byte</td></tr><tr><td>%p</td><td>指针</td></tr></tbody></table><blockquote><p>整数 浮点数 字符串
+隐式转换</p></blockquote><ul><li>convert type with T()
+Float</li><li>float32 ~6 digits of precision(精度)</li><li>float64 ~15 digits of precision
+ASCII & Unicode</li></ul><blockquote><p>一、ASCII 码
 我们知道，计算机内部，所有信息最终都是一个二进制值。每一个二进制位（bit）有0和1两种状态，因此八个二进制位就可以组合出256种状态，这被称为一个字节（byte）。也就是说，一个字节一共可以用来表示256种不同的状态，每一个状态对应一个符号，就是256个符号，从00000000到11111111。
 上个世纪60年代，美国制定了一套字符编码，对英语字符与二进制位之间的关系，做了统一规定。这被称为 ASCII 码，一直沿用至今。
-ASCII 码一共规定了128个字符的编码，比如空格SPACE是32（二进制00100000），大写的字母A是65（二进制01000001）。这128个符号（包括32个不能打印出来的控制符号），只占用了一个字节的后面7位，最前面的一位统一规定为0。</p></blockquote>
-<blockquote>
-<p>二、非 ASCII 编码英语用128个符号编码就够了，但是用来表示其他语言，128个符号是不够的。比如，在法语中，字母上方有注音符号，它就无法用 ASCII 码表示。于是，一些欧洲国家就决定，利用字节中闲置的最高位编入新的符号。比如，法语中的é的编码为130（二进制10000010）。这样一来，这些欧洲国家使用的编码体系，可以表示最多256个符号。
+ASCII 码一共规定了128个字符的编码，比如空格SPACE是32（二进制00100000），大写的字母A是65（二进制01000001）。这128个符号（包括32个不能打印出来的控制符号），只占用了一个字节的后面7位，最前面的一位统一规定为0。</p></blockquote><blockquote><p>二、非 ASCII 编码英语用128个符号编码就够了，但是用来表示其他语言，128个符号是不够的。比如，在法语中，字母上方有注音符号，它就无法用 ASCII 码表示。于是，一些欧洲国家就决定，利用字节中闲置的最高位编入新的符号。比如，法语中的é的编码为130（二进制10000010）。这样一来，这些欧洲国家使用的编码体系，可以表示最多256个符号。
 但是，这里又出现了新的问题。不同的国家有不同的字母，因此，哪怕它们都使用256个符号的编码方式，代表的字母却不一样。比如，130在法语编码中代表了é，在希伯来语编码中却代表了字母Gimel (ג)，在俄语编码中又会代表另一个符号。但是不管怎样，所有这些编码方式中，0&ndash;127表示的符号是一样的，不一样的只是128&ndash;255的这一段。
 至于亚洲国家的文字，使用的符号就更多了，汉字就多达10万左右。一个字节只能表示256种符号，肯定是不够的，就必须使用多个字节表达一个符号。比如，简体中文常见的编码方式是 GB2312，使用两个字节表示一个汉字，所以理论上最多可以表示 256 x 256 = 65536 个符号。
-中文编码的问题需要专文讨论，这篇笔记不涉及。这里只指出，虽然都是用多个字节表示一个符号，但是GB类的汉字编码与后文的 Unicode 和 UTF-8 是毫无关系的。</p></blockquote>
-<blockquote>
-<p>三. Unicode正如上一节所说，世界上存在着多种编码方式，同一个二进制数字可以被解释成不同的符号。因此，要想打开一个文本文件，就必须知道它的编码方式，否则用错误的编码方式解读，就会出现乱码。为什么电子邮件常常出现乱码？就是因为发信人和收信人使用的编码方式不一样。
+中文编码的问题需要专文讨论，这篇笔记不涉及。这里只指出，虽然都是用多个字节表示一个符号，但是GB类的汉字编码与后文的 Unicode 和 UTF-8 是毫无关系的。</p></blockquote><blockquote><p>三. Unicode正如上一节所说，世界上存在着多种编码方式，同一个二进制数字可以被解释成不同的符号。因此，要想打开一个文本文件，就必须知道它的编码方式，否则用错误的编码方式解读，就会出现乱码。为什么电子邮件常常出现乱码？就是因为发信人和收信人使用的编码方式不一样。
 可以想象，如果有一种编码，将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。这就是 Unicode，就像它的名字都表示的，这是一种所有符号的编码。
-Unicode 当然是一个很大的集合，现在的规模可以容纳100多万个符号。每个符号的编码都不一样，比如，U+0639表示阿拉伯字母Ain，U+0041表示英语的大写字母A，U+4E25表示汉字严。具体的符号对应表，可以查询unicode.org，或者专门的汉字对应表。</p></blockquote>
-<p>此处插入两条讲解非常好的老师blog</p>
-<p><a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html">阮一峰</a></p>
-<p><a href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/">JOEL</a></p>
-<h1 id="进阶数据类型">进阶数据类型</h1>
-<p>###Arrays / 数组
-基本特性</p>
-<ul>
-<li>fixed-lenth series of elements of a choosen type</li>
-<li>element accessd using subscript notation []</li>
-<li>indices start at 0</li>
-<li>elements initialized to zero value
-####array literal(文字型数组)</li>
-<li>x := [&hellip;]{1,2,1,2} &hellip;表示不确定elementsd的个数</li>
-</ul>
-<p>###Slices / 切片</p>
-<ul>
-<li>a window on an uderlying array</li>
-<li>variable size up to the whole array</li>
-<li>必备的三个元素
-<ul>
-<li>poniter indicastes the smart of the slices</li>
-<li>length is the number of elts in the slices</li>
-<li>capacity is maximum number of elts</li>
-</ul>
-</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">arr</span> <span style="color:#f92672">:=</span> [<span style="color:#f92672">...</span>]<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;a&#34;</span>,<span style="color:#e6db74">&#34;b&#34;</span>,<span style="color:#e6db74">&#34;c&#34;</span>,<span style="color:#e6db74">&#34;d&#34;</span>,<span style="color:#e6db74">&#34;e&#34;</span>,<span style="color:#e6db74">&#34;f&#34;</span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">s1</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">arr</span> [<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">3</span>] <span style="color:#75715e">// b c </span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">s2</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">arr</span> [<span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">5</span>] <span style="color:#75715e">// c d e</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">左边包含</span> <span style="color:#a6e22e">右边不包含</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">lenth</span> <span style="color:#a6e22e">表示当前切片的长度</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">capacity</span> <span style="color:#a6e22e">表示切片可以拓展的最大长度</span> <span style="color:#a6e22e">表示就是</span> <span style="color:#a6e22e">数组的lenth</span>
-</span></span></code></pre></div><p>切片和数组的区别:</p>
-<ul>
-<li>sli := []int{1,2,3} 切片</li>
-<li>sli := [&hellip;]int{1,2,3} 数组</li>
-</ul>
-<p>###variable slices / 可变切片
-####make() 函数</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">//两个参数的make调用时候 第一个传入的事数组的类型 第二个是长度</span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">sli1</span> = make(<span style="color:#66d9ef">int</span>[],<span style="color:#ae81ff">10</span>)
-</span></span><span style="display:flex;"><span><span style="color:#75715e">//三个参数的时候 第三个参数表示的是 数组的最大长度 其实也是切片的容量 capatity</span>
-</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">sli2</span> = make(<span style="color:#66d9ef">int</span>[],<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">15</span>)        
-</span></span></code></pre></div><p>###Append() / 添加</p>
-<ul>
-<li>size of a slice can be increased by append()</li>
-<li>adds elements to the end of a slice</li>
-<li>inserts into underlying array</li>
-<li>increases size of array if necessary</li>
-</ul>
-<h3 id="hash-table">Hash Table</h3>
-<ul>
-<li>container key /value pairs</li>
-<li>each key is associated with a unique key</li>
-<li>Hash Fuction is used to compute the slot for a key</li>
-</ul>
-<p>Tradeoffs of Hash Tables
-优点</p>
-<ul>
-<li>faster lookup than lists</li>
-<li>arbitrary keys
-缺点</li>
-<li>may have collisions</li>
-</ul>
-<p>🚀 <strong>拓展</strong></p>
-<h3 id="map">Map</h3>
-<p>implementation of a hash table</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">idMap</span> <span style="color:#66d9ef">map</span> [<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">int</span>
-</span></span></code></pre></div><ul>
-<li>referencing a value with [key]</li>
-<li>return zero if key is not present</li>
-<li>adding a key/value pair</li>
-</ul>
-<p>iteraring through a map</p>
-<ul>
-<li>use a loop with the range keyword</li>
-<li>two-value assignmeny with range</li>
-</ul>
-<h3 id="struct--结构体">Struct / 结构体</h3>
-<ul>
-<li>aggregate data type</li>
-<li>groups together other objects of arbitrary type
-定义</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Person</span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">address</span> <span style="color:#66d9ef">string</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">phone</span> <span style="color:#66d9ef">string</span> 
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">p</span> <span style="color:#a6e22e">Person</span>
-</span></span></code></pre></div>
-            </div>
-          </div>
-
-          <footer>
-            <div
-              class="divide-gray-200 text-sm font-medium leading-5 xl:col-start-1 xl:row-start-2 xl:divide-y"
-            >
-              <div class="py-4 xl:py-8">
-                <h2 class="text-xs uppercase tracking-wide text-gray-500">
-                  Tags
-                </h2>
-                <div class="flex flex-wrap">
-                  
-                    <a
-                      href="/tags/code"
-                      class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600"
-                      >code</a
-                    >
-                  
-                    <a
-                      href="/tags/go"
-                      class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600"
-                      >go</a
-                    >
-                  
-                </div>
-              </div>
-            </div>
-
-            <div class="pt-4 xl:pt-8">
-              <a
-                class="text-indigo-500 hover:text-indigo-600"
-                aria-label="Back to the list"
-                href="/"
-                >← Back to the list</a
-              >
-            </div>
-          </footer>
-        </div>
-      </div>
-    </article>
-  </section>
-</main>
-        <footer><div class="mt-16 flex flex-col items-center">
-  <div class="mb-2 text-sm text-gray-500">
-    <span>(C) 2025. Jasonphd Blogs all rights reserved.</span>
-  </div>
-
-  <div class="mb-8 text-sm text-gray-500">
-    <span class="mr-1">Built with</span>
-    <a
-      class="font-semibold underline"
-      href="https://github.com/discaptive/hugo-discaptive"
-      target="_blank"
-      >hugo-discaptive</a
-    >
-  </div>
-</div>
-</footer>
-      </div>
-    </section>
-  </body>
-</html>
+Unicode 当然是一个很大的集合，现在的规模可以容纳100多万个符号。每个符号的编码都不一样，比如，U+0639表示阿拉伯字母Ain，U+0041表示英语的大写字母A，U+4E25表示汉字严。具体的符号对应表，可以查询unicode.org，或者专门的汉字对应表。</p></blockquote><p>此处插入两条讲解非常好的老师blog</p><p><a href=http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html>阮一峰</a></p><p><a href=https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/>JOEL</a></p><h1 id=进阶数据类型>进阶数据类型</h1><p>###Arrays / 数组
+基本特性</p><ul><li>fixed-lenth series of elements of a choosen type</li><li>element accessd using subscript notation []</li><li>indices start at 0</li><li>elements initialized to zero value
+####array literal(文字型数组)</li><li>x := [&mldr;]{1,2,1,2} &mldr;表示不确定elementsd的个数</li></ul><p>###Slices / 切片</p><ul><li>a window on an uderlying array</li><li>variable size up to the whole array</li><li>必备的三个元素<ul><li>poniter indicastes the smart of the slices</li><li>length is the number of elts in the slices</li><li>capacity is maximum number of elts</li></ul></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>arr</span> <span style=color:#f92672>:=</span> [<span style=color:#f92672>...</span>]<span style=color:#66d9ef>string</span>{<span style=color:#e6db74>&#34;a&#34;</span>,<span style=color:#e6db74>&#34;b&#34;</span>,<span style=color:#e6db74>&#34;c&#34;</span>,<span style=color:#e6db74>&#34;d&#34;</span>,<span style=color:#e6db74>&#34;e&#34;</span>,<span style=color:#e6db74>&#34;f&#34;</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>s1</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>arr</span> [<span style=color:#ae81ff>1</span>:<span style=color:#ae81ff>3</span>] <span style=color:#75715e>// b c </span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>s2</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>arr</span> [<span style=color:#ae81ff>2</span>:<span style=color:#ae81ff>5</span>] <span style=color:#75715e>// c d e</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>左边包含</span> <span style=color:#a6e22e>右边不包含</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>lenth</span> <span style=color:#a6e22e>表示当前切片的长度</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>capacity</span> <span style=color:#a6e22e>表示切片可以拓展的最大长度</span> <span style=color:#a6e22e>表示就是</span> <span style=color:#a6e22e>数组的lenth</span>
+</span></span></code></pre></div><p>切片和数组的区别:</p><ul><li>sli := []int{1,2,3} 切片</li><li>sli := [&mldr;]int{1,2,3} 数组</li></ul><p>###variable slices / 可变切片
+####make() 函数</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#75715e>//两个参数的make调用时候 第一个传入的事数组的类型 第二个是长度</span>
+</span></span><span style=display:flex><span> <span style=color:#a6e22e>sli1</span> = make(<span style=color:#66d9ef>int</span>[],<span style=color:#ae81ff>10</span>)
+</span></span><span style=display:flex><span><span style=color:#75715e>//三个参数的时候 第三个参数表示的是 数组的最大长度 其实也是切片的容量 capatity</span>
+</span></span><span style=display:flex><span> <span style=color:#a6e22e>sli2</span> = make(<span style=color:#66d9ef>int</span>[],<span style=color:#ae81ff>10</span>,<span style=color:#ae81ff>15</span>)        
+</span></span></code></pre></div><p>###Append() / 添加</p><ul><li>size of a slice can be increased by append()</li><li>adds elements to the end of a slice</li><li>inserts into underlying array</li><li>increases size of array if necessary</li></ul><h3 id=hash-table>Hash Table</h3><ul><li>container key /value pairs</li><li>each key is associated with a unique key</li><li>Hash Fuction is used to compute the slot for a key</li></ul><p>Tradeoffs of Hash Tables
+优点</p><ul><li>faster lookup than lists</li><li>arbitrary keys
+缺点</li><li>may have collisions</li></ul><p>🚀 <strong>拓展</strong></p><h3 id=map>Map</h3><p>implementation of a hash table</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>idMap</span> <span style=color:#66d9ef>map</span> [<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>
+</span></span></code></pre></div><ul><li>referencing a value with [key]</li><li>return zero if key is not present</li><li>adding a key/value pair</li></ul><p>iteraring through a map</p><ul><li>use a loop with the range keyword</li><li>two-value assignmeny with range</li></ul><h3 id=struct--结构体>Struct / 结构体</h3><ul><li>aggregate data type</li><li>groups together other objects of arbitrary type
+定义</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>type</span> <span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>Person</span>{
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>name</span> <span style=color:#66d9ef>string</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>address</span> <span style=color:#66d9ef>string</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>phone</span> <span style=color:#66d9ef>string</span> 
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>p</span> <span style=color:#a6e22e>Person</span>
+</span></span></code></pre></div></div></div><footer><div class="divide-gray-200 text-sm font-medium leading-5 xl:col-start-1 xl:row-start-2 xl:divide-y"><div class="py-4 xl:py-8"><h2 class="text-xs uppercase tracking-wide text-gray-500">Tags</h2><div class="flex flex-wrap"><a href=/tags/code class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600">code</a>
+<a href=/tags/go class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600">go</a></div></div></div><div class="pt-4 xl:pt-8"><a class="text-indigo-500 hover:text-indigo-600" aria-label="Back to the list" href=/>← Back to the list</a></div></footer></div></div></article></section></main><footer><div class="mt-16 flex flex-col items-center"><div class="mb-2 text-sm text-gray-500"><span>(C) 2025. Jasonphd Blogs all rights reserved.</span></div><div class="mb-8 text-sm text-gray-500"><span class=mr-1>Built with</span>
+<a class="font-semibold underline" href=https://github.com/discaptive/hugo-discaptive target=_blank>hugo-discaptive</a></div></div></footer></div></section></body></html>

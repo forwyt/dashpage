@@ -1,19 +1,53 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Go on Jasonphd Blogs</title>
-    <link>http://localhost:1313/tags/go/</link>
-    <description>Recent content in Go on Jasonphd Blogs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 20 Jan 2017 09:50:48 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/go/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Go1</title>
-      <link>http://localhost:1313/go/go1/</link>
-      <pubDate>Fri, 20 Jan 2017 09:50:48 +0800</pubDate>
-      <guid>http://localhost:1313/go/go1/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/c4673178de45c376576bb1748eff5017.go.webp&#34; alt=&#34;&#34;&gt;&#xA;go的一些入门&lt;/p&gt;&#xA;&lt;h1 id=&#34;go-advantages&#34;&gt;Go Advantages&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Go advantages&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;code run fast&lt;/li&gt;&#xA;&lt;li&gt;garbage collection&lt;/li&gt;&#xA;&lt;li&gt;simpler objects&lt;/li&gt;&#xA;&lt;li&gt;concurrency is efficient (并发性好)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;language&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;machine language&lt;/li&gt;&#xA;&lt;li&gt;assembly language&lt;/li&gt;&#xA;&lt;li&gt;high-level language&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Compiled 编译型语言 类似C C++ JAVA&lt;/p&gt;&#xA;&lt;p&gt;Interpretation 解释型语言 类似 Python JAVA,当执行的时候回将源代码翻译为机器执行的代码 所以会消耗时间&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Object&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;虽然在go语言中 没有意义上的对象.但是struck 充当了类似的角色&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Concurrency并发&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;如果在没有高并发会遇到&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Moore law 18个月的晶体管会翻倍 硬件性能增长收到限制&lt;/li&gt;&#xA;&lt;li&gt;功耗会增加&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;parallelism并行&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;variables&#xA;命名规则&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;keyword避免掉&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;declarations 申明变量 var x int&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;var 是keyword&lt;/li&gt;&#xA;&lt;li&gt;x 是变量的名称&lt;/li&gt;&#xA;&lt;li&gt;int 是类型&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;可以多行命名变量 var x,y,z int&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;类型&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Go on Jasonphd Blogs</title><link>https://blogs.jasonphd.com/tags/go/</link><description>Recent content in Go on Jasonphd Blogs</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 20 Jan 2017 09:50:48 +0800</lastBuildDate><atom:link href="https://blogs.jasonphd.com/tags/go/index.xml" rel="self" type="application/rss+xml"/><item><title>Go1</title><link>https://blogs.jasonphd.com/go/go1/</link><pubDate>Fri, 20 Jan 2017 09:50:48 +0800</pubDate><guid>https://blogs.jasonphd.com/go/go1/</guid><description>&lt;p>&lt;img src="https://blogs.jasonphd.com/images/c4673178de45c376576bb1748eff5017.go.webp" alt="">
+go的一些入门&lt;/p>
+&lt;h1 id="go-advantages">Go Advantages&lt;/h1>
+&lt;blockquote>
+&lt;p>Go advantages&lt;/p>&lt;/blockquote>
+&lt;ul>
+&lt;li>code run fast&lt;/li>
+&lt;li>garbage collection&lt;/li>
+&lt;li>simpler objects&lt;/li>
+&lt;li>concurrency is efficient (并发性好)&lt;/li>
+&lt;/ul>
+&lt;p>language&lt;/p>
+&lt;ul>
+&lt;li>machine language&lt;/li>
+&lt;li>assembly language&lt;/li>
+&lt;li>high-level language&lt;/li>
+&lt;/ul>
+&lt;p>Compiled 编译型语言 类似C C++ JAVA&lt;/p>
+&lt;p>Interpretation 解释型语言 类似 Python JAVA,当执行的时候回将源代码翻译为机器执行的代码 所以会消耗时间&lt;/p>
+&lt;blockquote>
+&lt;p>Object&lt;/p>&lt;/blockquote>
+&lt;p>虽然在go语言中 没有意义上的对象.但是struck 充当了类似的角色&lt;/p>
+&lt;blockquote>
+&lt;p>Concurrency并发&lt;/p>&lt;/blockquote>
+&lt;ul>
+&lt;li>如果在没有高并发会遇到
+&lt;ul>
+&lt;li>Moore law 18个月的晶体管会翻倍 硬件性能增长收到限制&lt;/li>
+&lt;li>功耗会增加&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>parallelism并行&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>variables
+命名规则&lt;/p>&lt;/blockquote>
+&lt;ul>
+&lt;li>
+&lt;p>keyword避免掉&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>declarations 申明变量 var x int&lt;/p>
+&lt;ul>
+&lt;li>var 是keyword&lt;/li>
+&lt;li>x 是变量的名称&lt;/li>
+&lt;li>int 是类型&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>可以多行命名变量 var x,y,z int&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>类型&lt;/p></description></item></channel></rss>
