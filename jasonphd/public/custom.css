@@ -1,0 +1,5 @@
+/* static/css/custom.css */
+.active {
+    color: #ff0000; /* 红色 */
+    font-weight: bold;
+  }

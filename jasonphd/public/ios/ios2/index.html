@@ -1,0 +1,607 @@
+<!doctype html>
+<html
+  lang="en-us"
+  dir="ltr"
+  class="scroll-smooth"
+>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="index, follow" />
+<meta
+  name="googlebot"
+  content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
+/>
+
+<meta name="description" content="
+经过前面文档我们大致了解了arc/mrc机制,是为了更好的去做iOS的内存管理
+
+前言
+经过前面文档我们大致了解了arc/mrc机制,是为了更好的去做iOS的内存管理.在面对一个对象的时候,从初始化到delloc销毁的过程中进行合适的插入 retain 和 release 做到内存的回收释放♻️,随着iOS的迭代发展,我们开始逐渐采用一种解放程序员的新型管理模式 ARC &hellip;
+什么是ARC/MRC
+Manual Reference Counting 是根据对象的引用计数器 reference count 来判断在何时将一个对象所占用的内存回收
+Automatic Reference Counting 自动引用计数 是苹果子WWDC2011年引入的,其工作原理下面详细理解,根本上是通过强指针来判断
+AutoreleasePool
+
+从main函数开始了解:
+int main(int argc, const char * argv[]) {
+   @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+    }
+}
+在这个autoreleasepool的block里面 所有的事件,消息,全部转交给了UIApplication来处理,从此可以看出一个iOS应用是完全包裹在自动释放池里面的
+通过clang 编译器将main函数转换成了 main.cpp
+   $ clang -rewrite-objc main.m
+我们将关注点放在__AtAutoreleasePool这个结构体上面
+struct __AtAutoreleasePool {
+  __AtAutoreleasePool() {atautoreleasepoolobj = objc_autoreleasePoolPush();}
+  ~__AtAutoreleasePool() {objc_autoreleasePoolPop(atautoreleasepoolobj);}
+  void * atautoreleasepoolobj;
+};
+不难看出我们main函数的工作原理大致上是在初始化时候调用了
+void * atautoreleasepoolobj = objc_autoreleasePoolPush();
+然后在析构时候调用了
+objc_autoreleasePoolPop(atautoreleasepoolobj);```
+
+所以@autoreleasepool会被转换成上面两行代码
+
+&gt; objc_autoreleasePoolPush
+
+从[源码](https://opensource.apple.com/source/objc4/objc4-532/runtime/NSObject.mm.auto.html &#34;标题&#34;)中我们看到
+
+```objc
+void *_objc_autoreleasePoolPush(void) { return objc_autoreleasePoolPush(); }
+void _objc_autoreleasePoolPop(void *ctxt) { objc_autoreleasePoolPop(ctxt); }
+
+void *
+objc_autoreleasePoolPush(void)
+{
+    if (UseGC) return NULL;
+    return AutoreleasePoolPage::push();
+}
+
+void
+objc_autoreleasePoolPop(void *ctxt)
+{
+    if (UseGC) return;
+
+    // fixme rdar://9167170
+    if (!ctxt) return;
+
+    AutoreleasePoolPage::pop(ctxt);
+}
+push和pop是操作这一个 AutoreleasePoolPage 对象" />
+
+
+<meta property="og:title" content="ios内存原理（2）" />
+<meta property="og:description" content="
+经过前面文档我们大致了解了arc/mrc机制,是为了更好的去做iOS的内存管理
+
+前言
+经过前面文档我们大致了解了arc/mrc机制,是为了更好的去做iOS的内存管理.在面对一个对象的时候,从初始化到delloc销毁的过程中进行合适的插入 retain 和 release 做到内存的回收释放♻️,随着iOS的迭代发展,我们开始逐渐采用一种解放程序员的新型管理模式 ARC &hellip;
+什么是ARC/MRC
+Manual Reference Counting 是根据对象的引用计数器 reference count 来判断在何时将一个对象所占用的内存回收
+Automatic Reference Counting 自动引用计数 是苹果子WWDC2011年引入的,其工作原理下面详细理解,根本上是通过强指针来判断
+AutoreleasePool
+
+从main函数开始了解:
+int main(int argc, const char * argv[]) {
+   @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+    }
+}
+在这个autoreleasepool的block里面 所有的事件,消息,全部转交给了UIApplication来处理,从此可以看出一个iOS应用是完全包裹在自动释放池里面的
+通过clang 编译器将main函数转换成了 main.cpp
+   $ clang -rewrite-objc main.m
+我们将关注点放在__AtAutoreleasePool这个结构体上面
+struct __AtAutoreleasePool {
+  __AtAutoreleasePool() {atautoreleasepoolobj = objc_autoreleasePoolPush();}
+  ~__AtAutoreleasePool() {objc_autoreleasePoolPop(atautoreleasepoolobj);}
+  void * atautoreleasepoolobj;
+};
+不难看出我们main函数的工作原理大致上是在初始化时候调用了
+void * atautoreleasepoolobj = objc_autoreleasePoolPush();
+然后在析构时候调用了
+objc_autoreleasePoolPop(atautoreleasepoolobj);```
+
+所以@autoreleasepool会被转换成上面两行代码
+
+&gt; objc_autoreleasePoolPush
+
+从[源码](https://opensource.apple.com/source/objc4/objc4-532/runtime/NSObject.mm.auto.html &#34;标题&#34;)中我们看到
+
+```objc
+void *_objc_autoreleasePoolPush(void) { return objc_autoreleasePoolPush(); }
+void _objc_autoreleasePoolPop(void *ctxt) { objc_autoreleasePoolPop(ctxt); }
+
+void *
+objc_autoreleasePoolPush(void)
+{
+    if (UseGC) return NULL;
+    return AutoreleasePoolPage::push();
+}
+
+void
+objc_autoreleasePoolPop(void *ctxt)
+{
+    if (UseGC) return;
+
+    // fixme rdar://9167170
+    if (!ctxt) return;
+
+    AutoreleasePoolPage::pop(ctxt);
+}
+push和pop是操作这一个 AutoreleasePoolPage 对象" />
+<meta property="og:url" content="http://localhost:1313/ios/ios2/" />
+<meta property="og:site_name" content="Jasonphd Blogs" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="http://localhost:1313/images/og-image.png" />
+
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ios内存原理（2）" />
+<meta name="twitter:description" content="
+经过前面文档我们大致了解了arc/mrc机制,是为了更好的去做iOS的内存管理
+
+前言
+经过前面文档我们大致了解了arc/mrc机制,是为了更好的去做iOS的内存管理.在面对一个对象的时候,从初始化到delloc销毁的过程中进行合适的插入 retain 和 release 做到内存的回收释放♻️,随着iOS的迭代发展,我们开始逐渐采用一种解放程序员的新型管理模式 ARC &hellip;
+什么是ARC/MRC
+Manual Reference Counting 是根据对象的引用计数器 reference count 来判断在何时将一个对象所占用的内存回收
+Automatic Reference Counting 自动引用计数 是苹果子WWDC2011年引入的,其工作原理下面详细理解,根本上是通过强指针来判断
+AutoreleasePool
+
+从main函数开始了解:
+int main(int argc, const char * argv[]) {
+   @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+    }
+}
+在这个autoreleasepool的block里面 所有的事件,消息,全部转交给了UIApplication来处理,从此可以看出一个iOS应用是完全包裹在自动释放池里面的
+通过clang 编译器将main函数转换成了 main.cpp
+   $ clang -rewrite-objc main.m
+我们将关注点放在__AtAutoreleasePool这个结构体上面
+struct __AtAutoreleasePool {
+  __AtAutoreleasePool() {atautoreleasepoolobj = objc_autoreleasePoolPush();}
+  ~__AtAutoreleasePool() {objc_autoreleasePoolPop(atautoreleasepoolobj);}
+  void * atautoreleasepoolobj;
+};
+不难看出我们main函数的工作原理大致上是在初始化时候调用了
+void * atautoreleasepoolobj = objc_autoreleasePoolPush();
+然后在析构时候调用了
+objc_autoreleasePoolPop(atautoreleasepoolobj);```
+
+所以@autoreleasepool会被转换成上面两行代码
+
+&gt; objc_autoreleasePoolPush
+
+从[源码](https://opensource.apple.com/source/objc4/objc4-532/runtime/NSObject.mm.auto.html &#34;标题&#34;)中我们看到
+
+```objc
+void *_objc_autoreleasePoolPush(void) { return objc_autoreleasePoolPush(); }
+void _objc_autoreleasePoolPop(void *ctxt) { objc_autoreleasePoolPop(ctxt); }
+
+void *
+objc_autoreleasePoolPush(void)
+{
+    if (UseGC) return NULL;
+    return AutoreleasePoolPage::push();
+}
+
+void
+objc_autoreleasePoolPop(void *ctxt)
+{
+    if (UseGC) return;
+
+    // fixme rdar://9167170
+    if (!ctxt) return;
+
+    AutoreleasePoolPage::pop(ctxt);
+}
+push和pop是操作这一个 AutoreleasePoolPage 对象" />
+<meta name="twitter:image" content="http://localhost:1313/images/og-image.png" />
+
+<title>ios内存原理（2）</title>
+
+    <link rel="stylesheet" href="/css/output.css" />
+
+
+  </head>
+  <body class="bg-white text-black antialiased">
+    <section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
+      <div class="flex h-screen flex-col justify-between font-sans">
+        <header
+          class="flex items-center w-full bg-white justify-between py-10 sticky top-0 z-50"
+        >
+          <a class="group break-words" aria-label="Jasonphd Blogs" href="/">
+  <div class="flex items-center justify-between">
+    <div class="sm:mr-3">
+      <img src="/images/logo.svg" width="32" height="32" alt="Logo Image" />
+    </div>
+
+    <div class="hidden text-2xl font-semibold sm:block group-hover:underline">
+      <span>Jasonphd Blogs</span>
+    </div>
+  </div>
+</a>
+
+<div class="flex items-center space-x-4 leading-5 sm:space-x-6">
+  <div class="items-center space-x-4 overflow-x-auto flex sm:space-x-6">
+    
+      <a
+        href="mailto:developerluhao@gmail.com"
+        class="font-medium text-gray-900 hover:text-indigo-500"
+        
+        >ContactMe</a
+      >
+    
+      <a
+        href="/tags"
+        class="font-medium text-gray-900 hover:text-indigo-500"
+        
+        >Tags</a
+      >
+    
+      <a
+        href="/about"
+        class="font-medium text-gray-900 hover:text-indigo-500"
+        
+        >About</a
+      >
+    
+    <a href="https://github.com/forwyt" target="_blank">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="fill-[#24292F] hover:fill-indigo-500 h-6 w-6"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M12.0099 0C5.36875 0 0 5.5 0 12.3042C0 17.7432 3.43994 22.3472 8.21205 23.9767C8.80869 24.0992 9.02724 23.712 9.02724 23.3862C9.02724 23.101 9.00757 22.1232 9.00757 21.1045C5.6667 21.838 4.97099 19.6378 4.97099 19.6378C4.43409 18.2118 3.63858 17.8452 3.63858 17.8452C2.54511 17.0915 3.71823 17.0915 3.71823 17.0915C4.93117 17.173 5.56763 18.3545 5.56763 18.3545C6.64118 20.2285 8.37111 19.699 9.06706 19.373C9.16638 18.5785 9.48473 18.0285 9.82275 17.723C7.15817 17.4377 4.35469 16.3785 4.35469 11.6523C4.35469 10.3078 4.8316 9.20775 5.58729 8.35225C5.46807 8.04675 5.0504 6.7835 5.70677 5.09275C5.70677 5.09275 6.72083 4.76675 9.00732 6.35575C9.98625 6.08642 10.9958 5.9494 12.0099 5.94825C13.024 5.94825 14.0577 6.091 15.0123 6.35575C17.299 4.76675 18.3131 5.09275 18.3131 5.09275C18.9695 6.7835 18.5515 8.04675 18.4323 8.35225C19.2079 9.20775 19.6652 10.3078 19.6652 11.6523C19.6652 16.3785 16.8617 17.4172 14.1772 17.723C14.6148 18.11 14.9924 18.8433 14.9924 20.0045C14.9924 21.6545 14.9727 22.9788 14.9727 23.386C14.9727 23.712 15.1915 24.0992 15.7879 23.977C20.56 22.347 23.9999 17.7432 23.9999 12.3042C24.0196 5.5 18.6312 0 12.0099 0Z"
+        />
+      </svg>
+    </a>
+  </div>
+</div>
+
+        </header>
+        <main class="mb-auto">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "ios内存原理（2）",
+      "datePublished": "2016-09-12T14:44:52\u002b08:00",
+      "dateModified": "2016-09-12T14:44:52\u002b08:00",
+      "description": "\u003cp\u003e\u003cimg src=\u0022\/images\/9fb61babf6f061ea4929598c55cd8c2e.programming-1873854_1920.webp\u0022 alt=\u0022\u0022\u003e\n经过前面文档我们大致了解了arc\/mrc机制,是为了更好的去做iOS的内存管理\u003c\/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003e前言\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cp\u003e经过前面文档我们大致了解了arc\/mrc机制,是为了更好的去做iOS的内存管理.在面对一个对象的时候,从初始化到delloc销毁的过程中进行合适的插入 \u003cem\u003eretain\u003c\/em\u003e 和 \u003cem\u003erelease\u003c\/em\u003e 做到内存的回收释放♻️,随着iOS的迭代发展,我们开始逐渐采用一种解放程序员的新型管理模式 ARC \u0026hellip;\u003c\/p\u003e\n\u003ch3 id=\u0022什么是arcmrc\u0022\u003e什么是ARC\/MRC\u003c\/h3\u003e\n\u003cp\u003e\u003cstrong\u003eManual Reference Counting\u003c\/strong\u003e 是根据对象的引用计数器 \u003cstrong\u003ereference count\u003c\/strong\u003e 来判断在何时将一个对象所占用的内存回收\n\u003cstrong\u003eAutomatic Reference Counting\u003c\/strong\u003e 自动引用计数 是苹果子WWDC2011年引入的,其工作原理下面详细理解,根本上是通过强指针来判断\u003c\/p\u003e\n\u003ch3 id=\u0022autoreleasepool\u0022\u003eAutoreleasePool\u003c\/h3\u003e\n\u003cblockquote\u003e\n\u003cp\u003e从main函数开始了解:\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cdiv class=\u0022highlight\u0022\u003e\u003cpre tabindex=\u00220\u0022 style=\u0022color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;\u0022\u003e\u003ccode class=\u0022language-objc\u0022 data-lang=\u0022objc\u0022\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003eint\u003c\/span\u003e \u003cspan style=\u0022color:#a6e22e\u0022\u003emain\u003c\/span\u003e(\u003cspan style=\u0022color:#66d9ef\u0022\u003eint\u003c\/span\u003e argc, \u003cspan style=\u0022color:#66d9ef\u0022\u003econst\u003c\/span\u003e \u003cspan style=\u0022color:#66d9ef\u0022\u003echar\u003c\/span\u003e \u003cspan style=\u0022color:#f92672\u0022\u003e*\u003c\/span\u003e argv[]) {\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e   \u003cspan style=\u0022color:#66d9ef\u0022\u003e@autoreleasepool\u003c\/span\u003e {\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e        \u003cspan style=\u0022color:#66d9ef\u0022\u003ereturn\u003c\/span\u003e UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate \u003cspan style=\u0022color:#66d9ef\u0022\u003eclass\u003c\/span\u003e]));\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e    }\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e}\n\u003c\/span\u003e\u003c\/span\u003e\u003c\/code\u003e\u003c\/pre\u003e\u003c\/div\u003e\u003cp\u003e在这个autoreleasepool的block里面 所有的事件,消息,全部转交给了\u003cstrong\u003eUIApplication\u003c\/strong\u003e来处理,从此可以看出一个iOS应用是完全包裹在自动释放池里面的\u003c\/p\u003e\n\u003cp\u003e通过clang 编译器将main函数转换成了 main.cpp\u003c\/p\u003e\n\u003cdiv class=\u0022highlight\u0022\u003e\u003cpre tabindex=\u00220\u0022 style=\u0022color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;\u0022\u003e\u003ccode class=\u0022language-objc\u0022 data-lang=\u0022objc\u0022\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e   \u003cspan style=\u0022color:#960050;background-color:#1e0010\u0022\u003e$\u003c\/span\u003e clang \u003cspan style=\u0022color:#f92672\u0022\u003e-\u003c\/span\u003erewrite\u003cspan style=\u0022color:#f92672\u0022\u003e-\u003c\/span\u003eobjc main.m\n\u003c\/span\u003e\u003c\/span\u003e\u003c\/code\u003e\u003c\/pre\u003e\u003c\/div\u003e\u003cp\u003e我们将关注点放在__AtAutoreleasePool这个结构体上面\u003c\/p\u003e\n\u003cdiv class=\u0022highlight\u0022\u003e\u003cpre tabindex=\u00220\u0022 style=\u0022color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;\u0022\u003e\u003ccode class=\u0022language-cpp\u0022 data-lang=\u0022cpp\u0022\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003estruct\u003c\/span\u003e \u003cspan style=\u0022color:#a6e22e\u0022\u003e__AtAutoreleasePool\u003c\/span\u003e {\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e  __AtAutoreleasePool() {atautoreleasepoolobj \u003cspan style=\u0022color:#f92672\u0022\u003e=\u003c\/span\u003e objc_autoreleasePoolPush();}\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e  \u003cspan style=\u0022color:#f92672\u0022\u003e~\u003c\/span\u003e__AtAutoreleasePool() {objc_autoreleasePoolPop(atautoreleasepoolobj);}\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e  \u003cspan style=\u0022color:#66d9ef\u0022\u003evoid\u003c\/span\u003e \u003cspan style=\u0022color:#f92672\u0022\u003e*\u003c\/span\u003e atautoreleasepoolobj;\n\u003c\/span\u003e\u003c\/span\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e};\n\u003c\/span\u003e\u003c\/span\u003e\u003c\/code\u003e\u003c\/pre\u003e\u003c\/div\u003e\u003cp\u003e不难看出我们main函数的工作原理大致上是在初始化时候调用了\u003c\/p\u003e\n\u003cpre tabindex=\u00220\u0022\u003e\u003ccode\u003evoid * atautoreleasepoolobj = objc_autoreleasePoolPush();\n\u003c\/code\u003e\u003c\/pre\u003e\u003cp\u003e然后在析构时候调用了\u003c\/p\u003e\n\u003cpre tabindex=\u00220\u0022\u003e\u003ccode\u003eobjc_autoreleasePoolPop(atautoreleasepoolobj);\u0060\u0060\u0060\n\n所以@autoreleasepool会被转换成上面两行代码\n\n\u0026gt; objc_autoreleasePoolPush\n\n从[源码](https:\/\/opensource.apple.com\/source\/objc4\/objc4-532\/runtime\/NSObject.mm.auto.html \u0026#34;标题\u0026#34;)中我们看到\n\n\u0060\u0060\u0060objc\nvoid *_objc_autoreleasePoolPush(void) { return objc_autoreleasePoolPush(); }\nvoid _objc_autoreleasePoolPop(void *ctxt) { objc_autoreleasePoolPop(ctxt); }\n\nvoid *\nobjc_autoreleasePoolPush(void)\n{\n    if (UseGC) return NULL;\n    return AutoreleasePoolPage::push();\n}\n\nvoid\nobjc_autoreleasePoolPop(void *ctxt)\n{\n    if (UseGC) return;\n\n    \/\/ fixme rdar:\/\/9167170\n    if (!ctxt) return;\n\n    AutoreleasePoolPage::pop(ctxt);\n}\n\u003c\/code\u003e\u003c\/pre\u003e\u003cp\u003epush和pop是操作这一个 \u003cstrong\u003eAutoreleasePoolPage\u003c\/strong\u003e 对象\u003c\/p\u003e",
+      "image": "/images/og-image.png",
+      "url": "http:\/\/localhost:1313\/ios\/ios2\/",
+      "author": [{ "@type": "Person", "name": "jamesitachi" }]
+    }
+  </script>
+  <section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
+    <article>
+      <div class="xl:divide-y xl:divide-gray-200">
+        <header class="pt-6 xl:pb-6">
+          <div class="space-y-1 text-center">
+            <dl class="space-y-10">
+              <div>
+                <dt class="sr-only">Published on</dt>
+                <dd class="text-base font-medium leading-6 text-gray-500">
+                  
+                  
+                  <time datetime="2016-09-12T14:44:52&#43;08:00">Monday, September 12, 2016</time>
+                </dd>
+              </div>
+            </dl>
+            <div>
+              <h1
+                class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"
+              >
+                <div>ios内存原理（2）</div>
+              </h1>
+            </div>
+          </div>
+        </header>
+
+        <div
+          class="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0"
+        >
+          <dl class="pb-10 pt-6 xl:border-b xl:border-gray-200 xl:pt-11">
+            <dt class="sr-only">Authors</dt>
+            <dd>
+              <ul
+                class="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8"
+              >
+                <li class="flex items-center space-x-2">
+                  <img
+                    src="https://github.com/forwyt.png"
+                    class="rounded-full"
+                    width="38"
+                    height="38"
+                    alt="Profile Image"
+                    loading="lazy"
+                  />
+                  <dl class="whitespace-nowrap text-sm font-medium leading-5">
+                    <dt class="sr-only">Name</dt>
+                    <dd class="text-gray-900">jamesitachi</dd>
+                  </dl>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <div
+            class="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0"
+          >
+            <div class="prose max-w-none pb-8 pt-10">
+              <details open>
+                <summary class="ml-6 pb-2 pt-2 text-xl font-bold">
+                  <span>Table of Contents</span>
+                </summary>
+
+                <nav class="ml-6">
+                    <ul>
+                        <li><a href="#"></a></li>
+                          <ul>
+                              <li>
+                                <a href="#%e4%bb%80%e4%b9%88%e6%98%afarcmrc">什么是ARC/MRC</a>
+                              </li>
+                              <li>
+                                <a href="#autoreleasepool">AutoreleasePool</a>
+                              </li>
+                          </ul>
+                    </ul>
+                </nav>
+              </details>
+
+              <p><img src="/images/9fb61babf6f061ea4929598c55cd8c2e.programming-1873854_1920.webp" alt="">
+经过前面文档我们大致了解了arc/mrc机制,是为了更好的去做iOS的内存管理</p>
+<blockquote>
+<p>前言</p></blockquote>
+<p>经过前面文档我们大致了解了arc/mrc机制,是为了更好的去做iOS的内存管理.在面对一个对象的时候,从初始化到delloc销毁的过程中进行合适的插入 <em>retain</em> 和 <em>release</em> 做到内存的回收释放♻️,随着iOS的迭代发展,我们开始逐渐采用一种解放程序员的新型管理模式 ARC &hellip;</p>
+<h3 id="什么是arcmrc">什么是ARC/MRC</h3>
+<p><strong>Manual Reference Counting</strong> 是根据对象的引用计数器 <strong>reference count</strong> 来判断在何时将一个对象所占用的内存回收
+<strong>Automatic Reference Counting</strong> 自动引用计数 是苹果子WWDC2011年引入的,其工作原理下面详细理解,根本上是通过强指针来判断</p>
+<h3 id="autoreleasepool">AutoreleasePool</h3>
+<blockquote>
+<p>从main函数开始了解:</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> argv[]) {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">@autoreleasepool</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate <span style="color:#66d9ef">class</span>]));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在这个autoreleasepool的block里面 所有的事件,消息,全部转交给了<strong>UIApplication</strong>来处理,从此可以看出一个iOS应用是完全包裹在自动释放池里面的</p>
+<p>通过clang 编译器将main函数转换成了 main.cpp</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">$</span> clang <span style="color:#f92672">-</span>rewrite<span style="color:#f92672">-</span>objc main.m
+</span></span></code></pre></div><p>我们将关注点放在__AtAutoreleasePool这个结构体上面</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">__AtAutoreleasePool</span> {
+</span></span><span style="display:flex;"><span>  __AtAutoreleasePool() {atautoreleasepoolobj <span style="color:#f92672">=</span> objc_autoreleasePoolPush();}
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">~</span>__AtAutoreleasePool() {objc_autoreleasePoolPop(atautoreleasepoolobj);}
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> atautoreleasepoolobj;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>不难看出我们main函数的工作原理大致上是在初始化时候调用了</p>
+<pre tabindex="0"><code>void * atautoreleasepoolobj = objc_autoreleasePoolPush();
+</code></pre><p>然后在析构时候调用了</p>
+<pre tabindex="0"><code>objc_autoreleasePoolPop(atautoreleasepoolobj);```
+
+所以@autoreleasepool会被转换成上面两行代码
+
+&gt; objc_autoreleasePoolPush
+
+从[源码](https://opensource.apple.com/source/objc4/objc4-532/runtime/NSObject.mm.auto.html &#34;标题&#34;)中我们看到
+
+```objc
+void *_objc_autoreleasePoolPush(void) { return objc_autoreleasePoolPush(); }
+void _objc_autoreleasePoolPop(void *ctxt) { objc_autoreleasePoolPop(ctxt); }
+
+void *
+objc_autoreleasePoolPush(void)
+{
+    if (UseGC) return NULL;
+    return AutoreleasePoolPage::push();
+}
+
+void
+objc_autoreleasePoolPop(void *ctxt)
+{
+    if (UseGC) return;
+
+    // fixme rdar://9167170
+    if (!ctxt) return;
+
+    AutoreleasePoolPage::pop(ctxt);
+}
+</code></pre><p>push和pop是操作这一个 <strong>AutoreleasePoolPage</strong> 对象</p>
+<blockquote>
+<p>AutoreleasePoolPage</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> AutoreleasePoolPage 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define POOL_SENTINEL 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> pthread_key_t <span style="color:#66d9ef">const</span> key <span style="color:#f92672">=</span> AUTORELEASE_POOL_KEY;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> uint8_t <span style="color:#66d9ef">const</span> SCRIBBLE <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xA3</span>;  <span style="color:#75715e">// 0xA3A3A3A3 after releasing
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> size_t <span style="color:#66d9ef">const</span> SIZE <span style="color:#f92672">=</span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#if PROTECT_AUTORELEASEPOOL
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#ae81ff">4096</span>;  <span style="color:#75715e">// must be multiple of vm page size
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#else
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#ae81ff">4096</span>;  <span style="color:#75715e">// size and alignment, power of 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> size_t <span style="color:#66d9ef">const</span> COUNT <span style="color:#f92672">=</span> SIZE <span style="color:#f92672">/</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">id</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    magic_t <span style="color:#66d9ef">const</span> magic;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">id</span> <span style="color:#f92672">*</span>next;
+</span></span><span style="display:flex;"><span>    pthread_t <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">thread</span>;
+</span></span><span style="display:flex;"><span>    AutoreleasePoolPage <span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> parent;
+</span></span><span style="display:flex;"><span>    AutoreleasePoolPage <span style="color:#f92672">*</span>child;
+</span></span><span style="display:flex;"><span>    uint32_t <span style="color:#66d9ef">const</span> depth;
+</span></span><span style="display:flex;"><span>    uint32_t hiwat;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// SIZE-sizeof(*this) bytes of contents follow
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> operator <span style="color:#a6e22e">new</span>(size_t size) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> malloc_zone_memalign(malloc_default_zone(), SIZE, SIZE);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> operator <span style="color:#a6e22e">delete</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> p) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> free(p);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">protect</span>() {
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#if PROTECT_AUTORELEASEPOOL
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        mprotect(this, SIZE, PROT_READ);
+</span></span><span style="display:flex;"><span>        check();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">unprotect</span>() {
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#if PROTECT_AUTORELEASEPOOL
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        check();
+</span></span><span style="display:flex;"><span>        mprotect(this, SIZE, PROT_READ <span style="color:#f92672">|</span> PROT_WRITE);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>   
+</span></span></code></pre></div><p>从上面的源码简略分析一下 AutoreleasePoolPage 类 包含了</p>
+<ul>
+<li>magic 用于校验AutoreleasePoolPage的完整性</li>
+<li>thread 保存了page所在的线程</li>
+<li>size_t 常量4096字节大小 0X1000</li>
+<li>parent 父指针</li>
+<li>child 子指针 通过父子指针来构造出一条双向链表
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ge8f1lj334j30ys08udia.jpg" alt=""></li>
+</ul>
+<p>AutoreleasePoolPage 类是有56bit用来存储成员变量 剩余的都是用来存储加入自动释放池的对象 通过begin() end()
+来帮我们快速获取到内存地址的边界
+next()指向了下一个page的一片区域</p>
+<blockquote>
+<p>POOL_SENTINEL(哨兵对象)</p></blockquote>
+<p>#define POOL_SENTINEL nil
+哨兵对象只是nil的一个别称,当每一次push()压栈的时候 都会把一个nil对象放在栈顶 并且会返回该哨兵对象</p>
+<p>当调用pop()时候就会向释放池里面发送release消息 直到出现了第一个 POOL_SENTINEL</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span><span style="color:#75715e">//1.先调用push
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">objc_autoreleasePoolPush</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> AutoreleasePoolPage<span style="color:#f92672">::</span>push();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//2.push定义如下
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">push</span>() {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">return</span> autoreleaseFast(POOL_SENTINEL);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//3.在这里会进入一个比较关键的方法 autoreleaseFast，并传入哨兵对象 POOL_SENTINEL
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">id</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">autoreleaseFast</span>(<span style="color:#66d9ef">id</span> obj)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>   AutoreleasePoolPage <span style="color:#f92672">*</span>page <span style="color:#f92672">=</span> hotPage();
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">if</span> (page <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>page<span style="color:#f92672">-&gt;</span>full()) {
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">return</span> page<span style="color:#f92672">-&gt;</span>add(obj);
+</span></span><span style="display:flex;"><span>   } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (page) {
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">return</span> autoreleaseFullPage(obj, page);
+</span></span><span style="display:flex;"><span>   } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">return</span> autoreleaseNoPage(obj);
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//4 将对象添加到自动释放池页中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">id</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">id</span> obj) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">id</span> <span style="color:#f92672">*</span>ret <span style="color:#f92672">=</span> next;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">*</span>next <span style="color:#f92672">=</span> obj;
+</span></span><span style="display:flex;"><span>    next<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>上述的代码逻辑很简单就是
+1.pool 调用poolpage的push
+2.page 调用push()收到一个返回参数 POOL_SENTINEL 告诉我们该压入对象的栈顶内存地址<br>
+3.fast 会根据pool_sentinel 的地址来计算</p>
+<ul>
+<li>有hotPage 并且当前 page 不满调用 page-&gt;add(obj) 方法将对象添加至 AutoreleasePoolPage 的栈中</li>
+<li>有 hotPage 并且当前 page 已满调用 autoreleaseFullPage 初始化一个新的页调用 page-&gt;add(obj) 方法将对象添加至 AutoreleasePoolPage 的栈中</li>
+<li>无 hotPage 调用 autoreleaseNoPage 创建一个 hotPage调用 page-&gt;add(obj) 方法将对象添加至 AutoreleasePoolPage 的栈中
+4.最终的执行代码都是page去调用了一个 add()方法</li>
+</ul>
+<p>最终我们流程跑完了总结一个 方法的调用栈</p>
+<pre tabindex="0"><code class="language-oc" data-lang="oc">[NSObject autorelease]
+└── id objc_object::rootAutorelease()
+    └── id objc_object::rootAutorelease2()
+        └── static id AutoreleasePoolPage::autorelease(id obj)
+            └── static id AutoreleasePoolPage::autoreleaseFast(id obj)
+                ├── id *add(id obj)
+                ├── static id *autoreleaseFullPage(id obj, AutoreleasePoolPage *page)
+                │   ├── AutoreleasePoolPage(AutoreleasePoolPage *newParent)
+                │   └── id *add(id obj)
+                └── static id *autoreleaseNoPage(id obj)
+                    ├── AutoreleasePoolPage(AutoreleasePoolPage *newParent)
+                    └── id *add(id obj)
+</code></pre>
+            </div>
+          </div>
+
+          <footer>
+            <div
+              class="divide-gray-200 text-sm font-medium leading-5 xl:col-start-1 xl:row-start-2 xl:divide-y"
+            >
+              <div class="py-4 xl:py-8">
+                <h2 class="text-xs uppercase tracking-wide text-gray-500">
+                  Tags
+                </h2>
+                <div class="flex flex-wrap">
+                  
+                    <a
+                      href="/tags/binary"
+                      class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600"
+                      >binary</a
+                    >
+                  
+                    <a
+                      href="/tags/code"
+                      class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600"
+                      >code</a
+                    >
+                  
+                    <a
+                      href="/tags/ios"
+                      class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600"
+                      >ios</a
+                    >
+                  
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 xl:pt-8">
+              <a
+                class="text-indigo-500 hover:text-indigo-600"
+                aria-label="Back to the list"
+                href="/"
+                >← Back to the list</a
+              >
+            </div>
+          </footer>
+        </div>
+      </div>
+    </article>
+  </section>
+</main>
+        <footer><div class="mt-16 flex flex-col items-center">
+  <div class="mb-2 text-sm text-gray-500">
+    <span>(C) 2025. Jasonphd Blogs all rights reserved.</span>
+  </div>
+
+  <div class="mb-8 text-sm text-gray-500">
+    <span class="mr-1">Built with</span>
+    <a
+      class="font-semibold underline"
+      href="https://github.com/discaptive/hugo-discaptive"
+      target="_blank"
+      >hugo-discaptive</a
+    >
+  </div>
+</div>
+</footer>
+      </div>
+    </section>
+  </body>
+</html>

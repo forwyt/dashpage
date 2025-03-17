@@ -1,0 +1,31 @@
+baseURL = 'https://blogs.jasonphd.com/'
+languageCode = 'en-us'
+title = 'Jasonphd Blogs'
+theme = 'hugo-discaptive'
+
+
+[params]
+  github = 'https://github.com/forwyt'
+  username = 'jamesitachi'
+
+
+categories = ["iOS","Server","Fun"]
+tags = ["iOS", "Server","Fun"]
+
+[taxonomies]
+  tag = "tags"
+
+
+# Menu items displayed in the header.
+[[menus.main]]
+  name = 'ContactMe'
+  url = 'mailto:developerluhao@gmail.com'
+  weight = 1
+[[menus.main]]
+  name = 'Tags'
+  url = '/tags'
+  weight = 2
+[[menus.main]]
+  name = 'About'
+  url = '/about'
+  weight = 3

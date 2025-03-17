@@ -1,0 +1,3 @@
+[submodule "jasonphd/themes/hugo-discaptive"]
+	path = jasonphd/themes/hugo-discaptive
+	url = https://github.com/discaptive/hugo-discaptive.git
