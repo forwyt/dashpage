@@ -2,18 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Goes on Jasonphd Blogs</title>
-    <link>http://localhost:1313/go/</link>
+    <link>https://blogs.jasonphd.com/go/</link>
     <description>Recent content in Goes on Jasonphd Blogs</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Jan 2017 09:50:48 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/go/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Go1</title>
-      <link>http://localhost:1313/go/go1/</link>
-      <pubDate>Fri, 20 Jan 2017 09:50:48 +0800</pubDate>
-      <guid>http://localhost:1313/go/go1/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/c4673178de45c376576bb1748eff5017.go.webp&#34; alt=&#34;&#34;&gt;&#xA;go的一些入门&lt;/p&gt;&#xA;&lt;h1 id=&#34;go-advantages&#34;&gt;Go Advantages&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Go advantages&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;code run fast&lt;/li&gt;&#xA;&lt;li&gt;garbage collection&lt;/li&gt;&#xA;&lt;li&gt;simpler objects&lt;/li&gt;&#xA;&lt;li&gt;concurrency is efficient (并发性好)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;language&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;machine language&lt;/li&gt;&#xA;&lt;li&gt;assembly language&lt;/li&gt;&#xA;&lt;li&gt;high-level language&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Compiled 编译型语言 类似C C++ JAVA&lt;/p&gt;&#xA;&lt;p&gt;Interpretation 解释型语言 类似 Python JAVA,当执行的时候回将源代码翻译为机器执行的代码 所以会消耗时间&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Object&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;虽然在go语言中 没有意义上的对象.但是struck 充当了类似的角色&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Concurrency并发&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;如果在没有高并发会遇到&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Moore law 18个月的晶体管会翻倍 硬件性能增长收到限制&lt;/li&gt;&#xA;&lt;li&gt;功耗会增加&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;parallelism并行&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;variables&#xA;命名规则&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;keyword避免掉&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;declarations 申明变量 var x int&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;var 是keyword&lt;/li&gt;&#xA;&lt;li&gt;x 是变量的名称&lt;/li&gt;&#xA;&lt;li&gt;int 是类型&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;可以多行命名变量 var x,y,z int&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;类型&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://blogs.jasonphd.com/go/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

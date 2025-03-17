@@ -1,6 +1,6 @@
 +++
 date = '2016-09-12T14:44:52+08:00'
-draft = true
+draft = false
 title = 'ios内存原理（2）'
 tags = ["binary","code","ios"]
 +++

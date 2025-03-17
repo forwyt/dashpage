@@ -4,7 +4,7 @@
   dir="ltr"
   class="scroll-smooth"
 >
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     
 
 
@@ -23,20 +23,25 @@
 
 <meta property="og:title" content="Goes" />
 <meta property="og:description" content="" />
-<meta property="og:url" content="http://localhost:1313/go/" />
+<meta property="og:url" content="https://blogs.jasonphd.com/go/" />
 <meta property="og:site_name" content="Jasonphd Blogs" />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="http://localhost:1313/images/og-image.png" />
+<meta property="og:image" content="https://blogs.jasonphd.com/images/og-image.png" />
 
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Goes" />
 <meta name="twitter:description" content="" />
-<meta name="twitter:image" content="http://localhost:1313/images/og-image.png" />
+<meta name="twitter:image" content="https://blogs.jasonphd.com/images/og-image.png" />
 
 <title>Goes</title>
 
-    <link rel="stylesheet" href="/css/output.css" />
+      <link
+        rel="stylesheet"
+        href="/css/output.min.97260c8f0033d223ec20178386e59725207060eda9376a3fe20db19533c0e1e7.css"
+        integrity="sha256-lyYMjwAz0iPsIBeDhuWXJSBwYO2pN2o/4g2xlTPA4ec="
+        crossorigin="anonymous"
+      />
 
 
   </head>
@@ -124,30 +129,8 @@
           
             text-gray-600
           "
-          href="http://localhost:1313/tags/binary/"
+          href="https://blogs.jasonphd.com/tags/binary/"
           >Binary<span class="ml-2 text-gray-400"
-            >(4)</span
-          ></a
-        >
-      
-        <a
-          class="font-mono text-sm uppercase
-          
-            text-gray-600
-          "
-          href="http://localhost:1313/tags/code/"
-          >Code<span class="ml-2 text-gray-400"
-            >(7)</span
-          ></a
-        >
-      
-        <a
-          class="font-mono text-sm uppercase
-          
-            text-gray-600
-          "
-          href="http://localhost:1313/tags/go/"
-          >Go<span class="ml-2 text-gray-400"
             >(1)</span
           ></a
         >
@@ -157,9 +140,20 @@
           
             text-gray-600
           "
-          href="http://localhost:1313/tags/ios/"
+          href="https://blogs.jasonphd.com/tags/code/"
+          >Code<span class="ml-2 text-gray-400"
+            >(1)</span
+          ></a
+        >
+      
+        <a
+          class="font-mono text-sm uppercase
+          
+            text-gray-600
+          "
+          href="https://blogs.jasonphd.com/tags/ios/"
           >Ios<span class="ml-2 text-gray-400"
-            >(4)</span
+            >(1)</span
           ></a
         >
       
@@ -171,115 +165,6 @@
 
         <div class="min-w-0 flex-1">
           <ul class="divide-y divide-gray-200">
-            
-              <li class="py-12 first:pt-0">
-  <article>
-    <div class="space-y-8">
-      <div class="space-y-4">
-        <div class="flex flex-col gap-4 text-sm text-gray-500">
-          
-          
-          <time datetime="2017-01-20T09:50:48&#43;08:00">January 20, 2017</time>
-
-          <h2 class="text-2xl font-semibold text-gray-900">
-            <a class="break-words" href="http://localhost:1313/go/go1/">Go1</a>
-          </h2>
-
-          <div class="flex flex-wrap gap-2">
-            
-              <a
-                href="/tags/code"
-                class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600"
-                >code</a
-              >
-            
-              <a
-                href="/tags/go"
-                class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600"
-                >go</a
-              >
-            
-          </div>
-        </div>
-
-        <div class="text-gray-600 line-clamp-3"><p><img src="/images/c4673178de45c376576bb1748eff5017.go.webp" alt="">
-go的一些入门</p>
-<h1 id="go-advantages">Go Advantages</h1>
-<blockquote>
-<p>Go advantages</p></blockquote>
-<ul>
-<li>code run fast</li>
-<li>garbage collection</li>
-<li>simpler objects</li>
-<li>concurrency is efficient (并发性好)</li>
-</ul>
-<p>language</p>
-<ul>
-<li>machine language</li>
-<li>assembly language</li>
-<li>high-level language</li>
-</ul>
-<p>Compiled 编译型语言 类似C C++ JAVA</p>
-<p>Interpretation 解释型语言 类似 Python JAVA,当执行的时候回将源代码翻译为机器执行的代码 所以会消耗时间</p>
-<blockquote>
-<p>Object</p></blockquote>
-<p>虽然在go语言中 没有意义上的对象.但是struck 充当了类似的角色</p>
-<blockquote>
-<p>Concurrency并发</p></blockquote>
-<ul>
-<li>如果在没有高并发会遇到
-<ul>
-<li>Moore law 18个月的晶体管会翻倍 硬件性能增长收到限制</li>
-<li>功耗会增加</li>
-</ul>
-</li>
-<li>parallelism并行</li>
-</ul>
-<blockquote>
-<p>variables
-命名规则</p></blockquote>
-<ul>
-<li>
-<p>keyword避免掉</p>
-</li>
-<li>
-<p>declarations 申明变量 var x int</p>
-<ul>
-<li>var 是keyword</li>
-<li>x 是变量的名称</li>
-<li>int 是类型</li>
-</ul>
-</li>
-<li>
-<p>可以多行命名变量 var x,y,z int</p>
-</li>
-<li>
-<p>类型</p></div>
-      </div>
-
-      <a
-        href="http://localhost:1313/go/go1/"
-        class="group inline-flex items-center text-sm text-gray-600 transition-colors hover:text-gray-900"
-        >Read Article<svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5"
-        >
-          <path d="M5 12h14"></path>
-          <path d="m12 5 7 7-7 7"></path>
-        </svg>
-      </a>
-    </div>
-  </article>
-</li>
-
             
           </ul>
 
@@ -308,7 +193,7 @@ go的一些入门</p>
 
 
   <span class="text-sm text-gray-500"
-    >1 of 1</span
+    >1 of 0</span
   >
 
   

@@ -4,7 +4,7 @@
   dir="ltr"
   class="scroll-smooth"
 >
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     
 
 
@@ -93,10 +93,10 @@ Page Fault
 2.对于程序而言，其逻辑地址空间中的地址始终可用。但是，如果应用程序访问当前不在物理 RAM 中的内存页上的地址，发生页面错误。当这种情况发生时，虚拟内存系统会调用一个特殊的页面错误处理程序来立即响应该错误。页面错误处理程序停止当前正在执行的代码，找到物理内存的空闲页面，从磁盘加载包含所需数据的页面，更新页表，然后将控制权返回给程序代码，程序代码可以访问内存地址通常情况下。这个过程被称为寻呼。
 3.如果物理内存中没有可用的空闲页面，则处理程序必须首先释放现有页面以为新页面腾出空间。系统如何发布页面取决于平台。在 OS X 中，虚拟内存系统经常将页面写入后备存储。这后备存储是基于磁盘的存储库，其中包含给定进程使用的内存页的副本。将数据从物理内存移动到后备存储称为调出（或“交换出”）；将数据从后备存储移回物理内存称为分页（或“交换”）。在 iOS 中，没有后备存储，因此页面永远不会调出到磁盘，但只读页面仍会根据需要从磁盘调入。
 4.在 OS X 和早期版本的 iOS 中，页面的大小是 4 KB。在更高版本的 iOS 中，基于 A7 和 A8 的系统向由 4 KB 物理页支持的 64 位用户空间公开 16 KB 页面，而 A9 系统公开由 16 KB 物理页支持的 16 KB 页面。这些大小决定了发生页面错误时系统从磁盘读取多少KB。当系统花费过多的时间处理页面错误以及读写页面而不是执行程序代码时，就会发生磁盘抖动。" />
-<meta property="og:url" content="http://localhost:1313/ios/ios0/" />
+<meta property="og:url" content="https://blogs.jasonphd.com/ios/ios0/" />
 <meta property="og:site_name" content="Jasonphd Blogs" />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="http://localhost:1313/images/og-image.png" />
+<meta property="og:image" content="https://blogs.jasonphd.com/images/og-image.png" />
 
 
 <meta name="twitter:card" content="summary_large_image" />
@@ -137,11 +137,16 @@ Page Fault
 2.对于程序而言，其逻辑地址空间中的地址始终可用。但是，如果应用程序访问当前不在物理 RAM 中的内存页上的地址，发生页面错误。当这种情况发生时，虚拟内存系统会调用一个特殊的页面错误处理程序来立即响应该错误。页面错误处理程序停止当前正在执行的代码，找到物理内存的空闲页面，从磁盘加载包含所需数据的页面，更新页表，然后将控制权返回给程序代码，程序代码可以访问内存地址通常情况下。这个过程被称为寻呼。
 3.如果物理内存中没有可用的空闲页面，则处理程序必须首先释放现有页面以为新页面腾出空间。系统如何发布页面取决于平台。在 OS X 中，虚拟内存系统经常将页面写入后备存储。这后备存储是基于磁盘的存储库，其中包含给定进程使用的内存页的副本。将数据从物理内存移动到后备存储称为调出（或“交换出”）；将数据从后备存储移回物理内存称为分页（或“交换”）。在 iOS 中，没有后备存储，因此页面永远不会调出到磁盘，但只读页面仍会根据需要从磁盘调入。
 4.在 OS X 和早期版本的 iOS 中，页面的大小是 4 KB。在更高版本的 iOS 中，基于 A7 和 A8 的系统向由 4 KB 物理页支持的 64 位用户空间公开 16 KB 页面，而 A9 系统公开由 16 KB 物理页支持的 16 KB 页面。这些大小决定了发生页面错误时系统从磁盘读取多少KB。当系统花费过多的时间处理页面错误以及读写页面而不是执行程序代码时，就会发生磁盘抖动。" />
-<meta name="twitter:image" content="http://localhost:1313/images/og-image.png" />
+<meta name="twitter:image" content="https://blogs.jasonphd.com/images/og-image.png" />
 
 <title>二进制文件重排</title>
 
-    <link rel="stylesheet" href="/css/output.css" />
+      <link
+        rel="stylesheet"
+        href="/css/output.min.97260c8f0033d223ec20178386e59725207060eda9376a3fe20db19533c0e1e7.css"
+        integrity="sha256-lyYMjwAz0iPsIBeDhuWXJSBwYO2pN2o/4g2xlTPA4ec="
+        crossorigin="anonymous"
+      />
 
 
   </head>
@@ -217,7 +222,7 @@ Page Fault
       "dateModified": "2018-03-17T14:54:44\u002b08:00",
       "description": "\u003cp\u003e\u003cimg src=\u0022\/images\/ww2.webp\u0022 alt=\u0022lancher\u0022 title=\u0022start\u0022\u003e\u003c\/p\u003e\n\u003cp\u003e名称来自战争术语 抢滩登陆 (beach head)\n目的是更快的将iOS的application启动提速. 让用户更快的打开app !推广一波🤣 \u003ca href=\u0022https:\/\/github.com\/forwyt\/beachhead\u0022\u003e开源库\u003c\/a\u003e\u003c\/p\u003e\n\u003ch2 id=\u0022进程访问内存的原理\u0022\u003e进程访问内存的原理\u003c\/h2\u003e\n\u003cblockquote\u003e\n\u003cp\u003e在计算机中，\u003cstrong\u003e进程\u003c\/strong\u003e 是操作系统分配给正在运行的程序的一种资源。它可以看作是程序的执行实例，包括程序计数器、寄存器、堆栈和打开的文件等。每个进程都在自己的\u003cstrong\u003e虚拟地址\u003c\/strong\u003e空间中运行，这使得每个进程都有自己独立的内存空间。\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003ch3 id=\u0022虚拟地址\u0022\u003e虚拟地址\u003c\/h3\u003e\n\u003col\u003e\n\u003cli\u003e\n\u003cp\u003e地址空间划分：操作系统将每个进程的地址空间划分为多个固定大小的页。通常，每个页的大小为4KB\u003c\/p\u003e\n\u003c\/li\u003e\n\u003cli\u003e\n\u003cp\u003e页表创建：操作系统为每个进程创建一个页表，用于将虚拟地址映射到物理地址。页表是一个数据结构，它记录了每个虚拟页对应的物理页的地址。\u003c\/p\u003e\n\u003c\/li\u003e\n\u003cli\u003e\n\u003cp\u003e虚拟地址转换：当进程访问内存时，它使用虚拟地址。操作系统通过查找页表中的映射关系，将虚拟地址转换为物理地址。这个转换过程通常包括两个步骤。\u003c\/p\u003e\n\u003c\/li\u003e\n\u003c\/ol\u003e\n\u003cul\u003e\n\u003cli\u003e页目录查找：进程的虚拟地址通常被划分为三个部分：页目录索引、页表索引和页内偏移。首先，操作系统使用页目录索引在页目录中查找对应的页表。\u003c\/li\u003e\n\u003cli\u003e页表查找：操作系统使用页表索引在找到的页表中查找对应的物理页的地址\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003col start=\u00224\u0022\u003e\n\u003cli\u003e内存访问：当虚拟地址被转换为物理地址后，进程可以使用物理地址来访问内存。这样，进程就可以在自己的虚拟地址空间中进行内存操作，而不需要关心物理内存的实际分布。\u003c\/li\u003e\n\u003c\/ol\u003e\n\u003cp\u003e为了提高效率和方便管理，又对虚拟内存和物理内存又进行分页（Page）。当进程访问一个虚拟内存 Page 而对应的物理内存却不存在时，会触发一次缺页中断（Page Fault），分配物理内存，有需要的话会从磁盘 \u003cstrong\u003emmap\u003c\/strong\u003e 读人数据。\nmmap\u003c\/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003emmap是一种内存映射技术，它允许应用程序将文件或其他设备映射到自己的虚拟地址空间中，从而可以像访问内存一样访问这些数据。mmap可以提供高效的读写文件的方式，并且还可以用于共享内存和匿名内存映射等场景\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003ch3 id=\u0022page-fault\u0022\u003ePage Fault\u003c\/h3\u003e\n\u003cblockquote\u003e\n\u003cp\u003e当进程访问一个虚拟内存 Page 而对应的物理内存却不存在时，会触发一次缺页中断（Page Fault），分配物理内存，有需要的话会从磁盘 mmap 读人数据。通过 App Store 渠道分发的 App，Page Fault 还会进行签名验证，所以一次 Page Fault 的耗时比想象的多\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cp\u003e1.虚拟内存允许操作系统摆脱物理 RAM 的限制。虚拟内存管理器创建一个逻辑地址空间（或“每个进程的“虚拟”地址空间）并将其划分为大小统一的内存块，称为页面。处理器及其内存管理单元（MMU）维护一个页表将程序逻辑地址空间中的页面映射到计算机 RAM 中的硬件地址。当程序代码访问内存中的地址时，MMU 使用页表将指定的逻辑地址转换为实际的硬件内存地址。这种转换是自动发生的，并且对于正在运行的应用程序是透明的。\u003c\/p\u003e\n\u003cp\u003e2.对于程序而言，其逻辑地址空间中的地址始终可用。但是，如果应用程序访问当前不在物理 RAM 中的内存页上的地址，发生页面错误。当这种情况发生时，虚拟内存系统会调用一个特殊的页面错误处理程序来立即响应该错误。页面错误处理程序停止当前正在执行的代码，找到物理内存的空闲页面，从磁盘加载包含所需数据的页面，更新页表，然后将控制权返回给程序代码，程序代码可以访问内存地址通常情况下。这个过程被称为寻呼。\u003c\/p\u003e\n\u003cp\u003e3.如果物理内存中没有可用的空闲页面，则处理程序必须首先释放现有页面以为新页面腾出空间。系统如何发布页面取决于平台。在 OS X 中，虚拟内存系统经常将页面写入后备存储。这后备存储是基于磁盘的存储库，其中包含给定进程使用的内存页的副本。将数据从物理内存移动到后备存储称为调出（或“交换出”）；将数据从后备存储移回物理内存称为分页（或“交换”）。在 iOS 中，没有后备存储，因此页面永远不会调出到磁盘，但只读页面仍会根据需要从磁盘调入。\u003c\/p\u003e\n\u003cp\u003e4.在 OS X 和早期版本的 iOS 中，页面的大小是 4 KB。在更高版本的 iOS 中，基于 A7 和 A8 的系统向由 4 KB 物理页支持的 64 位用户空间公开 16 KB 页面，而 A9 系统公开由 16 KB 物理页支持的 16 KB 页面。这些大小决定了发生页面错误时系统从磁盘读取多少KB。当系统花费过多的时间处理页面错误以及读写页面而不是执行程序代码时，就会发生磁盘抖动。\u003c\/p\u003e",
       "image": "/images/og-image.png",
-      "url": "http:\/\/localhost:1313\/ios\/ios0\/",
+      "url": "https:\/\/blogs.jasonphd.com\/ios\/ios0\/",
       "author": [{ "@type": "Person", "name": "jamesitachi" }]
     }
   </script>
