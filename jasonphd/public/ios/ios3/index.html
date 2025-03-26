@@ -1,5 +1,25 @@
-<!doctype html><html lang=en-us dir=ltr class=scroll-smooth><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="index, follow"><meta name=googlebot content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"><meta name=description content="
-虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题&mldr;
+<!doctype html>
+<html
+  lang="en-us"
+  dir="ltr"
+  class="scroll-smooth"
+>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="index, follow" />
+<meta
+  name="googlebot"
+  content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
+/>
+
+<meta name="description" content="
+虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题&hellip;
 虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题
 MRC
 
@@ -14,7 +34,7 @@ MRC
       
           持有对象
           retain
-          +1
+          &#43;1
       
       
           释放对象
@@ -92,8 +112,12 @@ assign表明 setter 仅仅是一个简单的赋值操作，通常用于基本的
 
 ARC下仍然需要注意的内存管理问题
 循环引用问题。
-当两个对象互相持有对方的强引用时，并且这两个对象的引用计数都不是0的时候，便造成了引用循环，从而使用计数后内存无法得到释放。可以从以下几个方面入手："><meta property="og:title" content="ios内存原理（3）"><meta property="og:description" content="
-虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题&mldr;
+当两个对象互相持有对方的强引用时，并且这两个对象的引用计数都不是0的时候，便造成了引用循环，从而使用计数后内存无法得到释放。可以从以下几个方面入手：" />
+
+
+<meta property="og:title" content="ios内存原理（3）" />
+<meta property="og:description" content="
+虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题&hellip;
 虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题
 MRC
 
@@ -108,7 +132,7 @@ MRC
       
           持有对象
           retain
-          +1
+          &#43;1
       
       
           释放对象
@@ -186,8 +210,17 @@ assign表明 setter 仅仅是一个简单的赋值操作，通常用于基本的
 
 ARC下仍然需要注意的内存管理问题
 循环引用问题。
-当两个对象互相持有对方的强引用时，并且这两个对象的引用计数都不是0的时候，便造成了引用循环，从而使用计数后内存无法得到释放。可以从以下几个方面入手："><meta property="og:url" content="https://blogs.jasonphd.com/ios/ios3/"><meta property="og:site_name" content="Jasonphd Blogs"><meta property="og:type" content="website"><meta property="og:image" content="https://blogs.jasonphd.com/images/og-image.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="ios内存原理（3）"><meta name=twitter:description content="
-虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题&mldr;
+当两个对象互相持有对方的强引用时，并且这两个对象的引用计数都不是0的时候，便造成了引用循环，从而使用计数后内存无法得到释放。可以从以下几个方面入手：" />
+<meta property="og:url" content="http://localhost:1313/ios/ios3/" />
+<meta property="og:site_name" content="Jasonphd Blogs" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="http://localhost:1313/images/og-image.png" />
+
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ios内存原理（3）" />
+<meta name="twitter:description" content="
+虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题&hellip;
 虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题
 MRC
 
@@ -202,7 +235,7 @@ MRC
       
           持有对象
           retain
-          +1
+          &#43;1
       
       
           释放对象
@@ -280,32 +313,392 @@ assign表明 setter 仅仅是一个简单的赋值操作，通常用于基本的
 
 ARC下仍然需要注意的内存管理问题
 循环引用问题。
-当两个对象互相持有对方的强引用时，并且这两个对象的引用计数都不是0的时候，便造成了引用循环，从而使用计数后内存无法得到释放。可以从以下几个方面入手："><meta name=twitter:image content="https://blogs.jasonphd.com/images/og-image.png"><title>ios内存原理（3）</title>
-<link rel=stylesheet href=/css/output.min.97260c8f0033d223ec20178386e59725207060eda9376a3fe20db19533c0e1e7.css integrity="sha256-lyYMjwAz0iPsIBeDhuWXJSBwYO2pN2o/4g2xlTPA4ec=" crossorigin=anonymous></head><body class="bg-white text-black antialiased"><section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0"><div class="flex h-screen flex-col justify-between font-sans"><header class="flex items-center w-full bg-white justify-between py-10 sticky top-0 z-50"><a class="group break-words" aria-label="Jasonphd Blogs" href=/><div class="flex items-center justify-between"><div class=sm:mr-3><img src=/images/logo.svg width=32 height=32 alt="Logo Image"></div><div class="hidden text-2xl font-semibold sm:block group-hover:underline"><span>Jasonphd Blogs</span></div></div></a><div class="flex items-center space-x-4 leading-5 sm:space-x-6"><div class="items-center space-x-4 overflow-x-auto flex sm:space-x-6"><a href=mailto:developerluhao@gmail.com class="font-medium text-gray-900 hover:text-indigo-500">ContactMe</a>
-<a href=/tags class="font-medium text-gray-900 hover:text-indigo-500">Tags</a>
-<a href=/about class="font-medium text-gray-900 hover:text-indigo-500">About</a>
-<a href=https://github.com/forwyt target=_blank><svg width="24" height="24" viewBox="0 0 24 24" fill="currentcolor" class="fill-[#24292F] hover:fill-indigo-500 h-6 w-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.0099.0C5.36875.0.0 5.5.0 12.3042c0 5.439 3.43994 10.043 8.21205 11.6725C8.80869 24.0992 9.02724 23.712 9.02724 23.3862 9.02724 23.101 9.00757 22.1232 9.00757 21.1045 5.6667 21.838 4.97099 19.6378 4.97099 19.6378 4.43409 18.2118 3.63858 17.8452 3.63858 17.8452 2.54511 17.0915 3.71823 17.0915 3.71823 17.0915 4.93117 17.173 5.56763 18.3545 5.56763 18.3545c1.07355 1.874 2.80348 1.3445 3.49943 1.0185C9.16638 18.5785 9.48473 18.0285 9.82275 17.723 7.15817 17.4377 4.35469 16.3785 4.35469 11.6523c0-1.3445.47691-2.44455 1.2326-3.30005C5.46807 8.04675 5.0504 6.7835 5.70677 5.09275c0 0 1.01406-.326 3.30055 1.263C9.98625 6.08642 10.9958 5.9494 12.0099 5.94825c1.0141.0 2.0478.14275 3.0024.4075 2.2867-1.589 3.3008-1.263 3.3008-1.263C18.9695 6.7835 18.5515 8.04675 18.4323 8.35225 19.2079 9.20775 19.6652 10.3078 19.6652 11.6523c0 4.7262-2.8035 5.7649-5.488 6.0707C14.6148 18.11 14.9924 18.8433 14.9924 20.0045 14.9924 21.6545 14.9727 22.9788 14.9727 23.386 14.9727 23.712 15.1915 24.0992 15.7879 23.977c4.7721-1.63 8.212-6.2338 8.212-11.6728C24.0196 5.5 18.6312.0 12.0099.0z"/></svg></a></div></div></header><main class=mb-auto><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"ios内存原理（3）","datePublished":"2016-09-14T15:44:54\u002b08:00","dateModified":"2016-09-14T15:44:54\u002b08:00","description":"\u003cp\u003e\u003cimg src=\u0022\/images\/29e9bff778c21ba1fce2e366c566cc14.watch.webp\u0022 alt=\u0022\u0022\u003e\n虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题\u0026hellip;\u003c\/p\u003e\n\u003cp\u003e虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题\u003c\/p\u003e\n\u003ch3 id=\u0022mrc\u0022\u003eMRC\u003c\/h3\u003e\n\u003ctable\u003e\n  \u003cthead\u003e\n      \u003ctr\u003e\n          \u003cth style=\u0022text-align: center\u0022\u003e对象操作\u003c\/th\u003e\n          \u003cth style=\u0022text-align: center\u0022\u003eOC中对应的方法\u003c\/th\u003e\n          \u003cth style=\u0022text-align: center\u0022\u003e对应的引用计数的化\u003c\/th\u003e\n      \u003c\/tr\u003e\n  \u003c\/thead\u003e\n  \u003ctbody\u003e\n      \u003ctr\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003e持有对象\u003c\/td\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003eretain\u003c\/td\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003e\u002b1\u003c\/td\u003e\n      \u003c\/tr\u003e\n      \u003ctr\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003e释放对象\u003c\/td\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003erelease\u003c\/td\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003e-1\u003c\/td\u003e\n      \u003c\/tr\u003e\n      \u003ctr\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003e废弃对象\u003c\/td\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003edealloc\u003c\/td\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003e0\u003c\/td\u003e\n      \u003c\/tr\u003e\n  \u003c\/tbody\u003e\n\u003c\/table\u003e\n\u003ch3 id=\u0022arc\u0022\u003eARC\u003c\/h3\u003e\n\u003cp\u003e根据指针来操作引用\n在ARC模式下，只要没有强指针（强引用）指向对象，对象就会被释放。在ARC模式下，不允许使用retain、release、retainCount等方法。并且，如果使用dealloc方法时，不允许调用[super dealloc]方法。\u003c\/p\u003e\n\u003cp\u003eARC模式下的property变量修饰词为strong、weak，相当于MRC模式下的retain、assign。strong :代替retain，缺省关键词，代表强引用。weak：代替assign，声明了一个可以自动设置nil的弱引用，但是比assign多一个功能，指针指向的地址被释放之后，指针本身也会自动被释放。\u003c\/p\u003e\n\u003cp\u003e实现方式是在编译时期自动在已有代码中插入合适的内存管理代码以及在 Runtime 做一些优化。详细的工作原理见 上一篇 \u003cstrong\u003e内存管理(2)\u003c\/strong\u003e\u003c\/p\u003e\n\u003cp\u003eARC提供四种与内存管理有关的变量标识符，分别是：\u003c\/p\u003e\n\u003ch3 id=\u0022关键字\u0022\u003e关键字\u003c\/h3\u003e\n\u003cul\u003e\n\u003cli\u003e__strong\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cblockquote\u003e\n\u003cp\u003e__strong 是默认使用的标识符。只有还有一个强指针指向某个对象，这个对象就会一直存活。\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cul\u003e\n\u003cli\u003e__weak\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cblockquote\u003e\n\u003cp\u003e__weak 声明这个引用不会保持被引用对象的存活，如果对象没有强引用了，弱引用会被置为 nil\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cul\u003e\n\u003cli\u003e_ unsafe _unretained\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cblockquote\u003e\n\u003cp\u003e__unsafe_unretained 声明这个引用不会保持被引用对象的存活，如果对象没有强引用了，它不会被置为 nil。如果它引用的对象被回收掉了，该指针就变成了野指针。\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cul\u003e\n\u003cli\u003e__autoReleasing\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cblockquote\u003e\n\u003cp\u003e__autoreleasing 用于标示使用引用传值的参数（id *），在函数返回时会被自动释放掉。\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cp\u003e变量标识符的用法如下，在类型和变量名之间：\u003c\/p\u003e\n\u003cdiv class=\u0022highlight\u0022\u003e\u003cpre tabindex=\u00220\u0022 style=\u0022color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;\u0022\u003e\u003ccode class=\u0022language-objc\u0022 data-lang=\u0022objc\u0022\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003eNumber\u003cspan style=\u0022color:#f92672\u0022\u003e*\u003c\/span\u003e \u003cspan style=\u0022color:#66d9ef\u0022\u003e__strong\u003c\/span\u003e num \u003cspan style=\u0022color:#f92672\u0022\u003e=\u003c\/span\u003e [[Number alloc] init];\n\u003c\/span\u003e\u003c\/span\u003e\u003c\/code\u003e\u003c\/pre\u003e\u003c\/div\u003e\u003cp\u003e属性标识符\u003c\/p\u003e\n\u003cdiv class=\u0022highlight\u0022\u003e\u003cpre tabindex=\u00220\u0022 style=\u0022color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;\u0022\u003e\u003ccode class=\u0022language-objc\u0022 data-lang=\u0022objc\u0022\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003e@property\u003c\/span\u003e (\u003cspan style=\u0022color:#66d9ef\u0022\u003eassign\u003c\/span\u003e\u003cspan style=\u0022color:#f92672\u0022\u003e\/\u003c\/span\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003eretain\u003c\/span\u003e\u003cspan style=\u0022color:#f92672\u0022\u003e\/\u003c\/span\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003estrong\u003c\/span\u003e\u003cspan style=\u0022color:#f92672\u0022\u003e\/\u003c\/span\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003eweak\u003c\/span\u003e\u003cspan style=\u0022color:#f92672\u0022\u003e\/\u003c\/span\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003eunsafe_unretained\u003c\/span\u003e\u003cspan style=\u0022color:#f92672\u0022\u003e\/\u003c\/span\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003ecopy\u003c\/span\u003e) Number\u003cspan style=\u0022color:#f92672\u0022\u003e*\u003c\/span\u003e num\n\u003c\/span\u003e\u003c\/span\u003e\u003c\/code\u003e\u003c\/pre\u003e\u003c\/div\u003e\u003cp\u003eassign表明 setter 仅仅是一个简单的赋值操作，通常用于基本的数值类型，例如CGFloat和NSInteger。\u003c\/p\u003e\n\u003ctable\u003e\n  \u003cthead\u003e\n      \u003ctr\u003e\n          \u003cth\u003ekey\u003c\/th\u003e\n          \u003cth\u003e含义\u003c\/th\u003e\n      \u003c\/tr\u003e\n  \u003c\/thead\u003e\n  \u003ctbody\u003e\n      \u003ctr\u003e\n          \u003ctd\u003estrong\u003c\/td\u003e\n          \u003ctd\u003e表明属性定义一个拥有者关系。当给属性设定一个新值的时候，首先这个值进行 retain ，旧值进行 release ，然后进行赋值操作。\u003c\/td\u003e\n      \u003c\/tr\u003e\n      \u003ctr\u003e\n          \u003ctd\u003eweak\u003c\/td\u003e\n          \u003ctd\u003e表明属性定义了一个非拥有者关系。当给属性设定一个新值的时候，这个值不会进行 retain，旧值也不会进行 release， 而是进行类似 assign 的操作。不过当属性指向的对象被销毁时，该属性会被置为nil\u003c\/td\u003e\n      \u003c\/tr\u003e\n      \u003ctr\u003e\n          \u003ctd\u003eunsafe_unretained\u003c\/td\u003e\n          \u003ctd\u003e语义和 assign 类似，不过是用于对象类型的，表示一个非拥有(unretained)的，同时也不会在对象被销毁时置为nil的(unsafe)关系\u003c\/td\u003e\n      \u003c\/tr\u003e\n      \u003ctr\u003e\n          \u003ctd\u003ecopy\u003c\/td\u003e\n          \u003ctd\u003e类似于 strong，不过在赋值时进行 copy 操作而不是 retain 操作。通常在需要保留某个不可变对象（NSString最常见），并且防止它被意外改变时使用\u003c\/td\u003e\n      \u003c\/tr\u003e\n      \u003ctr\u003e\n          \u003ctd\u003eunsafe_unretained\u003c\/td\u003e\n          \u003ctd\u003e（1）兼容性，iOS4之前没有weak只能用unsafe_unretained（2）性能考虑，性能比weak要好\u003c\/td\u003e\n      \u003c\/tr\u003e\n  \u003c\/tbody\u003e\n\u003c\/table\u003e\n\u003ch3 id=\u0022arc下仍然需要注意的内存管理问题\u0022\u003eARC下仍然需要注意的内存管理问题\u003c\/h3\u003e\n\u003cp\u003e循环引用问题。\n当两个对象互相持有对方的强引用时，并且这两个对象的引用计数都不是0的时候，便造成了引用循环，从而使用计数后内存无法得到释放。可以从以下几个方面入手：\u003c\/p\u003e","image":"/images/og-image.png","url":"https:\/\/blogs.jasonphd.com\/ios\/ios3\/","author":[{"@type":"Person","name":"jamesitachi"}]}</script><section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0"><article><div class="xl:divide-y xl:divide-gray-200"><header class="pt-6 xl:pb-6"><div class="space-y-1 text-center"><dl class=space-y-10><div><dt class=sr-only>Published on</dt><dd class="text-base font-medium leading-6 text-gray-500"><time datetime=2016-09-14T15:44:54+08:00>Wednesday, September 14, 2016</time></dd></div></dl><div><h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"><div>ios内存原理（3）</div></h1></div></div></header><div class="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0"><dl class="pb-10 pt-6 xl:border-b xl:border-gray-200 xl:pt-11"><dt class=sr-only>Authors</dt><dd><ul class="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8"><li class="flex items-center space-x-2"><img src=https://github.com/forwyt.png class=rounded-full width=38 height=38 alt="Profile Image" loading=lazy><dl class="whitespace-nowrap text-sm font-medium leading-5"><dt class=sr-only>Name</dt><dd class=text-gray-900>jamesitachi</dd></dl></li></ul></dd></dl><div class="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0"><div class="prose max-w-none pb-8 pt-10"><details open><summary class="ml-6 pb-2 pt-2 text-xl font-bold"><span>Table of Contents</span></summary><nav class=ml-6><ul><li><a href=#></a></li><ul><li><a href=#mrc>MRC</a></li><li><a href=#arc>ARC</a></li><li><a href=#%e5%85%b3%e9%94%ae%e5%ad%97>关键字</a></li><li><a href=#arc%e4%b8%8b%e4%bb%8d%e7%84%b6%e9%9c%80%e8%a6%81%e6%b3%a8%e6%84%8f%e7%9a%84%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86%e9%97%ae%e9%a2%98>ARC下仍然需要注意的内存管理问题</a></li><li><a href=#autorelease-pool-%e4%b8%8e%e5%87%bd%e6%95%b0%e8%bf%94%e5%9b%9e%e5%80%bc>Autorelease Pool 与函数返回值</a></li><li><a href=#other>other</a></li><li><a href=#%e6%80%bb%e7%bb%93>总结</a></li></ul></ul></nav></details><p><img src=/images/29e9bff778c21ba1fce2e366c566cc14.watch.webp alt>
-虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题&mldr;</p><p>虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题</p><h3 id=mrc>MRC</h3><table><thead><tr><th style=text-align:center>对象操作</th><th style=text-align:center>OC中对应的方法</th><th style=text-align:center>对应的引用计数的化</th></tr></thead><tbody><tr><td style=text-align:center>持有对象</td><td style=text-align:center>retain</td><td style=text-align:center>+1</td></tr><tr><td style=text-align:center>释放对象</td><td style=text-align:center>release</td><td style=text-align:center>-1</td></tr><tr><td style=text-align:center>废弃对象</td><td style=text-align:center>dealloc</td><td style=text-align:center>0</td></tr></tbody></table><h3 id=arc>ARC</h3><p>根据指针来操作引用
-在ARC模式下，只要没有强指针（强引用）指向对象，对象就会被释放。在ARC模式下，不允许使用retain、release、retainCount等方法。并且，如果使用dealloc方法时，不允许调用[super dealloc]方法。</p><p>ARC模式下的property变量修饰词为strong、weak，相当于MRC模式下的retain、assign。strong :代替retain，缺省关键词，代表强引用。weak：代替assign，声明了一个可以自动设置nil的弱引用，但是比assign多一个功能，指针指向的地址被释放之后，指针本身也会自动被释放。</p><p>实现方式是在编译时期自动在已有代码中插入合适的内存管理代码以及在 Runtime 做一些优化。详细的工作原理见 上一篇 <strong>内存管理(2)</strong></p><p>ARC提供四种与内存管理有关的变量标识符，分别是：</p><h3 id=关键字>关键字</h3><ul><li>__strong</li></ul><blockquote><p>__strong 是默认使用的标识符。只有还有一个强指针指向某个对象，这个对象就会一直存活。</p></blockquote><ul><li>__weak</li></ul><blockquote><p>__weak 声明这个引用不会保持被引用对象的存活，如果对象没有强引用了，弱引用会被置为 nil</p></blockquote><ul><li>_ unsafe _unretained</li></ul><blockquote><p>__unsafe_unretained 声明这个引用不会保持被引用对象的存活，如果对象没有强引用了，它不会被置为 nil。如果它引用的对象被回收掉了，该指针就变成了野指针。</p></blockquote><ul><li>__autoReleasing</li></ul><blockquote><p>__autoreleasing 用于标示使用引用传值的参数（id *），在函数返回时会被自动释放掉。</p></blockquote><p>变量标识符的用法如下，在类型和变量名之间：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-objc data-lang=objc><span style=display:flex><span>Number<span style=color:#f92672>*</span> <span style=color:#66d9ef>__strong</span> num <span style=color:#f92672>=</span> [[Number alloc] init];
-</span></span></code></pre></div><p>属性标识符</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-objc data-lang=objc><span style=display:flex><span><span style=color:#66d9ef>@property</span> (<span style=color:#66d9ef>assign</span><span style=color:#f92672>/</span><span style=color:#66d9ef>retain</span><span style=color:#f92672>/</span><span style=color:#66d9ef>strong</span><span style=color:#f92672>/</span><span style=color:#66d9ef>weak</span><span style=color:#f92672>/</span><span style=color:#66d9ef>unsafe_unretained</span><span style=color:#f92672>/</span><span style=color:#66d9ef>copy</span>) Number<span style=color:#f92672>*</span> num
-</span></span></code></pre></div><p>assign表明 setter 仅仅是一个简单的赋值操作，通常用于基本的数值类型，例如CGFloat和NSInteger。</p><table><thead><tr><th>key</th><th>含义</th></tr></thead><tbody><tr><td>strong</td><td>表明属性定义一个拥有者关系。当给属性设定一个新值的时候，首先这个值进行 retain ，旧值进行 release ，然后进行赋值操作。</td></tr><tr><td>weak</td><td>表明属性定义了一个非拥有者关系。当给属性设定一个新值的时候，这个值不会进行 retain，旧值也不会进行 release， 而是进行类似 assign 的操作。不过当属性指向的对象被销毁时，该属性会被置为nil</td></tr><tr><td>unsafe_unretained</td><td>语义和 assign 类似，不过是用于对象类型的，表示一个非拥有(unretained)的，同时也不会在对象被销毁时置为nil的(unsafe)关系</td></tr><tr><td>copy</td><td>类似于 strong，不过在赋值时进行 copy 操作而不是 retain 操作。通常在需要保留某个不可变对象（NSString最常见），并且防止它被意外改变时使用</td></tr><tr><td>unsafe_unretained</td><td>（1）兼容性，iOS4之前没有weak只能用unsafe_unretained（2）性能考虑，性能比weak要好</td></tr></tbody></table><h3 id=arc下仍然需要注意的内存管理问题>ARC下仍然需要注意的内存管理问题</h3><p>循环引用问题。
-当两个对象互相持有对方的强引用时，并且这两个对象的引用计数都不是0的时候，便造成了引用循环，从而使用计数后内存无法得到释放。可以从以下几个方面入手：</p><p>(1)注意变量作用域，使用 autorelease 让编译器来处理引用
-Autorelase Pool 提供了一种可以允许你向一个对象延迟发送release消息的机制。当你想放弃一个对象的所有权，同时又不希望这个对象立即被释放掉（例如在一个方法中返回一个对象时），Autorelease Pool 的作用就显现出来了。所谓的延迟发送release消息指的是，当我们把一个对象标记为autorelease时:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-objc data-lang=objc><span style=display:flex><span>NSString<span style=color:#f92672>*</span> str <span style=color:#f92672>=</span> [[[NSString alloc] initWithString:<span style=color:#e6db74>@&#34;hello&#34;</span>] autorelease];
-</span></span></code></pre></div><p>这个对象的 retainCount 会+1，但是并不会发生 release。当这段语句所处的 autoreleasepool 进行 drain 操作时，所有标记了 autorelease 的对象的 retainCount 会被 -1。即 release 消息的发送被延迟到 pool 释放的时候了。</p><p>(2)在 ARC 环境下，苹果引入了 @autoreleasepool 语法，不再需要手动调用 autorelease 和 drain 等方法。系统在 runloop 中创建的 autoreleaspool 会在 runloop 一个 event 结束时进行释放操作。我们手动创建的 autoreleasepool 会在 block 执行完成之后进行 drain 操作。
-main.m 中 Autorelease Pool 的解释</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-objc data-lang=objc><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(<span style=color:#66d9ef>int</span> argc, <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span> argv[]) {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>@autoreleasepool</span> {
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate <span style=color:#66d9ef>class</span>]));
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>这里的 pool 有什么作用，能不能去掉之类? 在这里我们分析一下。根据苹果官方文档， UIApplicationMain 函数是整个 app 的入口，用来创建 application 对象（单例）和 application delegate。</p><p>尽管这个函数有返回值，但是实际上却永远不会返回，当按下 Home 键时，app 只是被切换到了后台状态。同时参考苹果关于 Lifecycle 的官方文档，UIApplication 自己会创建一个 main run loop，我们大致可以得到下面的结论：</p><ul><li>main.m 中的 UIApplicationMain 永远不会返回，只有在系统 kill 掉整个 app 时，系统会把应用占用的内存全部释放出来。因为UIApplicationMain 永远不会返回，这里的 autorelease pool 也就永远不会进入到释放那个阶段</li><li>假设有些变量真的进入了 main.m 里面这个 pool（没有被更内层的 pool 捕获），那么这些变量实际上就是被泄露的。这个 autorelease pool 等于是把这种泄露情况给隐藏起来了。UIApplication 自己会创建 main run loop，在 Cocoa 的 runloop 中实际上也是自动包含 autorelease pool 的，因此 main.m 当中的 pool 可以认为是没有必要的。</li></ul><p>因为我们看不到更底层的代码，加上苹果的文档中不建议修改 main.m ，所以我们也没有理由就直接把它删掉。</p><h3 id=autorelease-pool-与函数返回值>Autorelease Pool 与函数返回值</h3><p>如果一个函数的返回值是指向一个对象的指针，那么这个对象肯定不能在函数返回之前进行 release，这样调用者在调用这个函数时得到的就是野指针了，在函数返回之后也不能立刻就 release，因为我们不知道调用者是不是 retain 了这个对象，如果我们直接 release 了，可能导致后面在使用这个对象时它已经成为 nil 了。</p><p>为了解决这个纠结的问题， Objective-C 中对对象指针的返回值进行了区分，一种叫做 retained return value，另一种叫做 unretained return value。前者表示调用者拥有这个返回值，后者表示调用者不拥有这个返回值，按照“谁拥有谁释放”的原则，对于前者调用者是要负责释放的，对于后者就不需要了。</p><p>按照苹果的命名习惯，以 alloc, copy, init, mutableCopy 和 new 这些方法打头的方法，返回的都是 retained return value，例如 [[NSString alloc] initWithFormat:]，而其他的则是 unretained return value，例如 [NSString stringWithFormat:]。我们在编写代码时也应该遵守这个习惯。</p><p>（2）使用弱引用(weak)</p><p>​ 弱引用虽然持有对象，但是并不增加引用计数，这样就避免了循环引用的产生。在 iOS 开发中，弱引用通常在 delegate 模式中使用。</p><p>​ 弱引用的实现原理是这样，系统对于每一个有弱引用的对象，都维护一个表来记录它所有的弱引用的指针地址。这样，当一个对象的引用计数为 0 时，系统就通过这张表，找到所有的弱引用指针，继而把它们都置成 nil。</p><p>从这个原理中，我们可以看出，弱引用的使用是有额外的开销的。虽然这个开销很小，但是如果一个地方我们肯定它不需要弱引用的特性，就不应该盲目使用弱引用。</p><p>（3）当实例变量完成工作后，将其置为nil</p><p>​ 在合理的位置主动断开环中的一个引用，使得对象得以回收，类似于手动管理，要求对何时释放以及使用内存等非常熟悉。</p><p>底层 Core Foundation 对象，需要自己手工管理它们的引用计数时。
-对于这些底层 Core Foundation对象的引用计数的修改，要相应的使用 CFRetain 和 CFRelease 方法。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-objc data-lang=objc><span style=display:flex><span><span style=color:#75715e>// 创建一个 CTFontRef 对象
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>CTFontRef fontRef <span style=color:#f92672>=</span> CTFontCreateWithName((CFStringRef)<span style=color:#e6db74>@&#34;ArialMT&#34;</span>, fontSize, NULL);
-</span></span><span style=display:flex><span><span style=color:#75715e>// 引用计数加 1
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>CFRetain(fontRef);
-</span></span><span style=display:flex><span><span style=color:#75715e>// 引用计数减 1
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>CFRelease(fontRef);
-</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>对于</span> CFRetain <span style=color:#960050;background-color:#1e0010>和</span> CFRelease <span style=color:#960050;background-color:#1e0010>两个方法，我们可以直观地认为，这与</span> Objective<span style=color:#f92672>-</span>C <span style=color:#960050;background-color:#1e0010>对象的</span> <span style=color:#66d9ef>retain</span> <span style=color:#960050;background-color:#1e0010>和</span> <span style=color:#66d9ef>release</span> <span style=color:#960050;background-color:#1e0010>方法等价。</span>
-</span></span></code></pre></div><p>所以对于底层 Core Foundation 对象，我们只需要延续以前手工管理引用计数的办法即可。</p><h3 id=other>other</h3><p>除此之外，还有另外一个问题需要解决。在 ARC 下，我们有时需要将一个 Core Foundation 对象转换成一个 Objective-C 对象，这个时候我们需要告诉编译器，转换过程中的引用计数需要做如何的调整。这就引入了bridge相关的关键字，以下是这些关键字的说明：</p><ul><li>__bridge: 只做类型转换，不修改相关对象的引用计数，原来的 Core Foundation 对象在不用时，需要调用 CFRelease 方法。</li><li>__bridge_retained：类型转换后，将相关对象的引用计数加 1，原来的 Core Foundation 对象在不用时，需要调用 CFRelease 方法。</li><li>__bridge_transfer：类型转换后，将该对象的引用计数交给 ARC 管理，Core Foundation 对象在不用时，不再需要调用 CFRelease 方法。</li></ul><p>根据具体情况合理使用上面的 3 种转换关键字，就可以解决 Core Foundation 对象与 Objective-C 对象相对转换的问题了。</p><h3 id=总结>总结</h3><p>虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题。如果对内存管理没有把握可以使用Instrument中的 Leaks 工具来检测循环应用。</p></div></div><footer><div class="divide-gray-200 text-sm font-medium leading-5 xl:col-start-1 xl:row-start-2 xl:divide-y"><div class="py-4 xl:py-8"><h2 class="text-xs uppercase tracking-wide text-gray-500">Tags</h2><div class="flex flex-wrap"><a href=/tags/binary class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600">binary</a>
-<a href=/tags/code class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600">code</a>
-<a href=/tags/ios class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600">ios</a></div></div></div><div class="pt-4 xl:pt-8"><a class="text-indigo-500 hover:text-indigo-600" aria-label="Back to the list" href=/>← Back to the list</a></div></footer></div></div></article></section></main><footer><div class="mt-16 flex flex-col items-center"><div class="mb-2 text-sm text-gray-500"><span>(C) 2025. Jasonphd Blogs all rights reserved.</span></div><div class="mb-8 text-sm text-gray-500"><span class=mr-1>Built with</span>
-<a class="font-semibold underline" href=https://github.com/discaptive/hugo-discaptive target=_blank>hugo-discaptive</a></div></div></footer></div></section></body></html>
+当两个对象互相持有对方的强引用时，并且这两个对象的引用计数都不是0的时候，便造成了引用循环，从而使用计数后内存无法得到释放。可以从以下几个方面入手：" />
+<meta name="twitter:image" content="http://localhost:1313/images/og-image.png" />
+
+<title>ios内存原理（3）</title>
+
+    <link rel="stylesheet" href="/css/output.css" />
+
+
+  </head>
+  <body class="bg-white text-black antialiased">
+    <section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
+      <div class="flex h-screen flex-col justify-between font-sans">
+        <header
+          class="flex items-center w-full bg-white justify-between py-10 sticky top-0 z-50"
+        >
+          <a class="group break-words" aria-label="Jasonphd Blogs" href="/">
+  <div class="flex items-center justify-between">
+    <div class="sm:mr-3">
+      <img src="/images/logo.svg" width="32" height="32" alt="Logo Image" />
+    </div>
+
+    <div class="hidden text-2xl font-semibold sm:block group-hover:underline">
+      <span>Jasonphd Blogs</span>
+    </div>
+  </div>
+</a>
+
+<div class="flex items-center space-x-4 leading-5 sm:space-x-6">
+  <div class="items-center space-x-4 overflow-x-auto flex sm:space-x-6">
+    
+      <a
+        href="mailto:developerluhao@gmail.com"
+        class="font-medium text-gray-900 hover:text-indigo-500"
+        
+        >ContactMe</a
+      >
+    
+      <a
+        href="/tags"
+        class="font-medium text-gray-900 hover:text-indigo-500"
+        
+        >Tags</a
+      >
+    
+      <a
+        href="/about"
+        class="font-medium text-gray-900 hover:text-indigo-500"
+        
+        >About</a
+      >
+    
+    <a href="https://github.com/forwyt" target="_blank">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="fill-[#24292F] hover:fill-indigo-500 h-6 w-6"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M12.0099 0C5.36875 0 0 5.5 0 12.3042C0 17.7432 3.43994 22.3472 8.21205 23.9767C8.80869 24.0992 9.02724 23.712 9.02724 23.3862C9.02724 23.101 9.00757 22.1232 9.00757 21.1045C5.6667 21.838 4.97099 19.6378 4.97099 19.6378C4.43409 18.2118 3.63858 17.8452 3.63858 17.8452C2.54511 17.0915 3.71823 17.0915 3.71823 17.0915C4.93117 17.173 5.56763 18.3545 5.56763 18.3545C6.64118 20.2285 8.37111 19.699 9.06706 19.373C9.16638 18.5785 9.48473 18.0285 9.82275 17.723C7.15817 17.4377 4.35469 16.3785 4.35469 11.6523C4.35469 10.3078 4.8316 9.20775 5.58729 8.35225C5.46807 8.04675 5.0504 6.7835 5.70677 5.09275C5.70677 5.09275 6.72083 4.76675 9.00732 6.35575C9.98625 6.08642 10.9958 5.9494 12.0099 5.94825C13.024 5.94825 14.0577 6.091 15.0123 6.35575C17.299 4.76675 18.3131 5.09275 18.3131 5.09275C18.9695 6.7835 18.5515 8.04675 18.4323 8.35225C19.2079 9.20775 19.6652 10.3078 19.6652 11.6523C19.6652 16.3785 16.8617 17.4172 14.1772 17.723C14.6148 18.11 14.9924 18.8433 14.9924 20.0045C14.9924 21.6545 14.9727 22.9788 14.9727 23.386C14.9727 23.712 15.1915 24.0992 15.7879 23.977C20.56 22.347 23.9999 17.7432 23.9999 12.3042C24.0196 5.5 18.6312 0 12.0099 0Z"
+        />
+      </svg>
+    </a>
+  </div>
+</div>
+
+        </header>
+        <main class="mb-auto">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "ios内存原理（3）",
+      "datePublished": "2016-09-14T15:44:54\u002b08:00",
+      "dateModified": "2016-09-14T15:44:54\u002b08:00",
+      "description": "\u003cp\u003e\u003cimg src=\u0022\/images\/29e9bff778c21ba1fce2e366c566cc14.watch.webp\u0022 alt=\u0022\u0022\u003e\n虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题\u0026hellip;\u003c\/p\u003e\n\u003cp\u003e虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题\u003c\/p\u003e\n\u003ch3 id=\u0022mrc\u0022\u003eMRC\u003c\/h3\u003e\n\u003ctable\u003e\n  \u003cthead\u003e\n      \u003ctr\u003e\n          \u003cth style=\u0022text-align: center\u0022\u003e对象操作\u003c\/th\u003e\n          \u003cth style=\u0022text-align: center\u0022\u003eOC中对应的方法\u003c\/th\u003e\n          \u003cth style=\u0022text-align: center\u0022\u003e对应的引用计数的化\u003c\/th\u003e\n      \u003c\/tr\u003e\n  \u003c\/thead\u003e\n  \u003ctbody\u003e\n      \u003ctr\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003e持有对象\u003c\/td\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003eretain\u003c\/td\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003e\u002b1\u003c\/td\u003e\n      \u003c\/tr\u003e\n      \u003ctr\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003e释放对象\u003c\/td\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003erelease\u003c\/td\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003e-1\u003c\/td\u003e\n      \u003c\/tr\u003e\n      \u003ctr\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003e废弃对象\u003c\/td\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003edealloc\u003c\/td\u003e\n          \u003ctd style=\u0022text-align: center\u0022\u003e0\u003c\/td\u003e\n      \u003c\/tr\u003e\n  \u003c\/tbody\u003e\n\u003c\/table\u003e\n\u003ch3 id=\u0022arc\u0022\u003eARC\u003c\/h3\u003e\n\u003cp\u003e根据指针来操作引用\n在ARC模式下，只要没有强指针（强引用）指向对象，对象就会被释放。在ARC模式下，不允许使用retain、release、retainCount等方法。并且，如果使用dealloc方法时，不允许调用[super dealloc]方法。\u003c\/p\u003e\n\u003cp\u003eARC模式下的property变量修饰词为strong、weak，相当于MRC模式下的retain、assign。strong :代替retain，缺省关键词，代表强引用。weak：代替assign，声明了一个可以自动设置nil的弱引用，但是比assign多一个功能，指针指向的地址被释放之后，指针本身也会自动被释放。\u003c\/p\u003e\n\u003cp\u003e实现方式是在编译时期自动在已有代码中插入合适的内存管理代码以及在 Runtime 做一些优化。详细的工作原理见 上一篇 \u003cstrong\u003e内存管理(2)\u003c\/strong\u003e\u003c\/p\u003e\n\u003cp\u003eARC提供四种与内存管理有关的变量标识符，分别是：\u003c\/p\u003e\n\u003ch3 id=\u0022关键字\u0022\u003e关键字\u003c\/h3\u003e\n\u003cul\u003e\n\u003cli\u003e__strong\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cblockquote\u003e\n\u003cp\u003e__strong 是默认使用的标识符。只有还有一个强指针指向某个对象，这个对象就会一直存活。\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cul\u003e\n\u003cli\u003e__weak\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cblockquote\u003e\n\u003cp\u003e__weak 声明这个引用不会保持被引用对象的存活，如果对象没有强引用了，弱引用会被置为 nil\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cul\u003e\n\u003cli\u003e_ unsafe _unretained\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cblockquote\u003e\n\u003cp\u003e__unsafe_unretained 声明这个引用不会保持被引用对象的存活，如果对象没有强引用了，它不会被置为 nil。如果它引用的对象被回收掉了，该指针就变成了野指针。\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cul\u003e\n\u003cli\u003e__autoReleasing\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cblockquote\u003e\n\u003cp\u003e__autoreleasing 用于标示使用引用传值的参数（id *），在函数返回时会被自动释放掉。\u003c\/p\u003e\u003c\/blockquote\u003e\n\u003cp\u003e变量标识符的用法如下，在类型和变量名之间：\u003c\/p\u003e\n\u003cdiv class=\u0022highlight\u0022\u003e\u003cpre tabindex=\u00220\u0022 style=\u0022color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;\u0022\u003e\u003ccode class=\u0022language-objc\u0022 data-lang=\u0022objc\u0022\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003eNumber\u003cspan style=\u0022color:#f92672\u0022\u003e*\u003c\/span\u003e \u003cspan style=\u0022color:#66d9ef\u0022\u003e__strong\u003c\/span\u003e num \u003cspan style=\u0022color:#f92672\u0022\u003e=\u003c\/span\u003e [[Number alloc] init];\n\u003c\/span\u003e\u003c\/span\u003e\u003c\/code\u003e\u003c\/pre\u003e\u003c\/div\u003e\u003cp\u003e属性标识符\u003c\/p\u003e\n\u003cdiv class=\u0022highlight\u0022\u003e\u003cpre tabindex=\u00220\u0022 style=\u0022color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;\u0022\u003e\u003ccode class=\u0022language-objc\u0022 data-lang=\u0022objc\u0022\u003e\u003cspan style=\u0022display:flex;\u0022\u003e\u003cspan\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003e@property\u003c\/span\u003e (\u003cspan style=\u0022color:#66d9ef\u0022\u003eassign\u003c\/span\u003e\u003cspan style=\u0022color:#f92672\u0022\u003e\/\u003c\/span\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003eretain\u003c\/span\u003e\u003cspan style=\u0022color:#f92672\u0022\u003e\/\u003c\/span\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003estrong\u003c\/span\u003e\u003cspan style=\u0022color:#f92672\u0022\u003e\/\u003c\/span\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003eweak\u003c\/span\u003e\u003cspan style=\u0022color:#f92672\u0022\u003e\/\u003c\/span\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003eunsafe_unretained\u003c\/span\u003e\u003cspan style=\u0022color:#f92672\u0022\u003e\/\u003c\/span\u003e\u003cspan style=\u0022color:#66d9ef\u0022\u003ecopy\u003c\/span\u003e) Number\u003cspan style=\u0022color:#f92672\u0022\u003e*\u003c\/span\u003e num\n\u003c\/span\u003e\u003c\/span\u003e\u003c\/code\u003e\u003c\/pre\u003e\u003c\/div\u003e\u003cp\u003eassign表明 setter 仅仅是一个简单的赋值操作，通常用于基本的数值类型，例如CGFloat和NSInteger。\u003c\/p\u003e\n\u003ctable\u003e\n  \u003cthead\u003e\n      \u003ctr\u003e\n          \u003cth\u003ekey\u003c\/th\u003e\n          \u003cth\u003e含义\u003c\/th\u003e\n      \u003c\/tr\u003e\n  \u003c\/thead\u003e\n  \u003ctbody\u003e\n      \u003ctr\u003e\n          \u003ctd\u003estrong\u003c\/td\u003e\n          \u003ctd\u003e表明属性定义一个拥有者关系。当给属性设定一个新值的时候，首先这个值进行 retain ，旧值进行 release ，然后进行赋值操作。\u003c\/td\u003e\n      \u003c\/tr\u003e\n      \u003ctr\u003e\n          \u003ctd\u003eweak\u003c\/td\u003e\n          \u003ctd\u003e表明属性定义了一个非拥有者关系。当给属性设定一个新值的时候，这个值不会进行 retain，旧值也不会进行 release， 而是进行类似 assign 的操作。不过当属性指向的对象被销毁时，该属性会被置为nil\u003c\/td\u003e\n      \u003c\/tr\u003e\n      \u003ctr\u003e\n          \u003ctd\u003eunsafe_unretained\u003c\/td\u003e\n          \u003ctd\u003e语义和 assign 类似，不过是用于对象类型的，表示一个非拥有(unretained)的，同时也不会在对象被销毁时置为nil的(unsafe)关系\u003c\/td\u003e\n      \u003c\/tr\u003e\n      \u003ctr\u003e\n          \u003ctd\u003ecopy\u003c\/td\u003e\n          \u003ctd\u003e类似于 strong，不过在赋值时进行 copy 操作而不是 retain 操作。通常在需要保留某个不可变对象（NSString最常见），并且防止它被意外改变时使用\u003c\/td\u003e\n      \u003c\/tr\u003e\n      \u003ctr\u003e\n          \u003ctd\u003eunsafe_unretained\u003c\/td\u003e\n          \u003ctd\u003e（1）兼容性，iOS4之前没有weak只能用unsafe_unretained（2）性能考虑，性能比weak要好\u003c\/td\u003e\n      \u003c\/tr\u003e\n  \u003c\/tbody\u003e\n\u003c\/table\u003e\n\u003ch3 id=\u0022arc下仍然需要注意的内存管理问题\u0022\u003eARC下仍然需要注意的内存管理问题\u003c\/h3\u003e\n\u003cp\u003e循环引用问题。\n当两个对象互相持有对方的强引用时，并且这两个对象的引用计数都不是0的时候，便造成了引用循环，从而使用计数后内存无法得到释放。可以从以下几个方面入手：\u003c\/p\u003e",
+      "image": "/images/og-image.png",
+      "url": "http:\/\/localhost:1313\/ios\/ios3\/",
+      "author": [{ "@type": "Person", "name": "jamesitachi" }]
+    }
+  </script>
+  <section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
+    <article>
+      <div class="xl:divide-y xl:divide-gray-200">
+        <header class="pt-6 xl:pb-6">
+          <div class="space-y-1 text-center">
+            <dl class="space-y-10">
+              <div>
+                <dt class="sr-only">Published on</dt>
+                <dd class="text-base font-medium leading-6 text-gray-500">
+                  
+                  
+                  <time datetime="2016-09-14T15:44:54&#43;08:00">Wednesday, September 14, 2016</time>
+                </dd>
+              </div>
+            </dl>
+            <div>
+              <h1
+                class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"
+              >
+                <div>ios内存原理（3）</div>
+              </h1>
+            </div>
+          </div>
+        </header>
+
+        <div
+          class="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0"
+        >
+          <dl class="pb-10 pt-6 xl:border-b xl:border-gray-200 xl:pt-11">
+            <dt class="sr-only">Authors</dt>
+            <dd>
+              <ul
+                class="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8"
+              >
+                <li class="flex items-center space-x-2">
+                  <img
+                    src="https://github.com/forwyt.png"
+                    class="rounded-full"
+                    width="38"
+                    height="38"
+                    alt="Profile Image"
+                    loading="lazy"
+                  />
+                  <dl class="whitespace-nowrap text-sm font-medium leading-5">
+                    <dt class="sr-only">Name</dt>
+                    <dd class="text-gray-900">jamesitachi</dd>
+                  </dl>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+
+          <div
+            class="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0"
+          >
+            <div class="prose max-w-none pb-8 pt-10">
+              <details open>
+                <summary class="ml-6 pb-2 pt-2 text-xl font-bold">
+                  <span>Table of Contents</span>
+                </summary>
+
+                <nav class="ml-6">
+                    <ul>
+                        <li><a href="#"></a></li>
+                          <ul>
+                              <li>
+                                <a href="#mrc">MRC</a>
+                              </li>
+                              <li>
+                                <a href="#arc">ARC</a>
+                              </li>
+                              <li>
+                                <a href="#%e5%85%b3%e9%94%ae%e5%ad%97">关键字</a>
+                              </li>
+                              <li>
+                                <a href="#arc%e4%b8%8b%e4%bb%8d%e7%84%b6%e9%9c%80%e8%a6%81%e6%b3%a8%e6%84%8f%e7%9a%84%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86%e9%97%ae%e9%a2%98">ARC下仍然需要注意的内存管理问题</a>
+                              </li>
+                              <li>
+                                <a href="#autorelease-pool-%e4%b8%8e%e5%87%bd%e6%95%b0%e8%bf%94%e5%9b%9e%e5%80%bc">Autorelease Pool 与函数返回值</a>
+                              </li>
+                              <li>
+                                <a href="#other">other</a>
+                              </li>
+                              <li>
+                                <a href="#%e6%80%bb%e7%bb%93">总结</a>
+                              </li>
+                          </ul>
+                    </ul>
+                </nav>
+              </details>
+
+              <p><img src="/images/29e9bff778c21ba1fce2e366c566cc14.watch.webp" alt="">
+虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题&hellip;</p>
+<p>虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题</p>
+<h3 id="mrc">MRC</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">对象操作</th>
+          <th style="text-align: center">OC中对应的方法</th>
+          <th style="text-align: center">对应的引用计数的化</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">持有对象</td>
+          <td style="text-align: center">retain</td>
+          <td style="text-align: center">+1</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">释放对象</td>
+          <td style="text-align: center">release</td>
+          <td style="text-align: center">-1</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">废弃对象</td>
+          <td style="text-align: center">dealloc</td>
+          <td style="text-align: center">0</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="arc">ARC</h3>
+<p>根据指针来操作引用
+在ARC模式下，只要没有强指针（强引用）指向对象，对象就会被释放。在ARC模式下，不允许使用retain、release、retainCount等方法。并且，如果使用dealloc方法时，不允许调用[super dealloc]方法。</p>
+<p>ARC模式下的property变量修饰词为strong、weak，相当于MRC模式下的retain、assign。strong :代替retain，缺省关键词，代表强引用。weak：代替assign，声明了一个可以自动设置nil的弱引用，但是比assign多一个功能，指针指向的地址被释放之后，指针本身也会自动被释放。</p>
+<p>实现方式是在编译时期自动在已有代码中插入合适的内存管理代码以及在 Runtime 做一些优化。详细的工作原理见 上一篇 <strong>内存管理(2)</strong></p>
+<p>ARC提供四种与内存管理有关的变量标识符，分别是：</p>
+<h3 id="关键字">关键字</h3>
+<ul>
+<li>__strong</li>
+</ul>
+<blockquote>
+<p>__strong 是默认使用的标识符。只有还有一个强指针指向某个对象，这个对象就会一直存活。</p></blockquote>
+<ul>
+<li>__weak</li>
+</ul>
+<blockquote>
+<p>__weak 声明这个引用不会保持被引用对象的存活，如果对象没有强引用了，弱引用会被置为 nil</p></blockquote>
+<ul>
+<li>_ unsafe _unretained</li>
+</ul>
+<blockquote>
+<p>__unsafe_unretained 声明这个引用不会保持被引用对象的存活，如果对象没有强引用了，它不会被置为 nil。如果它引用的对象被回收掉了，该指针就变成了野指针。</p></blockquote>
+<ul>
+<li>__autoReleasing</li>
+</ul>
+<blockquote>
+<p>__autoreleasing 用于标示使用引用传值的参数（id *），在函数返回时会被自动释放掉。</p></blockquote>
+<p>变量标识符的用法如下，在类型和变量名之间：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span>Number<span style="color:#f92672">*</span> <span style="color:#66d9ef">__strong</span> num <span style="color:#f92672">=</span> [[Number alloc] init];
+</span></span></code></pre></div><p>属性标识符</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span><span style="color:#66d9ef">@property</span> (<span style="color:#66d9ef">assign</span><span style="color:#f92672">/</span><span style="color:#66d9ef">retain</span><span style="color:#f92672">/</span><span style="color:#66d9ef">strong</span><span style="color:#f92672">/</span><span style="color:#66d9ef">weak</span><span style="color:#f92672">/</span><span style="color:#66d9ef">unsafe_unretained</span><span style="color:#f92672">/</span><span style="color:#66d9ef">copy</span>) Number<span style="color:#f92672">*</span> num
+</span></span></code></pre></div><p>assign表明 setter 仅仅是一个简单的赋值操作，通常用于基本的数值类型，例如CGFloat和NSInteger。</p>
+<table>
+  <thead>
+      <tr>
+          <th>key</th>
+          <th>含义</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>strong</td>
+          <td>表明属性定义一个拥有者关系。当给属性设定一个新值的时候，首先这个值进行 retain ，旧值进行 release ，然后进行赋值操作。</td>
+      </tr>
+      <tr>
+          <td>weak</td>
+          <td>表明属性定义了一个非拥有者关系。当给属性设定一个新值的时候，这个值不会进行 retain，旧值也不会进行 release， 而是进行类似 assign 的操作。不过当属性指向的对象被销毁时，该属性会被置为nil</td>
+      </tr>
+      <tr>
+          <td>unsafe_unretained</td>
+          <td>语义和 assign 类似，不过是用于对象类型的，表示一个非拥有(unretained)的，同时也不会在对象被销毁时置为nil的(unsafe)关系</td>
+      </tr>
+      <tr>
+          <td>copy</td>
+          <td>类似于 strong，不过在赋值时进行 copy 操作而不是 retain 操作。通常在需要保留某个不可变对象（NSString最常见），并且防止它被意外改变时使用</td>
+      </tr>
+      <tr>
+          <td>unsafe_unretained</td>
+          <td>（1）兼容性，iOS4之前没有weak只能用unsafe_unretained（2）性能考虑，性能比weak要好</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="arc下仍然需要注意的内存管理问题">ARC下仍然需要注意的内存管理问题</h3>
+<p>循环引用问题。
+当两个对象互相持有对方的强引用时，并且这两个对象的引用计数都不是0的时候，便造成了引用循环，从而使用计数后内存无法得到释放。可以从以下几个方面入手：</p>
+<p>(1)注意变量作用域，使用 autorelease 让编译器来处理引用
+Autorelase Pool 提供了一种可以允许你向一个对象延迟发送release消息的机制。当你想放弃一个对象的所有权，同时又不希望这个对象立即被释放掉（例如在一个方法中返回一个对象时），Autorelease Pool 的作用就显现出来了。所谓的延迟发送release消息指的是，当我们把一个对象标记为autorelease时:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span>NSString<span style="color:#f92672">*</span> str <span style="color:#f92672">=</span> [[[NSString alloc] initWithString:<span style="color:#e6db74">@&#34;hello&#34;</span>] autorelease];
+</span></span></code></pre></div><p>这个对象的 retainCount 会+1，但是并不会发生 release。当这段语句所处的 autoreleasepool 进行 drain 操作时，所有标记了 autorelease 的对象的 retainCount 会被 -1。即 release 消息的发送被延迟到 pool 释放的时候了。</p>
+<p>(2)在 ARC 环境下，苹果引入了 @autoreleasepool 语法，不再需要手动调用 autorelease 和 drain 等方法。系统在 runloop 中创建的 autoreleaspool 会在 runloop 一个 event 结束时进行释放操作。我们手动创建的 autoreleasepool 会在 block 执行完成之后进行 drain 操作。
+main.m 中 Autorelease Pool 的解释</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> argv[]) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">@autoreleasepool</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate <span style="color:#66d9ef">class</span>]));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这里的 pool 有什么作用，能不能去掉之类? 在这里我们分析一下。根据苹果官方文档， UIApplicationMain 函数是整个 app 的入口，用来创建 application 对象（单例）和 application delegate。</p>
+<p>尽管这个函数有返回值，但是实际上却永远不会返回，当按下 Home 键时，app 只是被切换到了后台状态。同时参考苹果关于 Lifecycle 的官方文档，UIApplication 自己会创建一个 main run loop，我们大致可以得到下面的结论：</p>
+<ul>
+<li>main.m 中的 UIApplicationMain 永远不会返回，只有在系统 kill 掉整个 app 时，系统会把应用占用的内存全部释放出来。因为UIApplicationMain 永远不会返回，这里的 autorelease pool 也就永远不会进入到释放那个阶段</li>
+<li>假设有些变量真的进入了 main.m 里面这个 pool（没有被更内层的 pool 捕获），那么这些变量实际上就是被泄露的。这个 autorelease pool 等于是把这种泄露情况给隐藏起来了。UIApplication 自己会创建 main run loop，在 Cocoa 的 runloop 中实际上也是自动包含 autorelease pool 的，因此 main.m 当中的 pool 可以认为是没有必要的。</li>
+</ul>
+<p>因为我们看不到更底层的代码，加上苹果的文档中不建议修改 main.m ，所以我们也没有理由就直接把它删掉。</p>
+<h3 id="autorelease-pool-与函数返回值">Autorelease Pool 与函数返回值</h3>
+<p>如果一个函数的返回值是指向一个对象的指针，那么这个对象肯定不能在函数返回之前进行 release，这样调用者在调用这个函数时得到的就是野指针了，在函数返回之后也不能立刻就 release，因为我们不知道调用者是不是 retain 了这个对象，如果我们直接 release 了，可能导致后面在使用这个对象时它已经成为 nil 了。</p>
+<p>为了解决这个纠结的问题， Objective-C 中对对象指针的返回值进行了区分，一种叫做 retained return value，另一种叫做 unretained return value。前者表示调用者拥有这个返回值，后者表示调用者不拥有这个返回值，按照“谁拥有谁释放”的原则，对于前者调用者是要负责释放的，对于后者就不需要了。</p>
+<p>按照苹果的命名习惯，以 alloc, copy, init, mutableCopy 和 new 这些方法打头的方法，返回的都是 retained return value，例如 [[NSString alloc] initWithFormat:]，而其他的则是 unretained return value，例如 [NSString stringWithFormat:]。我们在编写代码时也应该遵守这个习惯。</p>
+<p>（2）使用弱引用(weak)</p>
+<p>​ 弱引用虽然持有对象，但是并不增加引用计数，这样就避免了循环引用的产生。在 iOS 开发中，弱引用通常在 delegate 模式中使用。</p>
+<p>​ 弱引用的实现原理是这样，系统对于每一个有弱引用的对象，都维护一个表来记录它所有的弱引用的指针地址。这样，当一个对象的引用计数为 0 时，系统就通过这张表，找到所有的弱引用指针，继而把它们都置成 nil。</p>
+<p>从这个原理中，我们可以看出，弱引用的使用是有额外的开销的。虽然这个开销很小，但是如果一个地方我们肯定它不需要弱引用的特性，就不应该盲目使用弱引用。</p>
+<p>（3）当实例变量完成工作后，将其置为nil</p>
+<p>​ 在合理的位置主动断开环中的一个引用，使得对象得以回收，类似于手动管理，要求对何时释放以及使用内存等非常熟悉。</p>
+<p>底层 Core Foundation 对象，需要自己手工管理它们的引用计数时。
+对于这些底层 Core Foundation对象的引用计数的修改，要相应的使用 CFRetain 和 CFRelease 方法。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span><span style="color:#75715e">// 创建一个 CTFontRef 对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>CTFontRef fontRef <span style="color:#f92672">=</span> CTFontCreateWithName((CFStringRef)<span style="color:#e6db74">@&#34;ArialMT&#34;</span>, fontSize, NULL);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 引用计数加 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>CFRetain(fontRef);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 引用计数减 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>CFRelease(fontRef);
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">对于</span> CFRetain <span style="color:#960050;background-color:#1e0010">和</span> CFRelease <span style="color:#960050;background-color:#1e0010">两个方法，我们可以直观地认为，这与</span> Objective<span style="color:#f92672">-</span>C <span style="color:#960050;background-color:#1e0010">对象的</span> <span style="color:#66d9ef">retain</span> <span style="color:#960050;background-color:#1e0010">和</span> <span style="color:#66d9ef">release</span> <span style="color:#960050;background-color:#1e0010">方法等价。</span>
+</span></span></code></pre></div><p>所以对于底层 Core Foundation 对象，我们只需要延续以前手工管理引用计数的办法即可。</p>
+<h3 id="other">other</h3>
+<p>除此之外，还有另外一个问题需要解决。在 ARC 下，我们有时需要将一个 Core Foundation 对象转换成一个 Objective-C 对象，这个时候我们需要告诉编译器，转换过程中的引用计数需要做如何的调整。这就引入了bridge相关的关键字，以下是这些关键字的说明：</p>
+<ul>
+<li>__bridge: 只做类型转换，不修改相关对象的引用计数，原来的 Core Foundation 对象在不用时，需要调用 CFRelease 方法。</li>
+<li>__bridge_retained：类型转换后，将相关对象的引用计数加 1，原来的 Core Foundation 对象在不用时，需要调用 CFRelease 方法。</li>
+<li>__bridge_transfer：类型转换后，将该对象的引用计数交给 ARC 管理，Core Foundation 对象在不用时，不再需要调用 CFRelease 方法。</li>
+</ul>
+<p>根据具体情况合理使用上面的 3 种转换关键字，就可以解决 Core Foundation 对象与 Objective-C 对象相对转换的问题了。</p>
+<h3 id="总结">总结</h3>
+<p>虽然ARC时代不需要手动管理内存，但是我们仍然要注意循环引用和CoreFoundation对象的引用计数问题。如果对内存管理没有把握可以使用Instrument中的 Leaks 工具来检测循环应用。</p>
+
+            </div>
+          </div>
+
+          <footer>
+            <div
+              class="divide-gray-200 text-sm font-medium leading-5 xl:col-start-1 xl:row-start-2 xl:divide-y"
+            >
+              <div class="py-4 xl:py-8">
+                <h2 class="text-xs uppercase tracking-wide text-gray-500">
+                  Tags
+                </h2>
+                <div class="flex flex-wrap">
+                  
+                    <a
+                      href="/tags/binary"
+                      class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600"
+                      >binary</a
+                    >
+                  
+                    <a
+                      href="/tags/code"
+                      class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600"
+                      >code</a
+                    >
+                  
+                    <a
+                      href="/tags/ios"
+                      class="mr-3 text-sm font-medium uppercase text-indigo-500 hover:text-indigo-600"
+                      >ios</a
+                    >
+                  
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 xl:pt-8">
+              <a
+                class="text-indigo-500 hover:text-indigo-600"
+                aria-label="Back to the list"
+                href="/"
+                >← Back to the list</a
+              >
+            </div>
+          </footer>
+        </div>
+      </div>
+    </article>
+  </section>
+</main>
+        <footer><div class="mt-16 flex flex-col items-center">
+  <div class="mb-2 text-sm text-gray-500">
+    <span>(C) 2025. Jasonphd Blogs all rights reserved.</span>
+  </div>
+
+  <div class="mb-8 text-sm text-gray-500">
+    <span class="mr-1">Built with</span>
+    <a
+      class="font-semibold underline"
+      href="https://github.com/discaptive/hugo-discaptive"
+      target="_blank"
+      >hugo-discaptive</a
+    >
+  </div>
+</div>
+</footer>
+      </div>
+    </section>
+  </body>
+</html>
